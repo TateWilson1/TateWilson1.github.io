@@ -26,6 +26,12 @@ body {
     margin-top: 40px;
 }
 
+/* Additional Resume Specific Styles */
+.resume-space {
+    margin-top: 350px; /* Adjust this value for desired top space */
+    padding: 20px;    /* Adjust this value for inner padding */
+}
+
 /* Sidebar Styles */
 .sidebar {
     width: 300px;
