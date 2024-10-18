@@ -32,9 +32,20 @@ body {
 
 /* Additional Resume Specific Styles */
 .resume-space {
-    margin-top: 1000px; /* Adjust this value for desired top space */
+    margin-top: 350px; /* Adjust this value for desired top space */
     padding: 20px; /* Adjust this value for inner padding */
 }
+
+.spacer {
+    height: 10px; /* Adjust this value for the buffer space */
+    width: 100%;
+}
+
+/* Optional: Style the content wrapper */
+.content {
+    padding: 20px; /* For example, if you want padding around your content */
+}
+
 
 /* Sidebar Styles */
 .sidebar {
