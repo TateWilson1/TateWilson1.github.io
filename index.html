@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tate Wilson's Portfolio</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<body>
+    <div class="background">
+        <div class="container">
+            <div class="sidebar">
+                <img src="/images/tim.jpg" alt="Profile Picture" class="profile-picture"> <!-- Replace with your image path -->
+                <h2>Tate Wilson</h2>
+                <h4>Digital Forensics & Cybersecurity</h4>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:tate@example.com">tate.wilson2022@gmail.com</a></p>
+                    <p>Location: Richmond, Kentucky, USA</p>
+                    <p><a href="#contact-form" class="contact-link">Contact Me</a></p>
+                </div>
+                <!-- Cybersecurity Quotes -->
+                <h4>Quotes:</h4>
+                <blockquote>
+                    “60% of data breaches are caused by a failure to patch. If you correct that, you’ve eliminated 60% of breaches. And I didn’t even have to say AI or Blockchain! See how that works?” - Ricardo Lafosse
+                </blockquote>
+                <blockquote>
+                    “The only secure computer is one that’s unplugged, locked in a safe, and buried 20 feet under the ground.”<br>
+                    — Frank Abagnale
+                </blockquote>
+            </div>
+
+            <div class="main-content">
+                <div class="navbar-container"> <!-- New container for the navbar -->
+                    <nav class="navbar">
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="resume.html">Resume</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                        </ul>
+                        <ul class="socials">
+                            <li><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="about-me"> <!-- Wrap About Me section -->
+                    <h2>About Me</h2>
+                    <p>
+                        I'm a dedicated Digital Forensics and Cybersecurity major at Eastern Kentucky University, with a passion for technology and a strong interest in protecting digital assets. My background in forensic analysis equips me to handle complex security challenges, and I'm committed to continuous learning in this rapidly evolving field.
+                    </p>
+                </div>
+
+                <h3>What I'm Doing</h3>
+                <div class="service-grid">
+                    <div class="service-box">
+                        <h4 class="service-title">College</h4>
+                        <p>I'm majoring in Digital Forensics & Cybersecurity at Eastern Kentucky University.</p>
+                    </div>
+                    <div class="service-box">
+                        <h4 class="service-title">Projects</h4>
+                        <p>Working on IT/Cybersecurity projects and publishing them on my GitHub.</p>
+                    </div>
+                    <div class="service-box">
+                        <h4 class="service-title">Internship Opportunities</h4>
+                        <p>Looking into an internship specifically within the realm of IT or Digital Forensics.</p>
+                    </div>
+                    <div class="service-box">
+                        <h4 class="service-title">Certifications</h4>
+                        <p>Currently studying for Security+, CC, and Network+.</p>
+                    </div>
+                </div>
+
+                <!-- New Contact Form Box wrapped in a container -->
+                <div class="contact-form-box" id="contact-form">
+                    <h3>Contact Me</h3>
+                    <form action="mailto:tate@example.com" method="post" enctype="text/plain">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
