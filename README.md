@@ -14,7 +14,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 
 ## About Me
 
-I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University, expected to graduate in May 2026. I have a passion for technology and cybersecurity, demonstrated through my involvement in various projects and competitions.
+I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University, expected to graduate in May 2026. I have a passion for technology and cybersecurity, demonstrated through my involvement in various projects and competitions via CCDC.
 
 ## Features
 
@@ -28,11 +28,12 @@ I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University,
 - HTML5
 - CSS3
 - JavaScript
-- [Any frameworks or libraries used, e.g., Bootstrap, React]
-- [Additional tools, e.g., Git, GitHub, etc.]
+- Font-Awesome 
+- Git
+- GitHub
 
-## Installation
+## Visit
 
-To run this project locally, follow these steps:
+To view this project,
 
 Visit the website at www.tatewilson1.github.io
