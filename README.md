@@ -21,7 +21,7 @@ I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University,
 - **Responsive Design**: The website is optimized for various devices and screen sizes.
 - **Portfolio Showcase**: Highlights my projects and accomplishments.
 - **Contact Section**: Allows visitors to get in touch with me easily.
-- **Dynamic Resume**: Provides an overview of my skills, experience, and education
+- **Dynamic Resume**: Provides an overview of my skills, experience, and education.
 
 ## Technologies Used
 
