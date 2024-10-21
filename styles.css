@@ -1,14 +1,22 @@
+:root {
+    --dark-bg: #121212; /* background color */
+    --light-text: #ffffff; /* Light text color */
+    --highlight-color: yellow; /* Highlight color for elements */
+    --sidebar-bg: rgba(44, 44, 44, 0.8); /* Sidebar background color */
+}
+
 /* General Body Styles */
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* Light text color */
+    background-color: var(--dark-bg); /* Dark background */
+    color: var(--light-text); /* Light text color */
 }
 
 /* Background Styles */
 .background {
-    background-image: url('path/to/your/image.jpg'); /* Set your background image here */
+    /*background-image: url('path/to/your/image.jpg');*/
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -26,31 +34,30 @@ body {
     max-width: 1200px;
     padding: 20px;
     margin-top: 40px;
-    background-color: rgba(30, 30, 30, 0.9); /* Semi-transparent dark container */
+    background-color: rgba(30, 30, 30, 0.9); 
     border-radius: 8px;
 }
 
 /* Additional Resume Specific Styles */
 .resume-space {
-    margin-top: 350px; /* Adjust this value for desired top space */
-    padding: 20px; /* Adjust this value for inner padding */
+    margin-top: 350px; 
+    padding: 20px; 
 }
 
 .spacer {
-    height: 10px; /* Adjust this value for the buffer space */
+    height: 10px; 
     width: 100%;
 }
 
 /* Optional: Style the content wrapper */
 .content {
-    padding: 20px; /* For example, if you want padding around your content */
+    padding: 20px; 
 }
-
 
 /* Sidebar Styles */
 .sidebar {
     width: 300px;
-    background-color: rgba(44, 44, 44, 0.8);
+    background-color: var(--sidebar-bg); 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -65,7 +72,7 @@ body {
 
 .sidebar h2:hover,
 .sidebar h4:hover {
-    color: lightblue; /* Change color on hover */
+    color: lightblue; 
 }
 
 /* Contact Info Styles */
@@ -89,7 +96,7 @@ body {
     width: 100px;
     border-radius: 50%;
     margin-bottom: 20px;
-    border: 2px solid #444444; /* Dark border for profile picture */
+    border: 2px solid #444444; 
 }
 
 /* Main Content Styles */
@@ -122,7 +129,7 @@ body {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 28px;
-    color: yellow;
+    color: var(--highlight-color); 
     font-weight: bold;
     text-align: center;
 }
@@ -132,7 +139,7 @@ h1,
 h2,
 h3 {
     margin: 0;
-    color: white;
+    color: var(--light-text); 
 }
 
 h1 {
@@ -141,11 +148,11 @@ h1 {
 
 h2 {
     font-size: 18px;
-    color: yellow;
+    color: var(--highlight-color); 
 }
 
 h3 {
-    color: white;
+    color: var(--light-text); 
 }
 
 /* Service Grid Styles */
@@ -169,7 +176,7 @@ h3 {
 
 .service-title {
     font-weight: bold;
-    color: yellow;
+    color: var(--highlight-color); 
 }
 
 /* Navigation Bar Styles */
@@ -185,10 +192,10 @@ h3 {
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    background-color: rgba(44, 44, 44, 0.9); /* Dark navbar background */
+    background-color: rgba(44, 44, 44, 0.9); 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    border: 2px solid yellow;
+    border: 2px solid var(--highlight-color); 
 }
 
 .navbar ul {
@@ -204,7 +211,7 @@ h3 {
 
 .navbar li a {
     text-decoration: none;
-    color: white;
+    color: var(--light-text); 
     padding: 8px 12px;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -217,7 +224,7 @@ h3 {
 /* Highlighted Text Styles */
 .highlight {
     font-weight: bold;
-    color: yellow !important;
+    color: var(--highlight-color) !important; 
 }
 
 /* Resume Title Styles */
@@ -226,7 +233,7 @@ h3 {
     padding-top: 10px;
     text-align: center;
     font-size: 24px;
-    color: white;
+    color: var(--light-text); 
 }
 
 /* Contact Form Box Styles */
@@ -234,7 +241,7 @@ h3 {
     margin: 20px;
     padding: 20px;
     background-color: rgba(44, 44, 44, 0.9);
-    border: 2px solid yellow;
+    border: 2px solid var(--highlight-color); 
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     width: 90%;
@@ -245,7 +252,7 @@ h3 {
 
 .contact-form-box h3 {
     margin-bottom: 10px;
-    color: white;
+    color: var(--light-text); 
 }
 
 .contact-form-box form {
@@ -255,7 +262,7 @@ h3 {
 
 .contact-form-box label {
     margin-bottom: 5px;
-    color: white;
+    color: var(--light-text); 
 }
 
 .contact-form-box input,
@@ -263,14 +270,14 @@ h3 {
     margin-bottom: 15px;
     padding: 10px;
     background-color: #333333;
-    color: #ffffff;
+    color: var(--light-text); 
     border: 1px solid #555555;
     border-radius: 4px;
 }
 
 .contact-form-box button {
     padding: 10px;
-    background-color: yellow;
+    background-color: var(--highlight-color); 
     color: black;
     border: none;
     border-radius: 5px;
@@ -286,7 +293,7 @@ h3 {
 .personal-statement {
     margin-top: 20px;
     font-style: italic;
-    color: white;
+    color: var(--light-text); 
     text-align: center;
 }
 
@@ -294,15 +301,23 @@ h3 {
 blockquote {
     padding: 15px;
     margin: 15px 0;
-    border-left: 5px solid yellow;
+    border-left: 5px solid var(--highlight-color); 
     font-style: italic;
-    color: white;
+    color: var(--light-text); 
 }
 
-/* Responsive Styles */
+.section-border {
+    border: 2px solid var(--highlight-color); 
+    border-radius: 5px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
+}
+
+
+/* Fix Smaller Screens like IPhones */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Stack the nav links */
+        flex-direction: column; 
         align-items: center;
     }
 
@@ -313,13 +328,9 @@ blockquote {
     }
 
     .about-section {
-        font-size: 1rem; /* Adjust font size */
-        text-align: center; /* Center text */
+        font-size: 1rem; 
+        text-align: center; 
     }
 
-    /* Adjust card layouts or grid items for mobile */
-    .card {
-        margin: 10px 0;
-        width: 100%; /* Make them full width */
-    }
 }
+
