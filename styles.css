@@ -301,13 +301,25 @@ blockquote {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
+    nav {
+        flex-direction: column; /* Stack the nav links */
+        align-items: center;
     }
-    .sidebar {
+
+    .container {
+        padding: 10px;
+        margin: 0 auto;
         width: 100%;
     }
-    .main-content {
-        margin-left: 0;
+
+    .about-section {
+        font-size: 1rem; /* Adjust font size */
+        text-align: center; /* Center text */
+    }
+
+    /* Adjust card layouts or grid items for mobile */
+    .card {
+        margin: 10px 0;
+        width: 100%; /* Make them full width */
     }
 }
