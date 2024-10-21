@@ -16,6 +16,25 @@
         .resume-space {
             padding: 20px;    /* Adjust this value for inner padding */
         }
+
+        .back-button-container {
+            text-align: center; /* Center the button */
+            margin: 20px 0;    /* Add some margin around the button */
+        }
+
+        .back-button {
+            display: inline-block; /* Make it a block element for padding */
+            padding: 10px 20px;   /* Add padding for a better look */
+            background-color: #007BFF; /* Button color */
+            color: white;          /* Text color */
+            text-decoration: none;  /* Remove underline from link */
+            border-radius: 5px;    /* Rounded corners */
+            font-size: 16px;       /* Font size */
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Darken color on hover */
+        }
     </style>
 </head>
 <body>
@@ -53,18 +72,9 @@
             </div>
 
             <div class="main-content">
-                <nav class="navbar">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resume.html">Resume</a></li>
-                        <li><a href="resume.html">Portfolio</a></li> <!-- CHANGE LATER -->
-                    </ul>
-                    <ul class="socials">
-                        <li><a href="https://github.com/TateWilson1" target="_blank"><i class="fab fa-github"></i></a></li> 
-                        <li><a href="https://tatewilson2022.wixsite.com/vulnerable-write-ups/blog" target="_blank"><i class="fas fa-pencil-alt"></i></a></li> 
-                        <li><a href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </nav>
+                <div class="back-button-container">
+                    <a href="index.html" class="back-button">Back to Home</a>
+                </div>
 
                 <h1 class="resume-title">Resume</h1>
 
