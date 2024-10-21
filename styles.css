@@ -15,18 +15,17 @@ body {
     color: var(--light-text); 
 }
 
-/* Background Styles */
 .background {
-    /* background-image: url('path/to/your/image.jpg'); Might add Later */
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width of the viewport */
+    display: flex; /* Center content */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    padding-top: 15%; /* Optional padding to prevent content from being too close to the edges */
+    box-sizing: border-box; /* Include padding in element's width/height */
 }
+
+
 
 /* Container Styles */
 .container {
@@ -352,5 +351,19 @@ blockquote {
         text-align: center; 
     }
 
+}
+
+@media (max-width: 1024px) {
+    .navbar-container {
+        position: relative; /* Avoids content being cut off */
+    }
+    
+    body {
+        margin-top: 80px; /* Add more top margin for smaller screens */
+    }
+    
+    .background {
+        padding-top: 150px; /* Adjust for better visibility on small screens */
+    }
 }
 
