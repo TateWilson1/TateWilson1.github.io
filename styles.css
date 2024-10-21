@@ -1,8 +1,9 @@
+/* Default colors for the rest of the CSS */
 :root {
-    --dark-bg: #121212; /* background color */
-    --light-text: #ffffff; /* Light text color */
-    --highlight-color: yellow; /* Highlight color for elements */
-    --sidebar-bg: rgba(44, 44, 44, 0.8); /* Sidebar background color */
+    --dark-bg: #121212; 
+    --light-text: #ffffff;
+    --highlight-color: yellow;
+    --sidebar-bg: rgba(44, 44, 44, 0.8); 
 }
 
 /* General Body Styles */
@@ -10,13 +11,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: var(--dark-bg); /* Dark background */
-    color: var(--light-text); /* Light text color */
+    background-color: var(--dark-bg); 
+    color: var(--light-text); 
 }
 
 /* Background Styles */
 .background {
-    /*background-image: url('path/to/your/image.jpg');*/
+    /* background-image: url('path/to/your/image.jpg'); Might add Later */
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -36,17 +37,6 @@ body {
     margin-top: 40px;
     background-color: rgba(30, 30, 30, 0.9); 
     border-radius: 8px;
-}
-
-/* Additional Resume Specific Styles */
-.resume-space {
-    margin-top: 350px; 
-    padding: 20px; 
-}
-
-.spacer {
-    height: 10px; 
-    width: 100%;
 }
 
 /* Optional: Style the content wrapper */
@@ -227,15 +217,6 @@ h3 {
     color: var(--highlight-color) !important; 
 }
 
-/* Resume Title Styles */
-.resume-title {
-    margin-top: 0;
-    padding-top: 10px;
-    text-align: center;
-    font-size: 24px;
-    color: var(--light-text); 
-}
-
 /* Contact Form Box Styles */
 .contact-form-box {
     margin: 20px;
@@ -304,6 +285,25 @@ blockquote {
     border-left: 5px solid var(--highlight-color); 
     font-style: italic;
     color: var(--light-text); 
+}
+
+/* Resume Styles */
+.resume-title {
+    margin-top: 0;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: var(--light-text); 
+}
+
+.resume-space {
+    margin-top: 350px; 
+    padding: 20px; 
+}
+
+.spacer {
+    height: 10px; 
+    width: 100%;
 }
 
 .section-border {
