@@ -7,7 +7,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 - [About Me](#about-me)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
+- [Visit](#visit)
 - [Usage](#usage)
 - [License](#license)
 - [Contact](#contact)
