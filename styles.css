@@ -21,11 +21,9 @@ body {
     display: flex; /* Center content */
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
-    padding-top: 15%; /* Optional padding to prevent content from being too close to the edges */
+    padding-top: 20%; /* Optional padding to prevent content from being too close to the edges */
     box-sizing: border-box; /* Include padding in element's width/height */
 }
-
-
 
 /* Container Styles */
 .container {
