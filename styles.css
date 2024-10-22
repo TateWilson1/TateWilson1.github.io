@@ -338,7 +338,7 @@ blockquote {
         flex-direction: column; /* Stack elements vertically */
         width: 100%; /* Full width for container */
         margin: 0; /* Remove margin */
-        padding: 10px; /* Adjust padding for mobile */
+        padding-top: 200%; /* Adjust padding for mobile */
     }
 
     .sidebar {
