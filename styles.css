@@ -380,7 +380,7 @@ blockquote {
     }
 
     .resume-space {
-        margin-top: 150%; /* Adjust spacing for resume section */
+        padding-top: 450%; /* Adjust spacing for resume section */
     }
 }
 
