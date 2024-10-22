@@ -352,16 +352,31 @@ blockquote {
 }
 
 @media (max-width: 1024px) {
-    .navbar-container {
-        position: relative; /* Avoids content being cut off */
-    }
-    
-    body {
-        margin-top: 80px; /* Add more top margin for smaller screens */
-    }
-    
     .background {
-        padding-top: 20%; /* Adjust for better visibility on small screens */
+        height: auto; /* Allow height to adjust for smaller screens */
+        min-height: 100vh; /* Still ensure it fills the viewport */
+        padding: 20px; /* Add some padding to prevent content from touching the edges */
+    }
+
+    /* Any other element you want to adjust on mobile */
+    .container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    /* Ensure text scales properly */
+    body {
+        font-size: 16px; /* Adjust the base font size for readability */
+    }
+
+    /* Adjust specific containers if they are misaligned */
+    .column {
+        flex-direction: column; /* Stack elements vertically on mobile */
+        align-items: center; /* Center content on mobile screens */
+    }
+
+    /* Ensure nothing overflows horizontally */
+    html, body {
+        overflow-x: hidden;
     }
 }
 
