@@ -379,7 +379,7 @@ blockquote {
         margin-bottom: 20px; /* Space below the About Me section */
     }
 
-    .resume-space {
+    .container.resume-space {
         padding-top: 450%; /* Adjust spacing for resume section */
     }
 }
