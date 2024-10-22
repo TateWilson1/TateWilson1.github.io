@@ -333,50 +333,55 @@ blockquote {
 
 /* Fix Smaller Screens like IPhones */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column; 
-        align-items: center;
-    }
-
+    /* Set container to flex direction column */
     .container {
-        padding: 10px;
-        margin: 0 auto;
-        width: 100%;
+        flex-direction: column; /* Stack elements vertically */
+        width: 100%; /* Full width for container */
+        margin: 0; /* Remove margin */
+        padding: 10px; /* Adjust padding for mobile */
     }
 
-    .about-section {
-        font-size: 1rem; 
-        text-align: center; 
+    .sidebar {
+        width: 100%; /* Full width for sidebar */
+        margin-bottom: 20px; /* Add space below the sidebar */
+        padding-top: 400%; /* Add some padding */
     }
 
+    .main-content {
+        width: 100%; /* Full width for main content */
+        margin-left: 0; /* Remove left margin */
+        padding: 10px; /* Add padding to main content */
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr; /* Stack services vertically */
+    }
+
+    /* Adjust navbar */
+    .navbar-container {
+        position: relative; /* Ensure proper stacking */
+        top: 0; /* Reset any top offset */
+        width: 100%; /* Full width for navbar */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        width: 100%; /* Full width for navbar */
+    }
+
+    /* Contact form adjustments */
+    .contact-form-box {
+        width: 90%; /* Maintain width for the contact form */
+        margin: 20px auto; /* Center the contact form */
+    }
+
+    .about-me {
+        margin-bottom: 20px; /* Space below the About Me section */
+    }
+
+    .resume-space {
+        margin-top: 150%; /* Adjust spacing for resume section */
+    }
 }
 
-@media (max-width: 1024px) {
-    .background {
-        height: auto; /* Allow height to adjust for smaller screens */
-        min-height: 100vh; /* Still ensure it fills the viewport */
-        padding: 20px; /* Add some padding to prevent content from touching the edges */
-    }
-
-    /* Any other element you want to adjust on mobile */
-    .container {
-        padding: 10px; /* Adjust padding for smaller screens */
-    }
-
-    /* Ensure text scales properly */
-    body {
-        font-size: 16px; /* Adjust the base font size for readability */
-    }
-
-    /* Adjust specific containers if they are misaligned */
-    .column {
-        flex-direction: column; /* Stack elements vertically on mobile */
-        align-items: center; /* Center content on mobile screens */
-    }
-
-    /* Ensure nothing overflows horizontally */
-    html, body {
-        overflow-x: hidden;
-    }
-}
 
