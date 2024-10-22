@@ -361,7 +361,7 @@ blockquote {
     }
     
     .background {
-        padding-top: 150px; /* Adjust for better visibility on small screens */
+        padding-top: 20%; /* Adjust for better visibility on small screens */
     }
 }
 
