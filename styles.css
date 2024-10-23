@@ -366,6 +366,11 @@ blockquote {
     margin-bottom: 10px; /* Space below the image */
 }
 
+.project-container {
+    background-color: rgba(60, 60, 60, 0.9);
+}
+
+
 /* Fix Smaller Screens like IPhones */
 @media (max-width: 768px) {
     /* Set container to flex direction column */
