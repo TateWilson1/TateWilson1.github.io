@@ -329,7 +329,42 @@ blockquote {
     background-color: #0056b3; /* Darken color on hover */
 }
 
+.back-home {
+    text-align: right; /* Align to the right */
+    margin-bottom: 20px; /* Space below the button */
+}
 
+.back-home a {
+    display: inline-block;
+    padding: 10px 20px; /* Padding inside the button */
+    background-color: blue; /* Button background color */
+    color: white; /* Button text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.back-home a:hover {
+    background-color: darkblue; /* Darker color on hover */
+}
+
+.project {
+    border: 2px solid yellow; /* Yellow border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding inside the project section */
+    margin-bottom: 20px; /* Space between project sections */
+    background-color: white; /* Background color for project sections */
+}
+
+.project h2 {
+    margin-top: 0; /* Remove top margin from project title */
+}
+
+.project-image {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space below the image */
+}
 
 /* Fix Smaller Screens like IPhones */
 @media (max-width: 768px) {
