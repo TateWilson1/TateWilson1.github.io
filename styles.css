@@ -422,6 +422,10 @@ blockquote {
     .container.resume-space {
         padding-top: 450%; /* Adjust spacing for resume section */
     }
+
+    .project-container {
+        background-color: rgba(60, 60, 60, 0.9); /* or any other color */
+    }
 }
 
 
