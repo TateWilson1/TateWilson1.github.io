@@ -367,7 +367,7 @@ blockquote {
 }
 
 .project-container {
-    background-color: rgba(60, 60, 60, 0.9);
+    background-color: rgba(30, 30, 30, 0.9);
 }
 
 
@@ -424,7 +424,7 @@ blockquote {
     }
 
     .project-container {
-        background-color: rgba(60, 60, 60, 0.9); /* or any other color */
+        background-color: rgba(30, 30, 30, 0.9); /* or any other color */
     }
 }
 
