@@ -370,6 +370,12 @@ blockquote {
     background-color: rgba(30, 30, 30, 0.9);
 }
 
+/* Additional styles for projects.html */
+.projects-page .background {
+    padding-top: 50%; /* Adjust this value as needed */
+}
+
+
 
 /* Fix Smaller Screens like IPhones */
 @media (max-width: 768px) {
