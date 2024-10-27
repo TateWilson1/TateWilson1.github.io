@@ -21,7 +21,7 @@ body {
     display: flex; /* Center content */
     justify-content: center; /* Horizontally center */
     align-items: center; /* Vertically center */
-    padding-top: 20%; /* Optional padding to prevent content from being too close to the edges */
+    padding-top: 10%; /* Optional padding to prevent content from being too close to the edges */
     box-sizing: border-box; /* Include padding in element's width/height */
 }
 
@@ -372,8 +372,9 @@ blockquote {
 
 /* Additional styles for projects.html */
 .projects-page .background {
-    padding-top: 50%; /* Adjust this value as needed */
+    padding-top: 80% !important; /* Adjust this value as needed */
 }
+
 
 
 
