@@ -22,6 +22,8 @@
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="#projects">Projects</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#lab">Cyber Lab</a>
       <a href="#experience">Experience</a>
       <a href="#resume">Resume</a>
       <a href="#contact">Contact</a>
@@ -39,6 +41,7 @@
         </p>
         <div class="hero-actions" aria-label="Primary links">
           <a class="button primary" href="#projects">View Projects</a>
+          <a class="button secondary" href="assets/Tate_Wilson_Resume.docx">Download Resume</a>
           <a class="button secondary" href="https://github.com/TateWilson1" target="_blank" rel="noreferrer">GitHub</a>
           <a class="button secondary" href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
@@ -140,8 +143,12 @@ Outputs:
           </div>
           <h3>TabletopForge</h3>
           <p>Browser-based incident response tabletop exercise generator with downloadable Markdown reports and saved exercises.</p>
+          <ul class="proof-list">
+            <li>Built scenario outputs for ransomware, BEC, insider threat, cloud misconfiguration, and vendor breach exercises.</li>
+            <li>Designed executive summaries, IRP gap prompts, facilitator notes, and lessons-learned templates.</li>
+          </ul>
           <div class="tag-row"><span>Incident Response</span><span>GRC</span><span>Next.js</span></div>
-          <a href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">View on GitHub</a>
+          <a href="case-tabletopforge.html">Read case study</a>
         </article>
 
         <article class="project-card" data-category="cybersecurity">
@@ -151,12 +158,16 @@ Outputs:
           </div>
           <h3>Vulnerability Scanner</h3>
           <p>Windows 10 scanner that checks ports, Windows updates, running services, and firewall status for educational assessment.</p>
+          <ul class="proof-list">
+            <li>Implemented multithreaded port scanning across common service ranges.</li>
+            <li>Used PowerShell and netsh checks to collect update, service, and firewall posture signals.</li>
+          </ul>
           <div class="project-image-strip">
             <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Port%20Scanning%20and%20Some%20of%20Services%20Running.PNG" alt="Vulnerability scanner port and services output">
             <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Firewall%20Rules.PNG" alt="Vulnerability scanner firewall rules output">
           </div>
           <div class="tag-row"><span>Python</span><span>PowerShell</span><span>Windows 10</span></div>
-          <a href="https://github.com/TateWilson1/Vulnerability_Scanner" target="_blank" rel="noreferrer">View on GitHub</a>
+          <a href="case-vulnerability-scanner.html">Read case study</a>
         </article>
 
         <article class="project-card" data-category="cybersecurity">
@@ -166,6 +177,10 @@ Outputs:
           </div>
           <h3>Password Strength GUI</h3>
           <p>Tkinter password checker with real-time scoring, color-coded strength feedback, and guidance for stronger passwords.</p>
+          <ul class="proof-list">
+            <li>Scored passwords against length, upper/lowercase, digits, and special-character criteria.</li>
+            <li>Built a simple visual feedback loop to make safer password choices easier to understand.</li>
+          </ul>
           <div class="project-image-strip single">
             <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Strong%20Password.PNG" alt="Password strength checker showing a strong password result">
           </div>
@@ -202,8 +217,12 @@ Outputs:
           </div>
           <h3>GRC-Governance-Risk-and-Compliance</h3>
           <p>Structured cybersecurity risk assessment work focused on simulated business gaps, vulnerabilities, and HIPAA, FERPA, and PCI DSS compliance risks.</p>
+          <ul class="proof-list">
+            <li>Evaluated likelihood and impact to prioritize remediation recommendations.</li>
+            <li>Produced security documentation aligned to governance, risk, and compliance practices.</li>
+          </ul>
           <div class="tag-row"><span>Governance</span><span>Risk Assessment</span><span>Compliance</span></div>
-          <a href="https://github.com/TateWilson1/GRC-Governance-Risk-and-Compliance-" target="_blank" rel="noreferrer">View on GitHub</a>
+          <a href="case-grc-risk-assessment.html">Read case study</a>
         </article>
 
         <article class="project-card" data-category="cybersecurity">
@@ -227,6 +246,68 @@ Outputs:
           <div class="tag-row"><span>Profile</span><span>Markdown</span><span>GitHub</span></div>
           <a href="https://github.com/TateWilson1/TateWilson1" target="_blank" rel="noreferrer">View on GitHub</a>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="case-studies" aria-labelledby="case-studies-title">
+      <div class="section-heading with-actions">
+        <div>
+          <p class="eyebrow">Portfolio Proof</p>
+          <h2 id="case-studies-title">Case Studies</h2>
+        </div>
+        <a class="button secondary" href="projects.html">Project archive</a>
+      </div>
+      <div class="case-grid">
+        <article class="case-card">
+          <span class="project-type">Incident Response Readiness</span>
+          <h3>TabletopForge</h3>
+          <p>How I built a tabletop exercise generator that turns security scenarios into practical discussion guides and executive-ready artifacts.</p>
+          <a href="case-tabletopforge.html">Open case study</a>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Governance, Risk, Compliance</span>
+          <h3>GRC Risk Assessment</h3>
+          <p>A structured risk assessment project focused on identifying gaps, mapping risks, and writing remediation-focused security documentation.</p>
+          <a href="case-grc-risk-assessment.html">Open case study</a>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Security Automation</span>
+          <h3>Windows Vulnerability Scanner</h3>
+          <p>A Python scanner that collects local posture signals from ports, services, updates, and firewall configuration.</p>
+          <a href="case-vulnerability-scanner.html">Open case study</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section" id="lab" aria-labelledby="lab-title">
+      <div class="section-heading">
+        <p class="eyebrow">Cyber Lab</p>
+        <h2 id="lab-title">Hands-on environments I can talk through.</h2>
+      </div>
+      <div class="timeline lab-stack">
+        <article>
+          <span>Enterprise Defense</span>
+          <h3>CCDC Practice Environment</h3>
+          <p>Windows Server, Active Directory, Linux services, firewall defense, persistence detection, and incident response practice.</p>
+        </article>
+        <article>
+          <span>Identity & Cloud</span>
+          <h3>Microsoft 365 / Entra Review</h3>
+          <p>Access reviews, enterprise app and SSO cataloging, stale access identification, and tenant hardening checks.</p>
+        </article>
+        <article>
+          <span>Virtualization</span>
+          <h3>Proxmox Labs</h3>
+          <p>Virtualized Windows and Linux systems used for competition preparation, service defense, and repeatable practice.</p>
+        </article>
+      </div>
+      <div class="skill-panel current-panel">
+        <h3>Currently Working On</h3>
+        <ul class="proof-list">
+          <li>Expanding TabletopForge with stronger reporting and future PDF export.</li>
+          <li>Building out GRC artifacts that connect findings to CIS Controls, NIST AI RMF, and compliance requirements.</li>
+          <li>Improving public project documentation so each repo shows purpose, setup, screenshots, and lessons learned.</li>
+        </ul>
       </div>
     </section>
 
@@ -292,6 +373,9 @@ Outputs:
       <div>
         <p class="eyebrow">Resume Snapshot</p>
         <h2 id="resume-title">Focused on cybersecurity operations, GRC, identity review, and digital forensics.</h2>
+        <div class="resume-actions">
+          <a class="button primary" href="assets/Tate_Wilson_Resume.docx">Download DOCX Resume</a>
+        </div>
       </div>
       <div class="resume-cards">
         <article>
