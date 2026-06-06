@@ -249,6 +249,8 @@ main {
 .profile-panel,
 .featured-project,
 .project-card,
+.case-card,
+.case-panel,
 .timeline article,
 .skill-panel,
 .resume-cards article,
@@ -351,6 +353,8 @@ main {
 
 .featured-project::before,
 .project-card::before,
+.case-card::before,
+.case-panel::before,
 .timeline article::before,
 .resume-cards article::before {
   content: "";
@@ -364,6 +368,7 @@ main {
 
 .featured-copy h3,
 .project-card h3,
+.case-card h3,
 .timeline h3,
 .skill-panel h3,
 .resume-cards h3 {
@@ -374,6 +379,8 @@ main {
 
 .featured-copy p,
 .project-card p,
+.case-card p,
+.case-panel p,
 .timeline p,
 .resume-cards p,
 .contact-section p {
@@ -447,6 +454,81 @@ pre {
   flex-direction: column;
   padding: 1rem;
   transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.proof-list {
+  margin: 0.85rem 0 1rem;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.proof-list li + li {
+  margin-top: 0.45rem;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.case-card,
+.case-panel {
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.case-card {
+  min-height: 15rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card a {
+  margin-top: auto;
+  color: var(--blue);
+  font-weight: 800;
+  text-underline-offset: 0.25em;
+}
+
+.case-hero {
+  padding: clamp(3rem, 7vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.case-hero h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.case-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.case-panel h2 {
+  margin: 0 0 0.65rem;
+}
+
+.case-panel.wide {
+  grid-column: 1 / -1;
+}
+
+.lab-stack article {
+  min-height: 10rem;
+}
+
+.current-panel .proof-list {
+  margin-bottom: 0;
+}
+
+.resume-actions {
+  margin-top: 1.2rem;
 }
 
 .project-card.hidden {
@@ -599,12 +681,14 @@ textarea {
   .about-grid,
   .split-section,
   .resume-section,
-  .contact-section {
+  .contact-section,
+  .case-layout {
     grid-template-columns: 1fr;
   }
 
   .project-grid,
-  .resume-cards {
+  .resume-cards,
+  .case-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -635,6 +719,7 @@ textarea {
   }
 
   .project-grid,
+  .case-grid,
   .resume-cards,
   .quick-stats {
     grid-template-columns: 1fr;
