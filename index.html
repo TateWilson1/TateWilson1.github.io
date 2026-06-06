@@ -1,98 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tate Wilson's Portfolio</title>
-    <link rel="stylesheet" href="styles.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tate Wilson portfolio: Digital Forensics and Cybersecurity student at Eastern Kentucky University.">
+  <title>Tate Wilson | Digital Forensics & Cybersecurity</title>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+  <link rel="preconnect" href="https://raw.githubusercontent.com">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background">
-        <div class="container">
-            <div class="sidebar">
-                <img src="/images/Profile-Picture.jpeg" alt="Profile Picture" class="profile-picture"> 
-                <h2>Tate Wilson</h2>
-                <h4>Digital Forensics & Cybersecurity</h4>
-                <div class="contact-info">
-                    <p>Email: <a href="mailto:tate.wilson2022@gmail.com">tate.wilson2022@gmail.com</a></p>
-                    <p>Location: Richmond, Kentucky, USA</p>
-                </div>
-                <!-- Cybersecurity Quotes -->
-                <h4>Quotes:</h4>
-                <blockquote>
-                    “60% of data breaches are caused by a failure to patch. If you correct that, you’ve eliminated 60% of breaches. And I didn’t even have to say AI or Blockchain! See how that works?” - Ricardo Lafosse
-                </blockquote>
-                <blockquote>
-                    “The only secure computer is one that’s unplugged, locked in a safe, and buried 20 feet under the ground.”<br>
-                    — Frank Abagnale
-                </blockquote>
-                <blockquote>
-                    “I told my wife I was thinking of changing my name to ‘root.’ She said, ‘I think that’s superuser-ious.'”
-                </blockquote>
-            </div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-            <div class="main-content">
-                <div class="navbar-container"> 
-                    <nav class="navbar">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="resume.html">Resume</a></li>
-                            <li><a href="projects.html">Project</a></li>
-                        </ul>
-                        <ul class="socials">
-                            <li><a href="https://github.com/TateWilson1" target="_blank"><i class="fab fa-github"></i></a></li> 
-                            <li><a href="https://tatewilson2022.wixsite.com/vulnerable-write-ups/blog" target="_blank"><i class="fas fa-pencil-alt"></i></a></li> 
-                            <li><a href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
-                        </ul>
-                    </nav>
-                </div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Tate Wilson home">
+      <span class="brand-mark">TW</span>
+      <span>
+        <strong>Tate Wilson</strong>
+        <small>Digital Forensics & Cybersecurity</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-                <div class="about-me"> 
-                    <h2>About Me</h2>
-                    <p>
-                        I'm a dedicated Digital Forensics and Cybersecurity major at Eastern Kentucky University, with a passion for technology and a strong interest in protecting digital assets. My background in forensic analysis equips me to handle complex security challenges, and I'm committed to continuous learning in this rapidly evolving field.
-                    </p>
-                </div>
-
-                <h3>What I'm Doing</h3>
-                <div class="service-grid">
-                    <div class="service-box">
-                        <h4 class="service-title">College</h4>
-                        <p>I'm majoring in Digital Forensics & Cybersecurity at Eastern Kentucky University.</p>
-                        <p>Some of my prominent class is INF 518 - Principles of Cybersecurity, CSC 313 - Databases,and FOR 401 - Forensics Proffesional Practice. </p>
-                    </div>
-                    <div class="service-box">
-                        <h4 class="service-title">Projects</h4>
-                        <p>Working on IT/Cybersecurity projects and publishing them on my GitHub.</p>
-                        <p>Find more about my projects at either Github or click "Project". Both are located in the navigation bar at the top of the webpage.</p>
-                    </div>
-                    <div class="service-box">
-                        <h4 class="service-title">Internship Opportunities</h4>
-                        <p>Looking into an internship specifically within the realm of IT or Digital Forensics.</p>
-                    </div>
-                    <div class="service-box">
-                        <h4 class="service-title">Certifications</h4>
-                        <p>Currently studying for Security+, CC, and Network+.</p>
-                    </div>
-                </div>
-
-                <!-- Contact Form Box -->
-                <div class="contact-form-box" id="contact-form">
-                    <h3>Contact Me</h3>
-                    <form id="contact-form" action="https://formspree.io/f/myzyzegb" method="POST">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
-                    
-                </div>
-            </div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Richmond, Kentucky | EKU | Expected graduation December 2026</p>
+        <h1 id="hero-title">I build practical cybersecurity tools and readiness projects.</h1>
+        <p class="hero-text">
+          I am a Digital Forensics and Cybersecurity student at Eastern Kentucky University with hands-on experience in
+          incident response, vulnerability assessment, system hardening, access control, and digital evidence analysis.
+        </p>
+        <div class="hero-actions" aria-label="Primary links">
+          <a class="button primary" href="#projects">View Projects</a>
+          <a class="button secondary" href="https://github.com/TateWilson1" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
+      </div>
+
+      <aside class="profile-panel" aria-label="Profile summary">
+        <img src="https://avatars.githubusercontent.com/u/126493792?v=4" alt="Tate Wilson GitHub profile photo" class="profile-photo">
+        <div>
+          <p class="panel-label">Current Focus</p>
+          <h2>Digital forensics, GRC, and security tooling</h2>
+          <p>
+            Building practical security tooling and readiness documentation while working across Microsoft 365,
+            endpoint security, identity review, and cyber maturity assessment.
+          </p>
+        </div>
+        <dl class="quick-stats">
+          <div>
+            <dt>Public Repos</dt>
+            <dd>8</dd>
+          </div>
+          <div>
+            <dt>CCDC</dt>
+            <dd>1st in KY</dd>
+          </div>
+          <div>
+            <dt>Degree</dt>
+            <dd>DF & Cybersecurity</dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="section about-section" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="eyebrow">About</p>
+        <h2 id="about-title">Security-minded, hands-on, and still learning fast.</h2>
+      </div>
+      <div class="about-grid">
+        <p>
+          My portfolio started as a place to show my work in Digital Forensics and Cybersecurity. It now reflects the kind of
+          work I want to keep doing: practical tools, security readiness artifacts, and projects that make technical risk easier
+          to understand.
+        </p>
+        <p>
+          I bring experience from an MSP cybersecurity internship, campus access-control work, resident advising,
+          customer-facing roles, and farm work. That mix has shaped how I communicate, troubleshoot, document issues,
+          and stay steady when the work gets messy.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="section-heading with-actions">
+        <div>
+          <p class="eyebrow">Public GitHub Work</p>
+          <h2 id="projects-title">All Public Projects</h2>
+        </div>
+        <div class="project-controls" aria-label="Project filters">
+          <button class="filter-button active" type="button" data-filter="all">All</button>
+          <button class="filter-button" type="button" data-filter="cybersecurity">Cybersecurity</button>
+          <button class="filter-button" type="button" data-filter="grc">GRC</button>
+          <button class="filter-button" type="button" data-filter="web">Web</button>
+        </div>
+      </div>
+
+      <div class="featured-project">
+        <div class="featured-copy">
+          <p class="project-kicker">Featured</p>
+          <h3>TabletopForge</h3>
+          <p>
+            An incident response tabletop exercise generator for small businesses, MSPs, IT teams, and cybersecurity students.
+            It produces scenario summaries, discussion questions, IRP gap-discovery prompts, executive summaries, and lessons-learned templates.
+          </p>
+          <div class="tag-row" aria-label="TabletopForge technologies">
+            <span>Next.js 15</span>
+            <span>TypeScript</span>
+            <span>Tailwind CSS</span>
+            <span>LocalStorage</span>
+          </div>
+          <a class="text-link" href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">Open repository</a>
+        </div>
+        <div class="terminal-preview" aria-label="TabletopForge feature snapshot">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <pre><code>Scenario: Ransomware
+Audience: Leadership + IT
+Outputs:
+- Objectives
+- IRP gap questions
+- Facilitator notes
+- Executive summary</code></pre>
+        </div>
+      </div>
+
+      <div class="project-grid" id="project-grid">
+        <article class="project-card" data-category="grc cybersecurity">
+          <div class="card-topline">
+            <span class="project-type">GRC Tool</span>
+            <span class="project-status">Active</span>
+          </div>
+          <h3>TabletopForge</h3>
+          <p>Browser-based incident response tabletop exercise generator with downloadable Markdown reports and saved exercises.</p>
+          <div class="tag-row"><span>Incident Response</span><span>GRC</span><span>Next.js</span></div>
+          <a href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="cybersecurity">
+          <div class="card-topline">
+            <span class="project-type">Security Scanner</span>
+            <span class="project-status">Python</span>
+          </div>
+          <h3>Vulnerability Scanner</h3>
+          <p>Windows 10 scanner that checks ports, Windows updates, running services, and firewall status for educational assessment.</p>
+          <div class="project-image-strip">
+            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Port%20Scanning%20and%20Some%20of%20Services%20Running.PNG" alt="Vulnerability scanner port and services output">
+            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Firewall%20Rules.PNG" alt="Vulnerability scanner firewall rules output">
+          </div>
+          <div class="tag-row"><span>Python</span><span>PowerShell</span><span>Windows 10</span></div>
+          <a href="https://github.com/TateWilson1/Vulnerability_Scanner" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="cybersecurity">
+          <div class="card-topline">
+            <span class="project-type">Password Tool</span>
+            <span class="project-status">Python GUI</span>
+          </div>
+          <h3>Password Strength GUI</h3>
+          <p>Tkinter password checker with real-time scoring, color-coded strength feedback, and guidance for stronger passwords.</p>
+          <div class="project-image-strip single">
+            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Strong%20Password.PNG" alt="Password strength checker showing a strong password result">
+          </div>
+          <div class="tag-row"><span>Tkinter</span><span>Password Policy</span><span>UX</span></div>
+          <a href="https://github.com/TateWilson1/testing_password_strength_with_GUI" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="web">
+          <div class="card-topline">
+            <span class="project-type">Portfolio</span>
+            <span class="project-status">GitHub Pages</span>
+          </div>
+          <h3>TateWilson1.github.io</h3>
+          <p>The GitHub Pages portfolio that showcases cybersecurity projects, resume details, contact links, and professional goals.</p>
+          <div class="tag-row"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
+          <a href="https://github.com/TateWilson1/TateWilson1.github.io" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="web">
+          <div class="card-topline">
+            <span class="project-type">Portfolio Build</span>
+            <span class="project-status">In Progress</span>
+          </div>
+          <h3>Portfolio</h3>
+          <p>A separate portfolio repository for project listings, interactive navigation, contact form work, and future case studies.</p>
+          <div class="tag-row"><span>Web Design</span><span>Case Studies</span><span>Contact Form</span></div>
+          <a href="https://github.com/TateWilson1/Portfolio" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="grc cybersecurity">
+          <div class="card-topline">
+            <span class="project-type">GRC Repository</span>
+            <span class="project-status">Early</span>
+          </div>
+          <h3>GRC-Governance-Risk-and-Compliance</h3>
+          <p>Structured cybersecurity risk assessment work focused on simulated business gaps, vulnerabilities, and HIPAA, FERPA, and PCI DSS compliance risks.</p>
+          <div class="tag-row"><span>Governance</span><span>Risk Assessment</span><span>Compliance</span></div>
+          <a href="https://github.com/TateWilson1/GRC-Governance-Risk-and-Compliance-" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="cybersecurity">
+          <div class="card-topline">
+            <span class="project-type">Security Repo</span>
+            <span class="project-status">Sparse</span>
+          </div>
+          <h3>Secure</h3>
+          <p>A small public security-focused repository. It is included here for a complete view of the public GitHub profile.</p>
+          <div class="tag-row"><span>Security</span><span>Public Repo</span></div>
+          <a href="https://github.com/TateWilson1/Secure" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+
+        <article class="project-card" data-category="web">
+          <div class="card-topline">
+            <span class="project-type">Profile</span>
+            <span class="project-status">README</span>
+          </div>
+          <h3>TateWilson1</h3>
+          <p>The GitHub profile README covering cybersecurity interests, skills, CCDC leadership, and selected projects.</p>
+          <div class="tag-row"><span>Profile</span><span>Markdown</span><span>GitHub</span></div>
+          <a href="https://github.com/TateWilson1/TateWilson1" target="_blank" rel="noreferrer">View on GitHub</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading">
+        <p class="eyebrow">Background</p>
+        <h2 id="experience-title">Education, skills, and experience</h2>
+      </div>
+      <div class="timeline">
+        <article>
+          <span>Education</span>
+          <h3>Eastern Kentucky University</h3>
+          <p>BS in Digital Forensics & Cybersecurity with a Cybersecurity and Intelligence minor, GPA 3.60, expected December 2026.</p>
+        </article>
+        <article>
+          <span>Achievement</span>
+          <h3>Collegiate Cyber Defense Competition</h3>
+          <p>President and team captain leading weekly practice for 15+ members across Windows, Linux, persistence detection, firewall defense, and incident response. Contributed to a 1st-place Kentucky finish.</p>
+        </article>
+        <article>
+          <span>Experience</span>
+          <h3>Cybersecurity Intern</h3>
+          <p>Pelycon Technologies MSP internship supporting client tickets, RMM workflows, Microsoft 365 administration, endpoint security, security operations tooling, and cyber maturity deliverables.</p>
+        </article>
+        <article>
+          <span>Experience</span>
+          <h3>Locksmith Apprentice</h3>
+          <p>Campus physical security work across 50+ buildings, including key management, lock maintenance, access issues, work orders, and key control records.</p>
+        </article>
+        <article>
+          <span>Experience</span>
+          <h3>Resident Advisor</h3>
+          <p>Supporting up to 800+ student residents, responding to incidents, resolving conflicts, documenting policy concerns, and operating access systems including CSGold and Lenel.</p>
+        </article>
+        <article>
+          <span>Experience</span>
+          <h3>Team Member & Farm Assistant</h3>
+          <p>Customer service, troubleshooting, equipment maintenance, operations, and dependable hands-on work.</p>
+        </article>
+      </div>
+      <div class="skill-panel">
+        <h3>Skills & Interests</h3>
+        <div class="skill-list">
+          <span>Vulnerability Assessment</span>
+          <span>Incident Response</span>
+          <span>Digital Forensics</span>
+          <span>System Hardening</span>
+          <span>Windows Server</span>
+          <span>Linux / Ubuntu</span>
+          <span>Active Directory</span>
+          <span>Microsoft 365</span>
+          <span>Proxmox</span>
+          <span>Access Control</span>
+          <span>Database Design</span>
+          <span>Application Development</span>
+          <span>Configuration Management</span>
+          <span>Communication</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section resume-section" id="resume" aria-labelledby="resume-title">
+      <div>
+        <p class="eyebrow">Resume Snapshot</p>
+        <h2 id="resume-title">Focused on cybersecurity operations, GRC, identity review, and digital forensics.</h2>
+      </div>
+      <div class="resume-cards">
+        <article>
+          <h3>Certifications</h3>
+          <p>ISC2 Certified in Cybersecurity and CompTIA Security+.</p>
+        </article>
+        <article>
+          <h3>GRC Project</h3>
+          <p>Produced risk assessment documentation with scored findings, impact analysis, remediation recommendations, and control mapping.</p>
+        </article>
+        <article>
+          <h3>Working Style</h3>
+          <p>Adaptable, communicative, documentation-focused, and comfortable working through practical security and operations problems.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Let's talk security, internships, or project feedback.</h2>
+        <p>Email: <a href="mailto:tate.wilson2022@gmail.com">tate.wilson2022@gmail.com</a></p>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/myzyzegb" method="POST">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <button class="button primary" type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year">2026</span> Tate Wilson</p>
+    <div>
+      <a href="https://github.com/TateWilson1" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://tatewilson2022.wixsite.com/vulnerable-write-ups/blog" target="_blank" rel="noreferrer">Write-ups</a>
+      <a href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank" rel="noreferrer">LinkedIn</a>
     </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
