@@ -55,7 +55,7 @@
           <h2>Digital forensics, GRC, and security tooling</h2>
           <p>
             Building practical security tooling and readiness documentation while working across Microsoft 365,
-            endpoint security, identity review, and cyber maturity assessment.
+            endpoint security, identity review, cyber maturity assessment, and SC-300 study.
           </p>
         </div>
         <dl class="quick-stats">
@@ -94,11 +94,35 @@
       </div>
     </section>
 
+    <section class="section" id="career-direction" aria-labelledby="career-direction-title">
+      <div class="section-heading">
+        <p class="eyebrow">Career Direction</p>
+        <h2 id="career-direction-title">Looking for security work where documentation and defense both matter.</h2>
+      </div>
+      <div class="case-grid">
+        <article class="case-card">
+          <span class="project-type">Seeking</span>
+          <h3>Internship or entry-level cybersecurity roles</h3>
+          <p>Interested in SOC, GRC, digital forensics, vulnerability management, identity, and security operations opportunities.</p>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Current Study</span>
+          <h3>Microsoft SC-300</h3>
+          <p>Studying identity and access administration topics across Entra ID, authentication, authorization, app access, and governance.</p>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Working Style</span>
+          <h3>Evidence, communication, and steady follow-through</h3>
+          <p>I like work that turns messy security signals into clear findings, next steps, and repeatable defensive habits.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading with-actions">
         <div>
           <p class="eyebrow">Public GitHub Work</p>
-          <h2 id="projects-title">All Public Projects</h2>
+          <h2 id="projects-title">Selected Public Projects</h2>
         </div>
         <div class="project-controls" aria-label="Project filters">
           <button class="filter-button active" type="button" data-filter="all">All</button>
@@ -145,8 +169,9 @@ Outputs:
           <h3>TabletopForge</h3>
           <p>Browser-based incident response tabletop exercise generator with downloadable Markdown reports and saved exercises.</p>
           <ul class="proof-list">
-            <li>Built scenario outputs for ransomware, BEC, insider threat, cloud misconfiguration, and vendor breach exercises.</li>
-            <li>Designed executive summaries, IRP gap prompts, facilitator notes, and lessons-learned templates.</li>
+            <li><strong>Problem:</strong> Small teams need realistic tabletop prompts without starting from a blank page.</li>
+            <li><strong>Built:</strong> Scenario outputs for ransomware, BEC, insider threat, cloud misconfiguration, and vendor breach exercises.</li>
+            <li><strong>Next:</strong> Expand reporting, export options, and scenario depth as the project matures.</li>
           </ul>
           <div class="tag-row"><span>Incident Response</span><span>GRC</span><span>Next.js</span></div>
           <a href="case-tabletopforge.html">Read case study</a>
@@ -160,8 +185,9 @@ Outputs:
           <h3>Vulnerability Scanner</h3>
           <p>Windows 10 scanner that checks ports, Windows updates, running services, and firewall status for educational assessment.</p>
           <ul class="proof-list">
-            <li>Implemented multithreaded port scanning across common service ranges.</li>
-            <li>Used PowerShell and netsh checks to collect update, service, and firewall posture signals.</li>
+            <li><strong>Problem:</strong> Basic endpoint posture evidence is often scattered across separate commands.</li>
+            <li><strong>Built:</strong> Multithreaded port scanning plus PowerShell and netsh posture checks.</li>
+            <li><strong>Learned:</strong> Repeatable evidence collection makes even small tools more useful.</li>
           </ul>
           <div class="project-image-strip">
             <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Port%20Scanning%20and%20Some%20of%20Services%20Running.PNG" alt="Vulnerability scanner port and services output">
@@ -179,8 +205,9 @@ Outputs:
           <h3>Password Strength GUI</h3>
           <p>Tkinter password checker with real-time scoring, color-coded strength feedback, and guidance for stronger passwords.</p>
           <ul class="proof-list">
-            <li>Scored passwords against length, upper/lowercase, digits, and special-character criteria.</li>
-            <li>Built a simple visual feedback loop to make safer password choices easier to understand.</li>
+            <li><strong>Problem:</strong> Password guidance is easier to understand when users get immediate feedback.</li>
+            <li><strong>Built:</strong> Real-time scoring across length, case, digits, and special characters.</li>
+            <li><strong>Improve next:</strong> Add passphrase guidance and clearer policy examples.</li>
           </ul>
           <div class="project-image-strip single">
             <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Strong%20Password.PNG" alt="Password strength checker showing a strong password result">
@@ -208,8 +235,9 @@ Outputs:
           <h3>GRC-Governance-Risk-and-Compliance</h3>
           <p>Structured cybersecurity risk assessment work focused on simulated business gaps, vulnerabilities, and HIPAA, FERPA, and PCI DSS compliance risks.</p>
           <ul class="proof-list">
-            <li>Evaluated likelihood and impact to prioritize remediation recommendations.</li>
-            <li>Produced security documentation aligned to governance, risk, and compliance practices.</li>
+            <li><strong>Problem:</strong> Technical findings need business context before they can drive priorities.</li>
+            <li><strong>Built:</strong> Risk register examples, executive summary language, and control-mapping notes.</li>
+            <li><strong>Learned:</strong> Good GRC writing connects evidence to ownership and remediation.</li>
           </ul>
           <div class="tag-row"><span>Governance</span><span>Risk Assessment</span><span>Compliance</span></div>
           <a href="case-grc-risk-assessment.html">Read case study</a>
@@ -218,13 +246,13 @@ Outputs:
         <article class="project-card" data-category="cybersecurity">
           <div class="card-topline">
             <span class="project-type">Security Toolkit</span>
-            <span class="project-status">Planned</span>
+            <span class="project-status">Building</span>
           </div>
           <h3>Security Toolkit</h3>
-          <p>A consolidated home for small security scripts, lab notes, hardening checks, and reusable assessment helpers.</p>
+          <p>A consolidated home for small security scripts, lab notes, hardening checks, templates, and reusable assessment helpers.</p>
           <ul class="proof-list">
-            <li>Intended to replace scattered small repos with one cleaner toolkit.</li>
-            <li>Planned sections include Windows checks, Linux checks, GRC templates, and M365 review notes.</li>
+            <li>Includes starter areas for Windows, Linux, M365 and Entra review, GRC templates, and scripts.</li>
+            <li>Current items include hardening checklists, access review notes, risk register structure, and incident note templates.</li>
           </ul>
           <div class="tag-row"><span>Scripts</span><span>Lab Notes</span><span>Security Checks</span></div>
           <a href="https://github.com/TateWilson1/Security-Toolkit" target="_blank" rel="noreferrer">View on GitHub</a>
@@ -273,6 +301,30 @@ Outputs:
       </div>
     </section>
 
+    <section class="section" id="process" aria-labelledby="process-title">
+      <div class="section-heading">
+        <p class="eyebrow">Proof Of Process</p>
+        <h2 id="process-title">How I explain my work.</h2>
+      </div>
+      <div class="case-grid">
+        <article class="case-card">
+          <span class="project-type">Frame</span>
+          <h3>Problem</h3>
+          <p>I start by naming the user, system, risk, or operational gap the project is meant to address.</p>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Build</span>
+          <h3>Evidence</h3>
+          <p>I document what was built, what data it collects or produces, and what assumptions limit the result.</p>
+        </article>
+        <article class="case-card">
+          <span class="project-type">Improve</span>
+          <h3>Next step</h3>
+          <p>I close with what I learned and what I would improve next, so the work shows growth instead of just output.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section split-section" id="lab" aria-labelledby="lab-title">
       <div class="section-heading">
         <p class="eyebrow">Cyber Lab</p>
@@ -300,6 +352,7 @@ Outputs:
         <ul class="proof-list">
           <li>Expanding TabletopForge with stronger reporting and future PDF export.</li>
           <li>Building out GRC artifacts that connect findings to CIS Controls, NIST AI RMF, and compliance requirements.</li>
+          <li>Studying for Microsoft SC-300 to strengthen identity and access administration knowledge.</li>
           <li>Improving public project documentation so each repo shows purpose, setup, screenshots, and lessons learned.</li>
         </ul>
       </div>
@@ -399,7 +452,7 @@ Outputs:
       <div class="resume-cards">
         <article>
           <h3>Certifications</h3>
-          <p>ISC2 Certified in Cybersecurity and CompTIA Security+.</p>
+          <p>ISC2 Certified in Cybersecurity, CompTIA Security+, and currently studying for Microsoft SC-300.</p>
         </article>
         <article>
           <h3>GRC Project</h3>
