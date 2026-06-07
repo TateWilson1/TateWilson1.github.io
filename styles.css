@@ -515,6 +515,31 @@ pre {
   margin: 0 0 0.65rem;
 }
 
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  color: var(--muted);
+}
+
+th,
+td {
+  border: 1px solid var(--line);
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--ink);
+  background: rgba(54, 200, 255, 0.08);
+  font-size: 0.82rem;
+}
+
 .case-panel.wide {
   grid-column: 1 / -1;
 }
