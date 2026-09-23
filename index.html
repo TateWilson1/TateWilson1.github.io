@@ -10,12 +10,17 @@
   <link rel="preload" href="assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/barlow-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="modulepreload" href="assets/vendor/three.module.min.js">
-  <link rel="modulepreload" href="scene-model.mjs">
-  <link rel="stylesheet" href="assets/fonts.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="lab.css">
-  <script src="scene.js" type="module"></script>
+  <link rel="modulepreload" href="assets/vendor/three.module.min.js?v=20260923.2">
+  <link rel="modulepreload" href="scene-model.mjs?v=20260923.2">
+  <link rel="stylesheet" href="assets/fonts.css?v=20260923.2">
+  <link rel="stylesheet" href="styles.css?v=20260923.2">
+  <link rel="stylesheet" href="lab.css?v=20260923.2">
+  <style>
+    @media (min-width:1025px),(min-width:761px) and (pointer:fine) {
+      body.immersive-lab>#app { position:fixed; inset:0; width:100vw; height:100vh; max-width:none; margin:0; overflow:hidden; }
+    }
+  </style>
+  <script src="scene.js?v=20260923.2" type="module"></script>
 </head>
 <body class="immersive-lab" id="top">
   <a class="skip-link" href="#scene-nav">Skip to workspace destinations</a>
