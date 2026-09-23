@@ -2,59 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
   <meta name="description" content="TabletopForge cybersecurity portfolio case study by Tate Wilson.">
   <title>TabletopForge Case Study | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
+<body class="case-file">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span><strong>Tate Wilson</strong><small>Case Study</small></span>
-    </a>
-    <nav class="nav-links" aria-label="Case study navigation">
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#case-studies">Case Studies</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+    <div class="header-inner">
+      <a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Case files</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a>
+        <a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button>
+    </div>
   </header>
-  <main>
-    <section class="case-hero">
-      <p class="eyebrow">Incident Response Readiness</p>
-      <h1>TabletopForge</h1>
-      <p class="hero-text">A browser-based tabletop exercise generator for small businesses, MSPs, IT teams, and cybersecurity students.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">View Repository</a>
-        <a class="button secondary" href="index.html#case-studies">Back to Portfolio</a>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header">
+      <div class="case-ident">
+        <a class="case-back text-link" href="index.html#projects">← Case index</a>
+        <p class="case-number">CASE./001</p>
+        <p>Incident response readiness</p>
       </div>
-    </section>
-    <section class="section case-layout">
-      <article class="case-panel">
-        <h2>Problem</h2>
-        <p>Many smaller organizations know they need to test incident response plans, but realistic tabletop exercises can feel too complex, too expensive, or too technical to start.</p>
+      <div class="case-title">
+        <h1>TabletopForge</h1>
+        <p class="case-summary">A browser-based exercise builder that turns incident scenarios into structured conversations and documented follow-through.</p>
+        <div class="case-actions">
+          <a class="button primary" href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <dl class="case-meta">
+        <div><dt>Format</dt><dd>Browser-based tool</dd></div>
+        <div><dt>Audience</dt><dd>Small businesses, MSPs, IT teams, students</dd></div>
+        <div><dt>Stack</dt><dd>Next.js 15, TypeScript, Tailwind CSS</dd></div>
+        <div><dt>Storage</dt><dd>LocalStorage</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index">
+        <p class="case-index-label">File contents</p>
+        <nav aria-label="Case sections">
+          <a href="#problem"><span>01</span> Brief</a>
+          <a href="#what-i-built"><span>02</span> Exercise system</a>
+          <a href="#tools"><span>03</span> Delivery record</a>
+          <a href="#security-value"><span>04</span> Security value</a>
+          <a href="#what-i-learned"><span>05</span> Reflection</a>
+        </nav>
+      </aside>
+
+      <article class="case-content" aria-label="TabletopForge case file">
+        <section class="case-section case-split" id="problem" tabindex="-1">
+          <div class="section-copy">
+            <p class="section-label">01 / Brief</p>
+            <h2>Make the first exercise easier to run.</h2>
+          </div>
+          <div class="finding finding-large">
+            <span class="finding-key">Observed need</span>
+            <p>Many smaller organizations know they need to test incident response plans, but realistic tabletop exercises can feel too complex, too expensive, or too technical to start.</p>
+          </div>
+        </section>
+
+        <section class="case-section" id="what-i-built" tabindex="-1">
+          <div class="section-copy compact-copy">
+            <p class="section-label">02 / Exercise system</p>
+            <h2>One scenario enters. A working exercise packet leaves.</h2>
+          </div>
+          <figure class="case-visual product-gallery" aria-labelledby="product-gallery-caption">
+            <img src="assets/tabletopforge-home.png" width="1440" height="900" loading="lazy" decoding="async" alt="TabletopForge homepage with incident response readiness explanation and exercise package preview">
+            <img src="assets/tabletopforge-generator.png" width="1440" height="900" loading="lazy" decoding="async" alt="TabletopForge generator form for organization, industry, scenario, and exercise scope">
+            <figcaption id="product-gallery-caption">The working TabletopForge interface: the public product introduction and the exercise generator used to configure an incident-response scenario.</figcaption>
+          </figure>
+          <figure class="case-visual exercise-flow" aria-labelledby="exercise-caption">
+            <div class="flow-source">
+              <span class="diagram-label">Scenario library</span>
+              <ul>
+                <li>Phishing</li><li>BEC</li><li>Ransomware</li><li>Insider threat</li><li>Cloud misconfiguration</li><li>Vendor breach</li><li>Compromised admin</li>
+              </ul>
+            </div>
+            <div class="flow-processor" aria-label="TabletopForge exercise builder">
+              <span class="flow-mark">TF</span>
+              <strong>Exercise builder</strong>
+              <small>guided configuration</small>
+            </div>
+            <ol class="flow-outputs">
+              <li><span>01</span> Summary + objectives</li>
+              <li><span>02</span> Participants + questions</li>
+              <li><span>03</span> IRP gap prompts</li>
+              <li><span>04</span> Facilitator notes</li>
+              <li><span>05</span> Executive summary</li>
+              <li><span>06</span> Lessons-learned template</li>
+            </ol>
+            <figcaption id="exercise-caption">TabletopForge connects a selected incident scenario to the documents and prompts needed to guide a discussion.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section case-split" id="tools" tabindex="-1">
+          <div class="section-copy">
+            <p class="section-label">03 / Delivery record</p>
+            <h2>Built now, planned next.</h2>
+            <p>The boundary matters: the first column describes delivered behavior; the second records future direction already stated in the portfolio.</p>
+          </div>
+          <div class="delivery-ledger">
+            <section>
+              <h3><span aria-hidden="true">●</span> Delivered</h3>
+              <ul>
+                <li>Browser-based saved exercises</li>
+                <li>Copyable and downloadable Markdown</li>
+                <li>Generated summaries, prompts, notes, and templates</li>
+                <li>shadcn-style UI</li>
+              </ul>
+            </section>
+            <section>
+              <h3><span aria-hidden="true">○</span> Planned</h3>
+              <ul>
+                <li>Stronger reporting</li>
+                <li>Future PDF export</li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="case-section" id="security-value" tabindex="-1">
+          <div class="section-copy compact-copy">
+            <p class="section-label">04 / Security value</p>
+            <h2>Turn discussion gaps into visible work.</h2>
+          </div>
+          <div class="finding-path" role="list" aria-label="Security planning gaps surfaced by an exercise">
+            <div role="listitem"><span>Escalation</span><strong>Who needs to know?</strong></div>
+            <div role="listitem"><span>Authority</span><strong>Who can decide?</strong></div>
+            <div role="listitem"><span>Communication</span><strong>What is already prepared?</strong></div>
+            <div role="listitem"><span>Follow-through</span><strong>How is remediation tracked?</strong></div>
+          </div>
+          <p class="visual-note">The generator guides a team toward missing escalation paths, unclear decision authority, weak communication templates, and gaps in lessons-learned tracking.</p>
+        </section>
+
+        <section class="case-section case-reflection" id="what-i-learned" tabindex="-1">
+          <p class="section-label">05 / Reflection</p>
+          <blockquote>A useful security product also has to help people make decisions under pressure, document those decisions, and convert findings into remediation work.</blockquote>
+          <p>This project pushed the work beyond alerts and tools and toward the people who have to use an incident response plan.</p>
+        </section>
       </article>
-      <article class="case-panel">
-        <h2>What I Built</h2>
-        <ul class="proof-list">
-          <li>Scenario builder for phishing, BEC, ransomware, insider threat, cloud misconfiguration, vendor breach, and compromised admin account exercises.</li>
-          <li>Generated summaries, objectives, participant lists, discussion questions, IRP gap-discovery prompts, facilitator notes, executive summaries, and lessons-learned templates.</li>
-          <li>Browser-based saved exercises using LocalStorage, with copyable and downloadable Markdown outputs.</li>
-        </ul>
-      </article>
-      <article class="case-panel">
-        <h2>Tools</h2>
-        <div class="tag-row"><span>Next.js 15</span><span>TypeScript</span><span>Tailwind CSS</span><span>shadcn-style UI</span><span>LocalStorage</span></div>
-      </article>
-      <article class="case-panel">
-        <h2>Security Value</h2>
-        <p>The project turns incident response planning into a guided exercise that helps reveal missing escalation paths, unclear decision authority, weak communication templates, and gaps in lessons-learned tracking.</p>
-      </article>
-      <article class="case-panel wide">
-        <h2>What I Learned</h2>
-        <p>This project pushed me to think beyond alerts and tools. A useful security product also has to help people make decisions under pressure, document those decisions, and convert findings into remediation work.</p>
-      </article>
-    </section>
+    </div>
+
+    <nav class="case-navigation" aria-label="Case file navigation">
+      <a href="index.html#projects"><span>Return</span><strong>Selected work</strong></a>
+      <a href="case-grc-risk-assessment.html"><span>Next case / 003</span><strong>GRC Risk Assessment →</strong></a>
+    </nav>
   </main>
+
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>
 </html>

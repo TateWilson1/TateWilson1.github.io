@@ -2,51 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
   <meta name="description" content="GRC risk assessment lessons write-up by Tate Wilson.">
   <title>GRC Risk Lessons | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span><strong>Tate Wilson</strong><small>Write-up</small></span>
-    </a>
-    <nav class="nav-links" aria-label="Write-up navigation">
-      <a href="index.html#writeups">Write-ups</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section class="case-hero">
-      <p class="eyebrow">Risk Thinking</p>
-      <h1>GRC Risk Lessons</h1>
-      <p class="hero-text">How technical security issues become business-readable risk and remediation work.</p>
-    </section>
-    <section class="section case-layout">
-      <article class="case-panel">
-        <h2>Findings Need Context</h2>
-        <p>A vulnerability or gap is only part of the story. A useful risk finding explains the asset, threat, weakness, likely impact, and why the organization should care.</p>
+<body class="case-file field-note-file">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Field notes</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button><nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav><button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button></div></header>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header note-header">
+      <div class="case-ident"><a class="case-back text-link" href="index.html#writeups">← Field notes</a><p class="case-number">NOTE./003</p><p>Risk thinking</p></div>
+      <div class="case-title"><h1>GRC Risk Lessons</h1><p class="case-summary">How technical security issues become business-readable risk and remediation work.</p></div>
+      <dl class="case-meta"><div><dt>Input</dt><dd>Technical finding</dd></div><div><dt>Method</dt><dd>Context + qualitative priority</dd></div><div><dt>Lens</dt><dd>Governance and compliance</dd></div><div><dt>Output</dt><dd>Actionable recommendation</dd></div></dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index"><p class="case-index-label">Note contents</p><nav aria-label="Field note sections"><a href="#findings-need-context"><span>01</span> Context</a><a href="#likelihood-and-impact-help-prioritize"><span>02</span> Priority</a><a href="#compliance-is-a-lens"><span>03</span> Compliance</a><a href="#recommendations-should-be-actionable"><span>04</span> Action</a><a href="#takeaway"><span>05</span> Takeaway</a></nav></aside>
+      <article class="case-content" aria-label="GRC risk lessons field note">
+        <section class="case-section" id="findings-need-context" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">01 / Context</p><h2>A finding is only the first node.</h2><p>A vulnerability or gap is only part of the story. A useful finding connects the condition to the environment around it.</p></div>
+          <figure class="case-visual finding-chain risk-story" aria-labelledby="finding-caption"><div><span>Asset</span><strong>What is at stake?</strong></div><div><span>Threat</span><strong>What could happen?</strong></div><div><span>Weakness</span><strong>What enables it?</strong></div><div><span>Impact</span><strong>What changes for the business?</strong></div><div><span>Context</span><strong>Why should the organization care?</strong></div><figcaption id="finding-caption">Each connection adds the context needed to move from a technical observation to a risk finding.</figcaption></figure>
+        </section>
+
+        <section class="case-section case-split" id="likelihood-and-impact-help-prioritize" tabindex="-1">
+          <div class="section-copy"><p class="section-label">02 / Priority</p><h2>Decide what should happen first.</h2><p>Not every issue can be fixed at once. Likelihood and impact give teams a structured qualitative comparison.</p></div>
+          <div class="priority-model" aria-label="Qualitative priority model"><div><span>Likelihood</span><strong>How plausible is the event?</strong></div><span class="model-join" aria-hidden="true">×</span><div><span>Impact</span><strong>What would the consequence be?</strong></div><span class="model-arrow" aria-hidden="true">→</span><div class="priority-output"><span>Priority</span><strong>What gets addressed first?</strong></div></div>
+        </section>
+
+        <section class="case-section" id="compliance-is-a-lens" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">03 / Compliance lens</p><h2>Use frameworks to organize the conversation.</h2><p>Frameworks and requirements do not replace risk judgment. They give control and obligation conversations a shared structure.</p></div>
+          <div class="lens-map" role="list" aria-label="Framework and compliance lenses"><div role="listitem"><strong>HIPAA</strong><span>Sensitive information</span></div><div role="listitem"><strong>FERPA</strong><span>Education records</span></div><div role="listitem"><strong>PCI DSS</strong><span>Payment data</span></div><div role="listitem"><strong>CIS Controls</strong><span>Security safeguards</span></div><div role="listitem"><strong>NIST guidance</strong><span>Risk and response structure</span></div></div>
+          <p class="visual-note">These are thematic lenses for organizing concerns, not claims that one diagram proves compliance.</p>
+        </section>
+
+        <section class="case-section" id="recommendations-should-be-actionable" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">04 / Recommendation design</p><h2>Write for assignment, tracking, and verification.</h2></div>
+          <div class="recommendation-model" role="list" aria-label="Parts of an actionable security recommendation"><div role="listitem"><span>Control</span><strong>Name the safeguard.</strong></div><div role="listitem"><span>Expected improvement</span><strong>Describe what changes.</strong></div><div role="listitem"><span>Next step</span><strong>Make the work assignable.</strong></div></div>
+          <p class="visual-note">Vague advice is hard to assign, track, or verify.</p>
+        </section>
+
+        <section class="case-section case-reflection" id="takeaway" tabindex="-1"><p class="section-label">05 / Takeaway</p><blockquote>GRC work is strongest when it translates technical risk into decisions.</blockquote><p>The output should help leaders understand exposure and help technical teams know what to fix.</p></section>
       </article>
-      <article class="case-panel">
-        <h2>Likelihood And Impact Help Prioritize</h2>
-        <p>Not every issue can be fixed at once. Likelihood and impact scoring gives teams a structured way to decide what should happen first.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Compliance Is A Lens</h2>
-        <p>HIPAA, FERPA, PCI DSS, CIS Controls, and NIST guidance can help organize the conversation. They are not just checkboxes; they help connect controls to obligations and outcomes.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Recommendations Should Be Actionable</h2>
-        <p>A good recommendation names the control, the expected improvement, and the next step. Vague advice is hard to assign, track, or verify.</p>
-      </article>
-      <article class="case-panel wide">
-        <h2>Takeaway</h2>
-        <p>GRC work is strongest when it translates technical risk into decisions. The output should help leaders understand exposure and help technical teams know what to fix.</p>
-      </article>
-    </section>
+    </div>
+    <nav class="case-navigation" aria-label="Field note navigation"><a href="writeup-m365-entra-review.html"><span>Previous note / 002</span><strong>← M365 / Entra Review</strong></a><a href="case-tabletopforge.html"><span>Continue / Case 001</span><strong>TabletopForge →</strong></a></nav>
   </main>
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>
 </html>

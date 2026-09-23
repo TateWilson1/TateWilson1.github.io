@@ -2,51 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
   <meta name="description" content="Microsoft 365 and Entra security review write-up by Tate Wilson.">
   <title>M365 / Entra Review | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span><strong>Tate Wilson</strong><small>Write-up</small></span>
-    </a>
-    <nav class="nav-links" aria-label="Write-up navigation">
-      <a href="index.html#writeups">Write-ups</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section class="case-hero">
-      <p class="eyebrow">Identity Review</p>
-      <h1>M365 / Entra Review</h1>
-      <p class="hero-text">A practical review model for stale access, enterprise apps, SSO, and tenant hardening checks.</p>
-    </section>
-    <section class="section case-layout">
-      <article class="case-panel">
-        <h2>Start With Identity</h2>
-        <p>Identity is one of the highest-value areas in a cloud environment. Reviewing users, groups, privileged roles, and external access helps expose stale access and excessive permissions.</p>
+<body class="case-file field-note-file">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Field notes</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button><nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav><button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button></div></header>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header note-header">
+      <div class="case-ident"><a class="case-back text-link" href="index.html#writeups">← Field notes</a><p class="case-number">NOTE./002</p><p>Identity review</p></div>
+      <div class="case-title"><h1>M365 / Entra Review</h1><p class="case-summary">A practical review model for stale access, enterprise apps, SSO, and tenant hardening checks.</p></div>
+      <dl class="case-meta"><div><dt>Environment</dt><dd>Microsoft 365 + Entra</dd></div><div><dt>Lens</dt><dd>Identity and cloud</dd></div><div><dt>Review object</dt><dd>Access, apps, tenant controls</dd></div><div><dt>Output</dt><dd>Owned remediation plan</dd></div></dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index"><p class="case-index-label">Note contents</p><nav aria-label="Field note sections"><a href="#start-with-identity"><span>01</span> Identity</a><a href="#catalog-enterprise-apps"><span>02</span> Apps</a><a href="#review-tenant-hardening"><span>03</span> Hardening</a><a href="#turn-findings-into-actions"><span>04</span> Actions</a><a href="#takeaway"><span>05</span> Takeaway</a></nav></aside>
+      <article class="case-content" aria-label="M365 and Entra review field note">
+        <section class="case-section" id="start-with-identity" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">01 / Identity first</p><h2>Trace who can reach what.</h2><p>Identity is one of the highest-value areas in a cloud environment. The review starts with the access relationships that can expose stale or excessive permission.</p></div>
+          <figure class="case-visual identity-flow" aria-labelledby="identity-caption">
+            <div class="identity-nodes" role="list"><div role="listitem"><span>Users</span><small>active + stale</small></div><div role="listitem"><span>Groups</span><small>membership</small></div><div role="listitem"><span>Privileged roles</span><small>admin access</small></div><div role="listitem"><span>External access</span><small>guest reach</small></div></div>
+            <div class="identity-output"><span>Review focus</span><strong>Stale access + excessive permissions</strong></div>
+            <figcaption id="identity-caption">The model follows access from identity objects toward the conditions a reviewer needs to inspect.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section case-split" id="catalog-enterprise-apps" tabindex="-1">
+          <div class="section-copy"><p class="section-label">02 / Enterprise apps</p><h2>Build the inventory before judging it.</h2><p>Enterprise apps and SSO integrations should be documented.</p></div>
+          <div class="app-register" role="list" aria-label="Enterprise application review questions"><div role="listitem"><span>Identity</span><strong>Is the app known?</strong></div><div role="listitem"><span>Consent</span><strong>Are grants too broad?</strong></div><div role="listitem"><span>Use</span><strong>Is the integration active?</strong></div><div role="listitem"><span>Owner</span><strong>Is accountability clear?</strong></div></div>
+        </section>
+
+        <section class="case-section" id="review-tenant-hardening" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">03 / Tenant hardening</p><h2>Review controls as a connected surface.</h2></div>
+          <div class="review-checks" role="list" aria-label="M365 and Entra tenant hardening checks">
+            <div role="listitem"><span>01</span><strong>MFA coverage</strong></div><div role="listitem"><span>02</span><strong>Admin role assignment</strong></div><div role="listitem"><span>03</span><strong>Legacy authentication exposure</strong></div><div role="listitem"><span>04</span><strong>Conditional access posture</strong></div><div role="listitem"><span>05</span><strong>Mailbox forwarding</strong></div><div role="listitem"><span>06</span><strong>Security defaults or equivalent controls</strong></div>
+          </div>
+        </section>
+
+        <section class="case-section" id="turn-findings-into-actions" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">04 / Remediation handoff</p><h2>A finding needs enough structure to move.</h2></div>
+          <div class="finding-chain" role="list" aria-label="Fields that turn a review finding into a remediation plan"><div role="listitem"><span>Finding</span><strong>What is exposed?</strong></div><div role="listitem"><span>Recommendation</span><strong>What should change?</strong></div><div role="listitem"><span>Priority</span><strong>What happens first?</strong></div><div role="listitem"><span>Owner</span><strong>Who carries it forward?</strong></div><div role="listitem"><span>Reason</span><strong>Why does it matter?</strong></div></div>
+          <p class="visual-note">That structure turns a security review into a remediation plan rather than a list of observations.</p>
+        </section>
+
+        <section class="case-section case-reflection" id="takeaway" tabindex="-1"><p class="section-label">05 / Takeaway</p><blockquote>The goal is not just to find issues, but to make identity risk visible enough that teams can act on it.</blockquote><p>M365 and Entra review work blends technical checks with governance.</p></section>
       </article>
-      <article class="case-panel">
-        <h2>Catalog Enterprise Apps</h2>
-        <p>Enterprise apps and SSO integrations should be documented. Unknown apps, broad consent grants, unused integrations, and unclear owners can all create risk.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Review Tenant Hardening</h2>
-        <p>Useful checks include MFA coverage, admin role assignment, legacy authentication exposure, conditional access posture, mailbox forwarding, and security defaults or equivalent controls.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Turn Findings Into Actions</h2>
-        <p>A review is most useful when each finding has a clear recommendation, priority, owner, and reason. That turns security review work into a remediation plan.</p>
-      </article>
-      <article class="case-panel wide">
-        <h2>Takeaway</h2>
-        <p>M365 and Entra review work blends technical checks with governance. The goal is not just to find issues, but to make identity risk visible enough that teams can act on it.</p>
-      </article>
-    </section>
+    </div>
+    <nav class="case-navigation" aria-label="Field note navigation"><a href="writeup-ccdc-lessons.html"><span>Previous note / 001</span><strong>← CCDC Lessons</strong></a><a href="writeup-grc-risk-lessons.html"><span>Next note / 003</span><strong>GRC Risk Lessons →</strong></a></nav>
   </main>
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>
 </html>

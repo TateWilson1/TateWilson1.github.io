@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780"><title>Tate’s workstation</title><desc>A quiet isometric desk with a monitor, evidence drive, notebook and CCDC server rack.</desc><g stroke="#23343e" stroke-width="3" stroke-linejoin="round">
+<path fill="#30434c" d="M90 480 490 290 875 488 470 720Z"/><path fill="#243741" d="m90 480 380 214 405-206v28L470 743 90 510Z"/>
+<path fill="#57717b" d="M90 480V260l390-176v218Z"/><path fill="#6e8890" d="M480 84 875 275v213L480 302Z"/>
+<path fill="#c6d4ce" d="m650 184 144 68v119l-144-70Z"/><path fill="none" d="m721 219 0 117m-71-95 144 68"/>
+<path fill="#d1b799" d="m197 273 221-100v104L197 379Z"/><path fill="#eee8d9" d="m223 282 48-21v61l-48 21Zm73-34 49-22v61l-49 21Zm72-33 30-14v59l-30 13Z"/>
+<path fill="#263842" d="m214 455 17-7v149l-17 8Zm313 120 17-8v121l-17 8Zm157-173 17 9v153l-17-9Z"/>
+<path fill="#d1b799" d="m171 421 246-119 326 162-239 135Z"/><path fill="#b89c7d" d="m171 421 333 165 239-122v17L504 614 171 438Z"/>
+<path fill="#263842" d="m369 344 17 7v58l-17-6Z"/><path fill="#263842" d="m320 405 52-25 76 36-54 27Z"/>
+<path fill="#263842" d="m299 217 220 106v157L299 374Z"/><path fill="#18333f" d="m312 238 193 94v125l-193-93Z"/>
+<path fill="#c6d4ce" d="m332 267 104 50v79l-104-50Z"/><path stroke="#57717b" d="m347 297 68 33m-68-16 53 26m-53-9 62 29"/><path fill="#8db9c5" d="m451 324 36 18v73l-36-18Z"/>
+<path fill="#263842" d="m294 453 55-27 124 63-54 28Z"/><g stroke="#c4d0cb" stroke-width="5"><path d="m314 451 109 54m-121-46 109 54m-96-70 30 15m-10-25 105 53"/></g>
+<path fill="#ce7955" d="m194 443 67-32 71 36-67 34Z"/><path fill="#eee8d9" d="m202 441 60-26 60 30-58 26Z"/><path stroke="#57717b" d="m228 434 35 18m-24-22 35 18"/>
+<path fill="#263842" d="m512 494 47-23 58 30-49 24v10l-56-29Z"/><path fill="#eee8d9" d="m526 494 31-15 44 22-31 16Z"/>
+<path fill="#263842" d="m715 507 82-42 48 24v147l-80 48-50-30Z"/><path fill="#57717b" d="m729 517 60-33v129l-60 36Z"/><g fill="#182830"><path d="m737 524 44-25v20l-44 25Zm0 31 44-25v20l-44 25Zm0 31 44-25v20l-44 25Z"/></g>
+<path fill="#cfa66d" d="m745 462 36-19 28 14-20 23v17l-18 9v-18Z"/>
+<path stroke="#263842" stroke-width="12" d="M435 637v61m0-10-53 24m53-24 49 30m-49-30 27-26"/>
+<path fill="#ce7955" d="m366 577 74-36 88 46-78 44Z"/><path fill="#ce7955" d="m445 552 88 44v94l-88-46Z"/>
+<path fill="#b76f4a" d="m120 494 44-10 37 24-18 63-43 2Z"/><g stroke="#698c71" stroke-width="6"><path d="m161 504-2-101m2 101-35-55m35 55 42-81"/></g><g fill="#91ad77"><ellipse cx="151" cy="407" rx="18" ry="34" transform="rotate(-30 151 407)"/><ellipse cx="127" cy="447" rx="13" ry="30" transform="rotate(-45 127 447)"/><ellipse cx="195" cy="428" rx="18" ry="35" transform="rotate(35 195 428)"/></g>
+</g></svg>

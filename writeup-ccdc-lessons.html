@@ -2,51 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
   <meta name="description" content="CCDC cybersecurity lessons write-up by Tate Wilson.">
   <title>CCDC Lessons | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span><strong>Tate Wilson</strong><small>Write-up</small></span>
-    </a>
-    <nav class="nav-links" aria-label="Write-up navigation">
-      <a href="index.html#writeups">Write-ups</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-  </header>
-  <main>
-    <section class="case-hero">
-      <p class="eyebrow">Competition Defense</p>
-      <h1>CCDC Lessons</h1>
-      <p class="hero-text">What defensive cybersecurity practice teaches about ownership, triage, persistence, and communication.</p>
-    </section>
-    <section class="section case-layout">
-      <article class="case-panel">
-        <h2>Service Ownership Matters</h2>
-        <p>In a competition environment, every service needs a clear owner. If nobody owns a service, nobody is watching logs, validating uptime, checking configuration drift, or tracking suspicious behavior.</p>
+<body class="case-file field-note-file">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Field notes</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button><nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav><button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button></div></header>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header note-header">
+      <div class="case-ident"><a class="case-back text-link" href="index.html#writeups">← Field notes</a><p class="case-number">NOTE./001</p><p>Competition defense</p></div>
+      <div class="case-title"><h1>CCDC Lessons</h1><p class="case-summary">What defensive cybersecurity practice teaches about ownership, triage, persistence, and communication.</p></div>
+      <dl class="case-meta"><div><dt>Context</dt><dd>Competition practice</dd></div><div><dt>Focus</dt><dd>Service defense</dd></div><div><dt>Operating model</dt><dd>Shared ownership + escalation</dd></div><div><dt>Core lesson</dt><dd>Organization under pressure</dd></div></dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index"><p class="case-index-label">Note contents</p><nav aria-label="Field note sections"><a href="#service-ownership-matters"><span>01</span> Ownership</a><a href="#baseline-before-you-change"><span>02</span> Baseline</a><a href="#persistence-detection-is-a-habit"><span>03</span> Persistence</a><a href="#communication-wins-time"><span>04</span> Communication</a><a href="#takeaway"><span>05</span> Takeaway</a></nav></aside>
+      <article class="case-content" aria-label="CCDC lessons field note">
+        <section class="case-section" id="service-ownership-matters" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">01 / Service ownership</p><h2>Every service needs a named defender.</h2><p>If nobody owns a service, nobody is accountable for its working state or its suspicious changes.</p></div>
+          <figure class="case-visual service-map" aria-labelledby="service-caption">
+            <div class="service-core"><span>Service</span><strong>Named owner</strong></div>
+            <div class="service-duties"><span>Logs<strong>Watch</strong></span><span>Uptime<strong>Validate</strong></span><span>Configuration<strong>Track drift</strong></span><span>Behavior<strong>Investigate</strong></span></div>
+            <figcaption id="service-caption">Ownership turns four separate checks into one coherent defense responsibility.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section case-split" id="baseline-before-you-change" tabindex="-1">
+          <div class="section-copy"><p class="section-label">02 / Baseline</p><h2>Know normal before hardening.</h2><p>One of the easiest ways to break a system is to harden blindly.</p></div>
+          <div class="baseline-record" role="list" aria-label="Items to baseline before changing a system"><div role="listitem"><span>01</span><strong>Running services</strong></div><div role="listitem"><span>02</span><strong>Existing users</strong></div><div role="listitem"><span>03</span><strong>Exposed ports</strong></div><div role="listitem"><span>04</span><strong>Normal behavior</strong></div></div>
+        </section>
+
+        <section class="case-section" id="persistence-detection-is-a-habit" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">03 / Persistence review</p><h2>Look beyond obvious malware.</h2></div>
+          <div class="persistence-path" role="list" aria-label="Persistence locations defenders should review"><div role="listitem">Scheduled tasks</div><div role="listitem">Services</div><div role="listitem">Startup locations</div><div role="listitem">Unauthorized users</div><div role="listitem">SSH keys</div><div role="listitem">Web shells</div><div role="listitem">Odd cron jobs</div></div>
+          <p class="visual-note">Persistence detection becomes useful when it is a repeatable habit, not a one-time reaction to an obvious artifact.</p>
+        </section>
+
+        <section class="case-section" id="communication-wins-time" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">04 / Communication loop</p><h2>Shared context prevents duplicated work.</h2></div>
+          <figure class="case-visual comms-loop" aria-labelledby="comms-caption"><ol><li><span>Capture</span><strong>Shared notes</strong></li><li><span>Route</span><strong>Clear escalation</strong></li><li><span>Update</span><strong>Quick status</strong></li><li><span>Coordinate</span><strong>Avoid duplication</strong></li></ol><figcaption id="comms-caption">Under pressure, communication is an operational control: it keeps evidence, ownership, and next actions aligned.</figcaption></figure>
+        </section>
+
+        <section class="case-section case-reflection" id="takeaway" tabindex="-1"><p class="section-label">05 / Takeaway</p><blockquote>The best defenders are not just fast with commands; they are organized under stress.</blockquote><p>CCDC practice connected system administration, incident response, documentation, and teamwork.</p></section>
       </article>
-      <article class="case-panel">
-        <h2>Baseline Before You Change</h2>
-        <p>One of the easiest ways to break a system is to harden blindly. A useful first move is to identify what is running, what users exist, what ports are exposed, and what normal behavior looks like.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Persistence Detection Is A Habit</h2>
-        <p>Defenders need to think beyond obvious malware. Scheduled tasks, services, startup locations, unauthorized users, SSH keys, web shells, and odd cron jobs all deserve attention.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Communication Wins Time</h2>
-        <p>Good defense is not just technical. The team needs shared notes, clear escalation, quick status updates, and enough discipline to avoid duplicating work during pressure.</p>
-      </article>
-      <article class="case-panel wide">
-        <h2>Takeaway</h2>
-        <p>CCDC practice has helped me connect system administration, incident response, documentation, and teamwork. The best defenders are not just fast with commands; they are organized under stress.</p>
-      </article>
-    </section>
+    </div>
+    <nav class="case-navigation" aria-label="Field note navigation"><a href="case-grc-risk-assessment.html"><span>Previous file / Case 003</span><strong>← GRC Risk Assessment</strong></a><a href="writeup-m365-entra-review.html"><span>Next note / 002</span><strong>M365 / Entra Review →</strong></a></nav>
   </main>
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>
 </html>

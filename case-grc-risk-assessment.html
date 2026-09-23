@@ -2,97 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
   <meta name="description" content="GRC risk assessment cybersecurity portfolio case study by Tate Wilson.">
   <title>GRC Risk Assessment Case Study | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
 </head>
-<body>
+<body class="case-file">
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="index.html#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span><strong>Tate Wilson</strong><small>Case Study</small></span>
-    </a>
-    <nav class="nav-links" aria-label="Case study navigation">
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#case-studies">Case Studies</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+    <div class="header-inner">
+      <a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Case files</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav>
+      <button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button>
+    </div>
   </header>
-  <main>
-    <section class="case-hero">
-      <p class="eyebrow">Governance, Risk, Compliance</p>
-      <h1>GRC Risk Assessment</h1>
-      <p class="hero-text">A structured cybersecurity risk assessment project focused on business impact, compliance risk, and remediation recommendations.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="https://github.com/TateWilson1/GRC-Governance-Risk-and-Compliance-" target="_blank" rel="noreferrer">View Repository</a>
-        <a class="button secondary" href="index.html#case-studies">Back to Portfolio</a>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header">
+      <div class="case-ident"><a class="case-back text-link" href="index.html#projects">← Case index</a><p class="case-number">CASE./003</p><p>Governance, risk, compliance</p></div>
+      <div class="case-title">
+        <h1>GRC Risk Assessment</h1>
+        <p class="case-summary">A simulated business assessment that connects security gaps to business impact, control ownership, and practical remediation.</p>
+        <div class="case-actions"><a class="button primary" href="https://github.com/TateWilson1/GRC-Governance-Risk-and-Compliance-" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a></div>
       </div>
-    </section>
-    <section class="section case-layout">
-      <article class="case-panel">
-        <h2>Problem</h2>
-        <p>Security gaps matter most when they are connected to business impact. This project practiced turning technical findings into risk language that leadership can prioritize.</p>
+      <dl class="case-meta">
+        <div><dt>Environment</dt><dd>Simulated business</dd></div>
+        <div><dt>Assessment</dt><dd>Qualitative</dd></div>
+        <div><dt>Focus</dt><dd>Identity, sensitive data, documentation</dd></div>
+        <div><dt>Output</dt><dd>Risk register + remediation guidance</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index"><p class="case-index-label">File contents</p><nav aria-label="Case sections"><a href="#problem"><span>01</span> Brief</a><a href="#what-i-did"><span>02</span> Assessment</a><a href="#sample-executive-summary"><span>03</span> Finding</a><a href="#controls-mapped"><span>04</span> Control map</a><a href="#framework-thinking"><span>05</span> Framework use</a><a href="#skills-demonstrated"><span>06</span> Capabilities</a><a href="#sample-risk-register-row"><span>07</span> Risk register</a><a href="#what-i-learned"><span>08</span> Reflection</a></nav></aside>
+
+      <article class="case-content" aria-label="GRC Risk Assessment case file">
+        <section class="case-section case-split" id="problem" tabindex="-1">
+          <div class="section-copy"><p class="section-label">01 / Brief</p><h2>Translate gaps into decisions.</h2></div>
+          <div class="finding finding-large"><span class="finding-key">Assessment principle</span><p>Security gaps matter most when they are connected to business impact. This project practiced turning technical findings into risk language leadership can prioritize.</p></div>
+        </section>
+
+        <section class="case-section" id="what-i-did" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">02 / Assessment path</p><h2>From environment review to remediation guidance.</h2></div>
+          <figure class="case-visual assessment-flow" aria-labelledby="assessment-caption">
+            <ol>
+              <li><span>01</span><strong>Identify</strong><small>security gaps, vulnerabilities, compliance risks</small></li>
+              <li><span>02</span><strong>Connect</strong><small>technical condition to business impact</small></li>
+              <li><span>03</span><strong>Prioritize</strong><small>qualitative likelihood and impact</small></li>
+              <li><span>04</span><strong>Recommend</strong><small>practical remediation and ownership</small></li>
+              <li><span>05</span><strong>Document</strong><small>governance and risk-management artifact</small></li>
+            </ol>
+            <figcaption id="assessment-caption">The simulated assessment connects evidence, exposure, priority, and action without treating framework references as a substitute for judgment.</figcaption>
+          </figure>
+        </section>
+
+        <section class="case-section" id="sample-executive-summary" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">03 / Executive finding</p><h2>Access review is the priority signal.</h2></div>
+          <div class="executive-finding">
+            <div><span>Finding</span><strong>Inconsistent access review, weak documentation, limited evidence of control ownership</strong></div>
+            <div><span>Business exposure</span><strong>Regulated information, audit readiness, incident response speed</strong></div>
+            <div><span>Recommended sequence</span><strong>Reduce identity and data-handling risk first</strong></div>
+          </div>
+        </section>
+
+        <section class="case-section" id="controls-mapped" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">04 / Control relationships</p><h2>One finding, several organizing lenses.</h2><p>These relationships are thematic assessment lenses, not claims of legal compliance or mappings to specific clauses.</p></div>
+          <div class="control-map" role="img" aria-label="Thematic control map connecting stale or excessive access to CIS Controls, NIST Cybersecurity Framework, and compliance concerns">
+            <div class="control-center"><span>Risk finding</span><strong>Stale or excessive user access</strong></div>
+            <section><h3>CIS Controls</h3><p>Account management<br>Access control management<br>Audit log management</p></section>
+            <section><h3>NIST CSF</h3><p>Identify assets and risk<br>Protect access<br>Detect anomalous activity<br>Improve response planning</p></section>
+            <section><h3>Compliance lens</h3><p>HIPAA, FERPA, and PCI DSS concepts around sensitive data, access, and documentation</p></section>
+          </div>
+        </section>
+
+        <section class="case-section case-split" id="framework-thinking" tabindex="-1">
+          <div class="section-copy"><p class="section-label">05 / Framework use</p><h2>Structure the conversation. Keep the finding concrete.</h2></div>
+          <div class="finding"><span class="finding-key">Practice connection</span><p>The work connects with client-ready deliverables built during Tate’s MSP internship, including scored findings, maturity-assessment language, and remediation guidance.</p></div>
+        </section>
+
+        <section class="case-section" id="skills-demonstrated" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">06 / Capabilities</p><h2>Four connected forms of judgment.</h2></div>
+          <dl class="capability-record">
+            <div><dt>Risk assessment</dt><dd>Frame the condition and its likely consequence.</dd></div>
+            <div><dt>Compliance mapping</dt><dd>Use established lenses to organize concerns.</dd></div>
+            <div><dt>Security documentation</dt><dd>Make the evidence readable to another audience.</dd></div>
+            <div><dt>Remediation planning</dt><dd>Name a practical next action and owner.</dd></div>
+          </dl>
+        </section>
+
+        <section class="case-section" id="sample-risk-register-row" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">07 / Sample risk register</p><h2>Qualitative priority, shown in context.</h2></div>
+          <figure class="risk-matrix-wrap" tabindex="0" role="region" aria-label="Qualitative risk matrix; scroll horizontally to inspect all columns">
+            <table class="risk-matrix">
+              <caption>Illustrative qualitative placement for the single sample risk. No numerical score is assigned.</caption>
+              <thead><tr><th scope="col">Impact ↓ / Likelihood →</th><th scope="col">Low</th><th scope="col">Medium</th><th scope="col">High</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">High</th><td><span class="empty-cell">—</span></td><td class="risk-cell"><span class="risk-marker">R-01</span><strong>Stale or excessive access</strong></td><td><span class="empty-cell">—</span></td></tr>
+                <tr><th scope="row">Medium</th><td><span class="empty-cell">—</span></td><td><span class="empty-cell">—</span></td><td><span class="empty-cell">—</span></td></tr>
+                <tr><th scope="row">Low</th><td><span class="empty-cell">—</span></td><td><span class="empty-cell">—</span></td><td><span class="empty-cell">—</span></td></tr>
+              </tbody>
+            </table>
+          </figure>
+          <dl class="risk-register">
+            <div><dt>Risk</dt><dd>Stale or excessive user access</dd></div><div><dt>Likelihood</dt><dd>Medium</dd></div><div><dt>Impact</dt><dd>High</dd></div><div><dt>Priority</dt><dd>High</dd></div>
+            <div class="risk-action"><dt>Recommended action</dt><dd>Run quarterly access reviews, remove stale accounts, document owners, and validate privileged roles.</dd></div>
+          </dl>
+        </section>
+
+        <section class="case-section case-reflection" id="what-i-learned" tabindex="-1">
+          <p class="section-label">08 / Reflection</p>
+          <blockquote>A good GRC artifact should explain why a problem matters, how likely it is, what it could cost the organization, and what should be done next.</blockquote>
+          <p>The value is not the list of problems. It is the path from evidence to a decision.</p>
+        </section>
       </article>
-      <article class="case-panel">
-        <h2>What I Did</h2>
-        <ul class="proof-list">
-          <li>Identified security gaps, vulnerabilities, and compliance risks in a simulated business environment.</li>
-          <li>Mapped risks to HIPAA, FERPA, and PCI DSS concerns.</li>
-          <li>Evaluated likelihood and business impact to prioritize remediation recommendations.</li>
-          <li>Produced professional documentation aligned with governance, compliance, and risk management practices.</li>
-        </ul>
-      </article>
-      <article class="case-panel">
-        <h2>Sample Executive Summary</h2>
-        <p>The simulated organization showed elevated risk from inconsistent access review, weak documentation, and limited evidence of control ownership. The recommended priority was to reduce identity and data-handling risk first because those gaps could affect regulated information, audit readiness, and incident response speed.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Controls Mapped</h2>
-        <ul class="proof-list">
-          <li>CIS Controls: account management, access control management, and audit log management.</li>
-          <li>NIST CSF: identify assets and risk, protect access, detect anomalous activity, and improve response planning.</li>
-          <li>Compliance lens: HIPAA, FERPA, and PCI DSS concepts around sensitive data, access, and documentation.</li>
-        </ul>
-      </article>
-      <article class="case-panel">
-        <h2>Framework Thinking</h2>
-        <p>The work connects with the kind of client-ready deliverables I built during my MSP internship, including scored findings, maturity assessment language, and remediation guidance.</p>
-      </article>
-      <article class="case-panel">
-        <h2>Skills Demonstrated</h2>
-        <div class="tag-row"><span>Risk Assessment</span><span>Compliance Mapping</span><span>Security Documentation</span><span>Remediation Planning</span></div>
-      </article>
-      <article class="case-panel wide">
-        <h2>Sample Risk Register Row</h2>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Risk</th>
-                <th>Likelihood</th>
-                <th>Impact</th>
-                <th>Priority</th>
-                <th>Recommended Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Stale or excessive user access</td>
-                <td>Medium</td>
-                <td>High</td>
-                <td>High</td>
-                <td>Run quarterly access reviews, remove stale accounts, document owners, and validate privileged roles.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
-      <article class="case-panel wide">
-        <h2>What I Learned</h2>
-        <p>A good GRC artifact should not just list problems. It should explain why they matter, how likely they are, what they could cost the organization, and what should be done next.</p>
-      </article>
-    </section>
+    </div>
+
+    <nav class="case-navigation" aria-label="Case file navigation"><a href="case-tabletopforge.html"><span>Previous case / 001</span><strong>← TabletopForge</strong></a><a href="writeup-ccdc-lessons.html"><span>Next file / Note 001</span><strong>CCDC Lessons →</strong></a></nav>
   </main>
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>
 </html>

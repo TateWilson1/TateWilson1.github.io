@@ -2,502 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tate Wilson portfolio: Digital Forensics and Cybersecurity student at Eastern Kentucky University.">
-  <title>Tate Wilson | Digital Forensics & Cybersecurity</title>
-  <link rel="preconnect" href="https://avatars.githubusercontent.com">
-  <link rel="preconnect" href="https://raw.githubusercontent.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d10">
+  <meta name="description" content="Enter Tate Wilson's interactive digital-forensics and cybersecurity workspace.">
+  <title>Tate Wilson | Digital Forensics Lab</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibm-plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="modulepreload" href="assets/vendor/three.module.min.js">
+  <link rel="modulepreload" href="scene-model.mjs">
+  <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lab.css">
+  <script src="scene.js" type="module"></script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body class="immersive-lab" id="top">
+  <a class="skip-link" href="#scene-nav">Skip to workspace destinations</a>
+  <main id="app" aria-label="Tate Wilson's interactive portfolio workspace">
+    <span id="main" hidden></span>
+    <canvas id="three-scene" aria-hidden="true"></canvas>
+    <img class="scene-fallback" src="assets/workstation-poster.svg" width="960" height="780" fetchpriority="high" decoding="async" alt="Illustrated overview of Tate Wilson's digital-forensics workspace.">
+    <div class="lab-vignette" aria-hidden="true"></div>
+    <div class="loading-screen" data-loading role="status" aria-live="polite"><span class="loading-mark">tw./</span><p>Preparing the workspace</p><div><i data-load-progress></i></div></div>
 
-  <header class="site-header">
-    <a class="brand" href="#top" aria-label="Tate Wilson home">
-      <span class="brand-mark">TW</span>
-      <span>
-        <strong>Tate Wilson</strong>
-        <small>Digital Forensics & Cybersecurity</small>
-      </span>
-    </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span class="sr-only">Menu</span>
-    </button>
-    <nav class="nav-links" id="primary-nav" aria-label="Primary navigation">
-      <a href="#projects">Projects</a>
-      <a href="#case-studies">Case Studies</a>
-      <a href="#lab">Cyber Lab</a>
-      <a href="#writeups">Write-ups</a>
-      <a href="#experience">Experience</a>
-      <a href="#resume">Resume</a>
-      <a href="#contact">Contact</a>
+    <section class="entry-screen" data-entry aria-labelledby="entry-title"><div>
+      <p class="system-label">TATE WILSON // DIGITAL FORENSICS</p>
+      <h1 id="entry-title">Enter the lab.</h1>
+      <p class="entry-copy">Projects, evidence work, infrastructure, and experience live inside this room.</p>
+      <div class="entry-actions"><button class="lab-button primary" type="button" data-enter>Enter workspace <span aria-hidden="true">→</span></button><a class="lab-button" href="classic.html">Open classic portfolio</a></div>
+      <p class="control-copy">Drag to orbit · wheel to move closer · select an object</p>
+    </div></section>
+
+    <header class="lab-hud">
+      <a class="lab-brand" href="classic.html" aria-label="Tate Wilson classic portfolio"><strong>tw./</strong><span>Tate Wilson<small>Digital forensics · Cybersecurity</small></span></a>
+      <nav aria-label="Workspace utilities"><a href="assets/Tate_Wilson_Resume.pdf">Résumé ↗</a><a href="classic.html">Classic mode</a><button type="button" data-light-mode aria-pressed="false">Work lights</button><button type="button" data-help aria-expanded="false" aria-controls="help-panel">Controls</button></nav>
+    </header>
+
+    <aside class="help-panel" id="help-panel" hidden><p class="system-label">CONTROLS</p><dl><div><dt>Drag</dt><dd>Orbit the room</dd></div><div><dt>Wheel</dt><dd>Move closer or farther</dd></div><div><dt>Select</dt><dd>Inspect an object</dd></div><div><dt>Escape</dt><dd>Return to the room</dd></div></dl><p class="system-label scene-switch-label">ROOM SWITCHES</p><div class="scene-switches"><button type="button" data-scene-action="task-lamp" aria-pressed="true">Task lamp <span>On</span></button><button type="button" data-scene-action="shelf-lights" aria-pressed="true">Shelf lights <span>On</span></button><button type="button" data-scene-action="aquarium-lights" aria-pressed="true">Aquarium LEDs <span>On</span></button><button type="button" data-scene-action="screen-mode" aria-pressed="true">Monitor glow <span>On</span></button></div></aside>
+    <div class="workspace-status" aria-hidden="true"><span></span> DFIR WORKSPACE <b data-camera-status>OVERVIEW</b></div>
+    <div class="hover-label" data-hover-label hidden><span></span><strong></strong></div>
+
+    <nav class="scene-nav" id="scene-nav" tabindex="-1" aria-label="Workspace destinations">
+      <button type="button" id="projects" data-focus="projects" aria-label="Inspect workstation projects"><i>01</i><span>Workstation</span></button>
+      <button type="button" data-focus="forensics" aria-label="Inspect forensic evidence"><i>02</i><span>Evidence</span></button>
+      <button type="button" id="ccdc" data-focus="ccdc" aria-label="Inspect CCDC rack"><i>03</i><span>CCDC rack</span></button>
+      <button type="button" id="internship" data-focus="internship" aria-label="Inspect internship work"><i>04</i><span>Internship</span></button>
+      <button type="button" id="education" data-focus="education" aria-label="Inspect education notebook"><i>05</i><span>Education</span></button>
+      <button type="button" id="resume" data-focus="resume" aria-label="Inspect Security+ certificate and résumé"><i>06</i><span>Security+ and résumé</span></button>
+      <button type="button" data-focus="github" aria-label="Inspect GitHub terminal"><i>07</i><span>GitHub</span></button>
+      <button type="button" id="contact" data-focus="contact" aria-label="Inspect contact station"><i>08</i><span>Contact</span></button>
     </nav>
-  </header>
+    <span id="writeups" hidden></span>
 
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Richmond, Kentucky | EKU | Expected graduation December 2026</p>
-        <h1 id="hero-title">I build practical cybersecurity tools and readiness projects.</h1>
-        <p class="hero-text">
-          I am a Digital Forensics and Cybersecurity student at Eastern Kentucky University with hands-on experience in
-          incident response, vulnerability assessment, system hardening, access control, and digital evidence analysis.
-        </p>
-        <div class="hero-actions" aria-label="Primary links">
-          <a class="button primary" href="#projects">View Projects</a>
-          <a class="button secondary" href="assets/Tate_Wilson_Resume.pdf">Download Resume</a>
-          <a class="button secondary" href="https://github.com/TateWilson1" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="button secondary" href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-      </div>
+    <div class="explore-hint" aria-hidden="true">Drag to orbit <span>·</span> Wheel to dolly <span>·</span> Select equipment</div>
+    <aside class="content-overlay" data-content-overlay role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="panel-title">
+      <button class="panel-close" type="button" data-close-panel aria-label="Close inspection and return to workspace">×</button>
+      <div class="panel-scroll"><header class="panel-header"><p class="system-label" id="panel-kicker">INSPECTION FILE</p><p class="panel-index" id="panel-index">00 / 08</p><h2 id="panel-title">Workspace overview</h2><p id="panel-summary">Choose an object in the room to inspect Tate's work.</p></header><div class="panel-body" id="panel-body"></div></div>
+      <footer class="panel-footer"><span>ESC</span> Return to room <b data-panel-object>NO OBJECT SELECTED</b></footer>
+    </aside>
 
-      <aside class="profile-panel" aria-label="Profile summary">
-        <img src="https://avatars.githubusercontent.com/u/126493792?v=4" alt="Tate Wilson GitHub profile photo" class="profile-photo">
-        <div>
-          <p class="panel-label">Current Focus</p>
-          <h2>Digital forensics, GRC, and security tooling</h2>
-          <p>
-            Building practical security tooling and readiness documentation while working across Microsoft 365,
-            endpoint security, identity review, cyber maturity assessment, and SC-300 study.
-          </p>
-        </div>
-        <dl class="quick-stats">
-          <div>
-            <dt>Public Repos</dt>
-            <dd>7</dd>
-          </div>
-          <div>
-            <dt>CCDC</dt>
-            <dd>1st in KY</dd>
-          </div>
-          <div>
-            <dt>Degree</dt>
-            <dd>DF & Cybersecurity</dd>
-          </div>
-        </dl>
-      </aside>
-    </section>
-
-    <section class="section about-section" aria-labelledby="about-title">
-      <div class="section-heading">
-        <p class="eyebrow">About</p>
-        <h2 id="about-title">Security-minded, hands-on, and still learning fast.</h2>
-      </div>
-      <div class="about-grid">
-        <p>
-          My portfolio started as a place to show my work in Digital Forensics and Cybersecurity. It now reflects the kind of
-          work I want to keep doing: practical tools, security readiness artifacts, and projects that make technical risk easier
-          to understand.
-        </p>
-        <p>
-          I bring experience from an MSP cybersecurity internship, CCDC leadership, campus access-control work, and
-          resident advising. That mix has shaped how I communicate, troubleshoot, document issues, and stay steady
-          during operational incidents.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="career-direction" aria-labelledby="career-direction-title">
-      <div class="section-heading">
-        <p class="eyebrow">Career Direction</p>
-        <h2 id="career-direction-title">Looking for security work where documentation and defense both matter.</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-card">
-          <span class="project-type">Seeking</span>
-          <h3>Internship or entry-level cybersecurity roles</h3>
-          <p>Interested in SOC, GRC, digital forensics, vulnerability management, identity, and security operations opportunities.</p>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Current Study</span>
-          <h3>Microsoft SC-300</h3>
-          <p>Studying identity and access administration topics across Entra ID, authentication, authorization, app access, and governance.</p>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Working Style</span>
-          <h3>Evidence, communication, and steady follow-through</h3>
-          <p>I like work that turns messy security signals into clear findings, next steps, and repeatable defensive habits.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="projects" aria-labelledby="projects-title">
-      <div class="section-heading with-actions">
-        <div>
-          <p class="eyebrow">Public GitHub Work</p>
-          <h2 id="projects-title">Selected Public Projects</h2>
-        </div>
-        <div class="project-controls" aria-label="Project filters">
-          <button class="filter-button active" type="button" data-filter="all">All</button>
-          <button class="filter-button" type="button" data-filter="cybersecurity">Cybersecurity</button>
-          <button class="filter-button" type="button" data-filter="grc">GRC</button>
-          <button class="filter-button" type="button" data-filter="web">Web</button>
-        </div>
-      </div>
-
-      <div class="featured-project">
-        <div class="featured-copy">
-          <p class="project-kicker">Featured</p>
-          <h3>TabletopForge</h3>
-          <p>
-            An incident response tabletop exercise generator for small businesses, MSPs, IT teams, and cybersecurity students.
-            It produces scenario summaries, discussion questions, IRP gap-discovery prompts, executive summaries, and lessons-learned templates.
-          </p>
-          <div class="tag-row" aria-label="TabletopForge technologies">
-            <span>Next.js 15</span>
-            <span>TypeScript</span>
-            <span>Tailwind CSS</span>
-            <span>LocalStorage</span>
-          </div>
-          <a class="text-link" href="https://github.com/TateWilson1/TabletopForge" target="_blank" rel="noreferrer">Open repository</a>
-        </div>
-        <div class="terminal-preview" aria-label="TabletopForge feature snapshot">
-          <div class="terminal-bar"><span></span><span></span><span></span></div>
-          <pre><code>Scenario: Ransomware
-Audience: Leadership + IT
-Outputs:
-- Objectives
-- IRP gap questions
-- Facilitator notes
-- Executive summary</code></pre>
-        </div>
-      </div>
-
-      <div class="project-grid" id="project-grid">
-        <article class="project-card" data-category="grc cybersecurity">
-          <div class="card-topline">
-            <span class="project-type">GRC Tool</span>
-            <span class="project-status">Active</span>
-          </div>
-          <h3>TabletopForge</h3>
-          <p>Browser-based incident response tabletop exercise generator with downloadable Markdown reports and saved exercises.</p>
-          <ul class="proof-list">
-            <li><strong>Problem:</strong> Small teams need realistic tabletop prompts without starting from a blank page.</li>
-            <li><strong>Built:</strong> Scenario outputs for ransomware, BEC, insider threat, cloud misconfiguration, and vendor breach exercises.</li>
-            <li><strong>Next:</strong> Expand reporting, export options, and scenario depth as the project matures.</li>
-          </ul>
-          <div class="tag-row"><span>Incident Response</span><span>GRC</span><span>Next.js</span></div>
-          <a href="case-tabletopforge.html">Read case study</a>
-        </article>
-
-        <article class="project-card" data-category="cybersecurity">
-          <div class="card-topline">
-            <span class="project-type">Security Scanner</span>
-            <span class="project-status">Python</span>
-          </div>
-          <h3>Vulnerability Scanner</h3>
-          <p>Windows 10 scanner that checks ports, Windows updates, running services, and firewall status for educational assessment.</p>
-          <ul class="proof-list">
-            <li><strong>Problem:</strong> Basic endpoint posture evidence is often scattered across separate commands.</li>
-            <li><strong>Built:</strong> Multithreaded port scanning plus PowerShell and netsh posture checks.</li>
-            <li><strong>Learned:</strong> Repeatable evidence collection makes even small tools more useful.</li>
-          </ul>
-          <div class="project-image-strip">
-            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Port%20Scanning%20and%20Some%20of%20Services%20Running.PNG" alt="Vulnerability scanner port and services output">
-            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Firewall%20Rules.PNG" alt="Vulnerability scanner firewall rules output">
-          </div>
-          <div class="tag-row"><span>Python</span><span>PowerShell</span><span>Windows 10</span></div>
-          <a href="case-vulnerability-scanner.html">Read case study</a>
-        </article>
-
-        <article class="project-card" data-category="cybersecurity">
-          <div class="card-topline">
-            <span class="project-type">Password Tool</span>
-            <span class="project-status">Python GUI</span>
-          </div>
-          <h3>Password Strength GUI</h3>
-          <p>Tkinter password checker with real-time scoring, color-coded strength feedback, and guidance for stronger passwords.</p>
-          <ul class="proof-list">
-            <li><strong>Problem:</strong> Password guidance is easier to understand when users get immediate feedback.</li>
-            <li><strong>Built:</strong> Real-time scoring across length, case, digits, and special characters.</li>
-            <li><strong>Improve next:</strong> Add passphrase guidance and clearer policy examples.</li>
-          </ul>
-          <div class="project-image-strip single">
-            <img src="https://raw.githubusercontent.com/TateWilson1/TateWilson1.github.io/main/images/Strong%20Password.PNG" alt="Password strength checker showing a strong password result">
-          </div>
-          <div class="tag-row"><span>Tkinter</span><span>Password Policy</span><span>UX</span></div>
-          <a href="https://github.com/TateWilson1/testing_password_strength_with_GUI" target="_blank" rel="noreferrer">View on GitHub</a>
-        </article>
-
-        <article class="project-card" data-category="web">
-          <div class="card-topline">
-            <span class="project-type">Portfolio</span>
-            <span class="project-status">GitHub Pages</span>
-          </div>
-          <h3>TateWilson1.github.io</h3>
-          <p>The GitHub Pages portfolio that showcases cybersecurity projects, resume details, contact links, and professional goals.</p>
-          <div class="tag-row"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
-          <a href="https://github.com/TateWilson1/TateWilson1.github.io" target="_blank" rel="noreferrer">View on GitHub</a>
-        </article>
-
-        <article class="project-card" data-category="grc cybersecurity">
-          <div class="card-topline">
-            <span class="project-type">GRC Repository</span>
-            <span class="project-status">Early</span>
-          </div>
-          <h3>GRC-Governance-Risk-and-Compliance</h3>
-          <p>Structured cybersecurity risk assessment work focused on simulated business gaps, vulnerabilities, and HIPAA, FERPA, and PCI DSS compliance risks.</p>
-          <ul class="proof-list">
-            <li><strong>Problem:</strong> Technical findings need business context before they can drive priorities.</li>
-            <li><strong>Built:</strong> Risk register examples, executive summary language, and control-mapping notes.</li>
-            <li><strong>Learned:</strong> Good GRC writing connects evidence to ownership and remediation.</li>
-          </ul>
-          <div class="tag-row"><span>Governance</span><span>Risk Assessment</span><span>Compliance</span></div>
-          <a href="case-grc-risk-assessment.html">Read case study</a>
-        </article>
-
-        <article class="project-card" data-category="cybersecurity">
-          <div class="card-topline">
-            <span class="project-type">Security Toolkit</span>
-            <span class="project-status">Building</span>
-          </div>
-          <h3>Security Toolkit</h3>
-          <p>A consolidated home for small security scripts, lab notes, hardening checks, templates, and reusable assessment helpers.</p>
-          <ul class="proof-list">
-            <li>Includes starter areas for Windows, Linux, M365 and Entra review, GRC templates, and scripts.</li>
-            <li>Current items include hardening checklists, access review notes, risk register structure, and incident note templates.</li>
-          </ul>
-          <div class="tag-row"><span>Scripts</span><span>Lab Notes</span><span>Security Checks</span></div>
-          <a href="https://github.com/TateWilson1/Security-Toolkit" target="_blank" rel="noreferrer">View on GitHub</a>
-        </article>
-
-        <article class="project-card" data-category="web">
-          <div class="card-topline">
-            <span class="project-type">Profile</span>
-            <span class="project-status">README</span>
-          </div>
-          <h3>TateWilson1</h3>
-          <p>The GitHub profile README covering cybersecurity interests, skills, CCDC leadership, and selected projects.</p>
-          <div class="tag-row"><span>Profile</span><span>Markdown</span><span>GitHub</span></div>
-          <a href="https://github.com/TateWilson1/TateWilson1" target="_blank" rel="noreferrer">View on GitHub</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="case-studies" aria-labelledby="case-studies-title">
-      <div class="section-heading with-actions">
-        <div>
-          <p class="eyebrow">Portfolio Proof</p>
-          <h2 id="case-studies-title">Case Studies</h2>
-        </div>
-        <a class="button secondary" href="projects.html">Project archive</a>
-      </div>
-      <div class="case-grid">
-        <article class="case-card">
-          <span class="project-type">Incident Response Readiness</span>
-          <h3>TabletopForge</h3>
-          <p>How I built a tabletop exercise generator that turns security scenarios into practical discussion guides and executive-ready artifacts.</p>
-          <a href="case-tabletopforge.html">Open case study</a>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Governance, Risk, Compliance</span>
-          <h3>GRC Risk Assessment</h3>
-          <p>A structured risk assessment project focused on identifying gaps, mapping risks, and writing remediation-focused security documentation.</p>
-          <a href="case-grc-risk-assessment.html">Open case study</a>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Security Automation</span>
-          <h3>Windows Vulnerability Scanner</h3>
-          <p>A Python scanner that collects local posture signals from ports, services, updates, and firewall configuration.</p>
-          <a href="case-vulnerability-scanner.html">Open case study</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="process" aria-labelledby="process-title">
-      <div class="section-heading">
-        <p class="eyebrow">Proof Of Process</p>
-        <h2 id="process-title">How I explain my work.</h2>
-      </div>
-      <div class="case-grid">
-        <article class="case-card">
-          <span class="project-type">Frame</span>
-          <h3>Problem</h3>
-          <p>I start by naming the user, system, risk, or operational gap the project is meant to address.</p>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Build</span>
-          <h3>Evidence</h3>
-          <p>I document what was built, what data it collects or produces, and what assumptions limit the result.</p>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Improve</span>
-          <h3>Next step</h3>
-          <p>I close with what I learned and what I would improve next, so the work shows growth instead of just output.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split-section" id="lab" aria-labelledby="lab-title">
-      <div class="section-heading">
-        <p class="eyebrow">Cyber Lab</p>
-        <h2 id="lab-title">Hands-on environments I can talk through.</h2>
-      </div>
-      <div class="timeline lab-stack">
-        <article>
-          <span>Enterprise Defense</span>
-          <h3>CCDC Practice Environment</h3>
-          <p>Windows Server, Active Directory, Linux services, firewall defense, persistence detection, and incident response practice.</p>
-        </article>
-        <article>
-          <span>Identity & Cloud</span>
-          <h3>Microsoft 365 / Entra Review</h3>
-          <p>Access reviews, enterprise app and SSO cataloging, stale access identification, and tenant hardening checks.</p>
-        </article>
-        <article>
-          <span>Virtualization</span>
-          <h3>Proxmox Labs</h3>
-          <p>Virtualized Windows and Linux systems used for competition preparation, service defense, and repeatable practice.</p>
-        </article>
-      </div>
-      <div class="skill-panel current-panel">
-        <h3>Currently Working On</h3>
-        <ul class="proof-list">
-          <li>Expanding TabletopForge with stronger reporting and future PDF export.</li>
-          <li>Building out GRC artifacts that connect findings to CIS Controls, NIST AI RMF, and compliance requirements.</li>
-          <li>Studying for Microsoft SC-300 to strengthen identity and access administration knowledge.</li>
-          <li>Improving public project documentation so each repo shows purpose, setup, screenshots, and lessons learned.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="writeups" aria-labelledby="writeups-title">
-      <div class="section-heading with-actions">
-        <div>
-          <p class="eyebrow">Security Notes</p>
-          <h2 id="writeups-title">Write-ups</h2>
-        </div>
-        <a class="button secondary" href="https://tatewilson2022.wixsite.com/vulnerable-write-ups/blog" target="_blank" rel="noreferrer">Older Blog</a>
-      </div>
-      <div class="case-grid">
-        <article class="case-card">
-          <span class="project-type">Competition Defense</span>
-          <h3>CCDC Lessons</h3>
-          <p>What CCDC practice teaches about service ownership, persistence detection, incident response, and team communication.</p>
-          <a href="writeup-ccdc-lessons.html">Read write-up</a>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Identity Review</span>
-          <h3>M365 / Entra Review</h3>
-          <p>A practical overview of access reviews, stale accounts, app consent, SSO cataloging, and tenant hardening checks.</p>
-          <a href="writeup-m365-entra-review.html">Read write-up</a>
-        </article>
-        <article class="case-card">
-          <span class="project-type">Risk Thinking</span>
-          <h3>GRC Risk Lessons</h3>
-          <p>How to turn technical findings into risk language that supports prioritization and remediation planning.</p>
-          <a href="writeup-grc-risk-lessons.html">Read write-up</a>
-        </article>
-      </div>
-    </section>
-
-    <section class="section split-section" id="experience" aria-labelledby="experience-title">
-      <div class="section-heading">
-        <p class="eyebrow">Background</p>
-        <h2 id="experience-title">Education, skills, and experience</h2>
-      </div>
-      <div class="timeline">
-        <article>
-          <span>Education</span>
-          <h3>Eastern Kentucky University</h3>
-          <p>BS in Digital Forensics & Cybersecurity with a Cybersecurity and Intelligence minor, GPA 3.60, expected December 2026.</p>
-        </article>
-        <article>
-          <span>Achievement</span>
-          <h3>Collegiate Cyber Defense Competition</h3>
-          <p>President and team captain leading weekly practice for 15+ members across Windows, Linux, persistence detection, firewall defense, and incident response. Contributed to a 1st-place Kentucky finish.</p>
-        </article>
-        <article>
-          <span>Experience</span>
-          <h3>Cybersecurity Intern</h3>
-          <p>Pelycon Technologies MSP internship supporting client tickets, RMM workflows, Microsoft 365 administration, endpoint security, security operations tooling, and cyber maturity deliverables.</p>
-        </article>
-        <article>
-          <span>Experience</span>
-          <h3>Locksmith Apprentice</h3>
-          <p>Campus physical security work across 50+ buildings, including key management, lock maintenance, access issues, work orders, and key control records.</p>
-        </article>
-        <article>
-          <span>Experience</span>
-          <h3>Resident Advisor</h3>
-          <p>Supporting up to 800+ student residents, responding to incidents, resolving conflicts, documenting policy concerns, and operating access systems including CSGold and Lenel.</p>
-        </article>
-      </div>
-      <div class="skill-panel">
-        <h3>Skills & Interests</h3>
-        <div class="skill-list">
-          <span>Vulnerability Assessment</span>
-          <span>Incident Response</span>
-          <span>Digital Forensics</span>
-          <span>System Hardening</span>
-          <span>Windows Server</span>
-          <span>Linux / Ubuntu</span>
-          <span>Active Directory</span>
-          <span>Microsoft 365</span>
-          <span>Proxmox</span>
-          <span>Access Control</span>
-          <span>Database Design</span>
-          <span>Application Development</span>
-          <span>Configuration Management</span>
-          <span>Communication</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section resume-section" id="resume" aria-labelledby="resume-title">
-      <div>
-        <p class="eyebrow">Resume Snapshot</p>
-        <h2 id="resume-title">Focused on cybersecurity operations, GRC, identity review, and digital forensics.</h2>
-        <div class="resume-actions">
-          <a class="button primary" href="assets/Tate_Wilson_Resume.pdf">Download PDF Resume</a>
-        </div>
-      </div>
-      <div class="resume-cards">
-        <article>
-          <h3>Certifications</h3>
-          <p>ISC2 Certified in Cybersecurity, CompTIA Security+, and currently studying for Microsoft SC-300.</p>
-        </article>
-        <article>
-          <h3>GRC Project</h3>
-          <p>Produced risk assessment documentation with scored findings, impact analysis, remediation recommendations, and control mapping.</p>
-        </article>
-        <article>
-          <h3>Working Style</h3>
-          <p>Adaptable, communicative, documentation-focused, and comfortable working through practical security and operations problems.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-      <div>
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Let's talk security, internships, or project feedback.</h2>
-        <p>Email: <a href="mailto:tate.wilson2022@gmail.com">tate.wilson2022@gmail.com</a></p>
-      </div>
-      <form class="contact-form" action="https://formspree.io/f/myzyzegb" method="POST">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <button class="button primary" type="submit">Send Message</button>
-      </form>
-    </section>
+    <div class="mobile-fallback"><div class="mobile-poster"><img src="assets/workstation-poster.svg" width="960" height="780" alt="Tate's workstation with project monitor, notebook, evidence drive, and CCDC rack."></div><div class="mobile-sheet"><p class="system-label">MOBILE WORKSPACE</p><h2>Tate Wilson</h2><p>Digital Forensics &amp; Cybersecurity at Eastern Kentucky University.</p><nav aria-label="Mobile portfolio destinations"><a href="case-tabletopforge.html">Projects <span>→</span></a><a href="writeup-m365-entra-review.html">Experience <span>→</span></a><a href="writeup-ccdc-lessons.html">CCDC <span>→</span></a><a href="assets/Tate_Wilson_Resume.pdf">Résumé <span>↗</span></a><a href="mailto:tate.wilson2022@gmail.com">Contact <span>↗</span></a><a href="classic.html">Complete classic portfolio <span>→</span></a></nav></div></div>
   </main>
-
-  <footer class="site-footer">
-    <p>&copy; <span id="year">2026</span> Tate Wilson</p>
-    <div>
-      <a href="https://github.com/TateWilson1" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://tatewilson2022.wixsite.com/vulnerable-write-ups/blog" target="_blank" rel="noreferrer">Write-ups</a>
-      <a href="https://www.linkedin.com/in/tate-wilson-649004320/" target="_blank" rel="noreferrer">LinkedIn</a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
