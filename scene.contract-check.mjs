@@ -39,9 +39,12 @@ const pedestalFan=byName('Oscillating RGB pedestal fan'),pedestalBox=new T.Box3(
 assert.ok(pedestalFan?.userData.action==='pedestal-fan','The room includes a controllable RGB pedestal fan');
 assert.ok(!pedestalBox.intersectsBox(rackBox)&&!pedestalBox.intersectsBox(libraryBox)&&!pedestalBox.intersectsBox(aquariumBox),'Pedestal fan occupies the clear gap between rack, library, and aquarium');
 const fanHead=byName('Pedestal fan oscillating head');assert.ok(Math.abs(fanHead.userData.arc-Math.PI/4)<.001,'Pedestal fan sweeps through a 90 degree arc');
+const desktopPc=byName('Glass-sided RGB desktop computer'),pcBox=new T.Box3().setFromObject(desktopPc),desktopBox=new T.Box3().setFromObject(byName('Ash veneer desktop'));
+assert.ok(pcBox.max.y<desktopBox.min.y&&pcBox.max.x<rackBox.min.x&&!pcBox.intersectsBox(rackBox),'Desktop computer fits beneath the desk with clearance before the server rack');
 assert.ok(byName('Roomba charging dock'),'The former plant location now has a purposeful charging dock');
 assert.ok(byName('Lounge side table')?.userData.action==='lava-lamp','The lava lamp has a working scene control');
-for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','pedestal-fan','fan-rgb','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
+for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','pedestal-fan','fan-rgb','pc-rgb','network-led','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
+let networkLeds=0,pcFans=0;model.traverse(object=>{if(object.userData.ambient==='network-led')networkLeds++;if(object.name==='PC intake fan')pcFans++;});assert.equal(networkLeds,16,'Rack exposes activity lights for both network rows');assert.equal(pcFans,3,'Desktop computer includes three recognizable intake fans');
 let aquariumFish=0;model.traverse(object=>{if(object.userData.ambient==='aquarium-fish')aquariumFish++;});assert.equal(aquariumFish,3,'Aquarium contains three animated fish');
 let catLegs=0;model.traverse(object=>{if(object.userData.ambient==='lab-cat-leg')catLegs++;});assert.equal(catLegs,4,'Lab cat has four independently animated legs');
 let aquariumLeds=0;byName('Living planted aquarium').traverse(object=>{if(object.name.includes('RGB accent strip / aquarium'))aquariumLeds++;});assert.equal(aquariumLeds,5,'Aquarium has a complete five-part LED treatment');
@@ -74,4 +77,5 @@ assert.ok(runtime.includes("data.workspaceState")||runtime.includes("dataset.wor
 assert.ok(runtime.includes("history.pushState")&&runtime.includes("addEventListener('popstate'"),'Spatial states are addressable and browser-history aware');
 assert.ok(runtime.includes('monitorWallpapers.forEach'),'The main monitor updates its animated wallpaper texture');
 assert.ok(runtime.includes("wallpaper.kind==='aurora'"),'The internship laptop has a distinct animated aurora wallpaper');
+assert.ok(runtime.includes('networkLeds.forEach'),'Rack networking lights blink independently');
 console.log(`PASS: ${meshes} valid meshes, eight real destinations, GLB structure/buffers, non-home guard`);

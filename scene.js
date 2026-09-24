@@ -24,7 +24,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
   },4000);
   let renderer;
   try {
-    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.7')]);
+    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.8')]);
     const forcedQuality=new URLSearchParams(location.search).get('quality');
     const lowPower=forcedQuality==='low'||forcedQuality!=='high'&&((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4));
     document.body.dataset.renderProfile=lowPower?'reduced':'full';
@@ -64,6 +64,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     const dfirNeonLight=new T.PointLight(0x55eaff,7.2,4.6,2.05);dfirNeonLight.position.set(-5.35,3.55,-2.18);scene.add(dfirNeonLight);
     const shieldNeonLight=new T.PointLight(0xff4f9d,8.2,5,2.05);shieldNeonLight.position.set(4.42,3.48,-2.05);scene.add(shieldNeonLight);
     const aquariumLight=new T.PointLight(0x65d9ee,9.6,4.4,2.0);aquariumLight.position.set(6.02,2.5,2.2);scene.add(aquariumLight);
+    const pcLight=new T.PointLight(0xa85cff,2.2,2.35,2.15);pcLight.position.set(2.3,1.0,.05);scene.add(pcLight);
     const dockBeaconLight=new T.PointLight(0x46d9ff,1.5,1.8,2.2);dockBeaconLight.position.set(-2.77,.78,1.34);scene.add(dockBeaconLight);
     const lavaLight=new T.PointLight(0xff4f9d,6.5,2.9,2.0);lavaLight.position.set(-6.22,1.12,4.78);scene.add(lavaLight);
     let workLights=false;
@@ -87,7 +88,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       renderer.setRenderTarget(null);renderer.clear();renderer.render(scene,camera);renderer.autoClear=false;postQuad.material=compositeMaterial;renderer.render(postScene,postCamera);renderer.autoClear=true;
     };
 
-    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],pedestalFans=[],archiveReels=[],archiveNeedles=[],lavaBubbles=[],lavaMeshes=[],aquariumWaters=[],dockLights=[],dockBeacons=[],monitorWallpapers=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],fanRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
+    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],pedestalFans=[],archiveReels=[],archiveNeedles=[],lavaBubbles=[],lavaMeshes=[],aquariumWaters=[],dockLights=[],dockBeacons=[],networkLeds=[],pcRgbMeshes=[],monitorWallpapers=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],fanRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
     const targetForObject=object=>{let current=object;while(current){if(current.userData.target)return current;current=current.parent;}return null;};
     const interactionForObject=object=>{let current=object;while(current){if(current.userData.action||current.userData.target)return current;current=current.parent;}return null;};
     const hasAncestor=(object,name)=>{let current=object;while(current){if(current.name===name)return true;current=current.parent;}return false;};
@@ -111,6 +112,8 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(object.userData.ambient==='aquarium-water')aquariumWaters.push(object);
       if(object.userData.ambient==='dock-light')dockLights.push(object);
       if(object.userData.ambient==='dock-beacon')dockBeacons.push(object);
+      if(object.userData.ambient==='network-led')networkLeds.push(object);
+      if(object.userData.ambient==='pc-rgb')pcRgbMeshes.push(object);
       if(object.userData.wallpaper)monitorWallpapers.push(object);
       if(!object.isMesh)return;
       const targetRoot=targetForObject(object);
@@ -275,6 +278,8 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
         aquariumWaters.forEach(surface=>{surface.position.y=surface.userData.baseY+Math.sin(time*.0012)*.006;surface.rotation.z=Math.sin(time*.0008)*.004;});
         dockLights.forEach(light=>{light.material.emissiveIntensity=.25+(Math.sin(time*.0025+light.userData.phase)+1)*.7;});
         dockBeacons.forEach(beacon=>{beacon.material.emissiveIntensity=1.2+(Math.sin(time*.0022)+1)*1.1;});dockBeaconLight.intensity=1.15+(Math.sin(time*.0022)+1)*.35;
+        networkLeds.forEach(led=>{const signal=Math.sin(time*led.userData.speed+led.userData.phase)+Math.sin(time*led.userData.speed*2.37+led.userData.phase*1.7)*.44;led.material.emissiveIntensity=signal>.18?2.6:.08;});
+        pcRgbMeshes.forEach((mesh,index)=>{mesh.material.emissiveIntensity=2+(Math.sin(time*.0013+mesh.userData.phase+index*.35)+1)*.55;});pcLight.intensity=2.05+Math.sin(time*.00115)*.22;
         monitorWallpapers.forEach(display=>{
           const wallpaper=display.userData.wallpaper;if(time-wallpaper.lastFrame<80||wallpaper.kind!=='aurora'&&!wallpaper.image)return;wallpaper.lastFrame=time;
           const {canvas,context,texture}=wallpaper;context.clearRect(0,0,canvas.width,canvas.height);

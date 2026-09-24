@@ -350,7 +350,9 @@ export function buildWorkstation(T) {
       round(.069,.055,.011,.004,x,y,.482,'aluminum',rack,'RJ45 socket rim');
       box(.052,.037,.012,x,y,.491,'port',rack,'RJ45 port');
       box(.039,.007,.012,x,y-.026,.492,'aluminum',rack,'Port shield');
-      if(i===1&&j%3===0)ball(.009,x,y+.045,.489,'blue',rack);
+      const activity=ball(.008,x,y+.044,.495,(i+j)%4===0?'amber':'rgbGreen',rack);
+      activity.name='Rack network activity light';activity.material=activity.material.clone();activity.material.emissive.setHex((i+j)%4===0?0xffa34d:0x35dda0);activity.material.emissiveIntensity=3;
+      activity.userData.ambient='network-led';activity.userData.phase=i*1.7+j*.83;activity.userData.speed=.0024+((i*8+j)%5)*.00031;
     }
     if(i===2){
       for(let j=0;j<13;j++)box(.018,.13,.014,-.31+j*.039,y,.486,'steel',rack,'Server ventilation slot');
@@ -365,6 +367,29 @@ export function buildWorkstation(T) {
     const x=-.31+i*.1;
     cable([[x,1.39,.49],[x+.01,1.32,.58],[x+.14,1.21,.57],[x+.25,1.16,.48]],.009,i===1?'amber':'blue',rack,'Short patch lead');
   }
+  const desktopPc=group('Glass-sided RGB desktop computer');desktopPc.position.set(2.28,.06,-.38);desktopPc.rotation.y=-.18;
+  for(const y of [.04,1.38])round(.82,.07,.76,.025,0,y,0,'black',desktopPc,y<.5?'Desktop computer base':'Desktop computer top');
+  for(const x of [-.385,.385])for(const z of [-.345,.345])round(.05,1.31,.05,.014,x,.71,z,'steel',desktopPc,'Desktop computer frame post');
+  box(.76,1.25,.045,0,.71,-.36,'dark',desktopPc,'Desktop computer rear panel');
+  const pcFront=round(.7,1.22,.018,.018,0,.72,.38,'aquariumGlass',desktopPc,'Tempered glass front panel');pcFront.material=pcFront.material.clone();pcFront.material.opacity=.14;
+  const pcSide=round(.018,1.22,.66,.008,-.41,.72,0,'aquariumGlass',desktopPc,'Tempered glass side panel');pcSide.material=pcSide.material.clone();pcSide.material.opacity=.18;
+  round(.57,.67,.028,.018,-.05,.86,-.325,'steel',desktopPc,'Desktop computer motherboard');
+  for(let i=0;i<4;i++)box(.035,.28,.018,-.24+i*.07,.93,-.303,i%2?'blue':'black',desktopPc,'Memory module');
+  round(.56,.16,.28,.025,-.02,.69,-.12,'metal',desktopPc,'Desktop graphics card');box(.48,.025,.022,-.02,.73,.035,'neonPink',desktopPc,'RGB accent strip / graphics card');
+  round(.66,.24,.56,.025,0,.22,-.02,'dark',desktopPc,'Desktop power supply shroud');box(.52,.025,.025,0,.34,.27,'rgbViolet',desktopPc,'RGB accent strip / power supply');
+  const coolerRing=mesh(new T.TorusGeometry(.16,.022,8,32),'rgbViolet',-.08,1.09,-.285,desktopPc,'PC cooler RGB ring');coolerRing.material=coolerRing.material.clone();coolerRing.material.emissiveIntensity=2.35;coolerRing.userData.ambient='pc-rgb';coolerRing.userData.phase=1.4;
+  cable([[-.18,1.07,-.28],[-.3,1.14,-.1],[-.28,.9,.11]],.016,'steel',desktopPc,'Desktop cooling tube');
+  cable([[-.02,1.07,-.28],[-.12,1.18,-.08],[-.12,.9,.11]],.016,'steel',desktopPc,'Desktop cooling tube');
+  for(let i=0;i<3;i++){
+    const y=.43+i*.36,mat=['rgbGreen','rgbBlue','neonPink'][i];
+    const ring=mesh(new T.TorusGeometry(.145,.022,8,32),mat,.17,y,.405,desktopPc,'PC intake RGB ring');ring.material=ring.material.clone();ring.material.emissiveIntensity=2.35;ring.userData.ambient='pc-rgb';ring.userData.phase=i*.9;
+    const pcFan=group('PC intake fan',desktopPc);pcFan.position.set(.17,y,.407);pcFan.userData.ambient='fan';
+    for(let blade=0;blade<5;blade++){const a=blade*Math.PI*2/5;rod([0,0,0],[Math.cos(a)*.115,Math.sin(a)*.115,0],.018,'aluminum',pcFan);}
+    ball(.033,.17,y,.42,'black',desktopPc);
+  }
+  box(.025,1.16,.024,-.335,.72,.405,'rgbBlue',desktopPc,'RGB accent strip / desktop case edge');
+  for(const x of [-.28,.28])round(.16,.06,.16,.02,x,-.015,0,'rubber',desktopPc,'Desktop computer foot');
+  const pcPower=ball(.025,.27,1.435,.18,'rgbGreen',desktopPc);pcPower.name='Desktop computer power light';pcPower.material=pcPower.material.clone();pcPower.material.emissiveIntensity=2.35;pcPower.userData.ambient='pc-rgb';pcPower.userData.phase=2.8;
   const chair=group('Chair');chair.position.set(-.65,0,1.65);chair.rotation.y=-.42;
   cylinder(.055,.055,.77,0,.54,0,'aluminum',chair);
   cylinder(.11,.11,.13,0,.87,0,'rubber',chair);
