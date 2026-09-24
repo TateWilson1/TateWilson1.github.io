@@ -14,6 +14,7 @@ assert.ok(byName('Panoramic city window'),'The monitor wall includes the panoram
 assert.ok(byName('Living planted aquarium'),'The room includes the planted aquarium');
 assert.ok(!byName('Ethernet cable'),'The loose floor cable was removed');
 assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).intersectsBox(new T.Box3().setFromObject(byName('Right wall contact shelf'))),'Aquarium stays clear of the contact shelf');
+assert.ok(new T.Box3().setFromObject(byName('Right wall contact shelf')).max.x<new T.Box3().setFromObject(byName('Living planted aquarium')).min.x,'Contact station stays visibly beside the aquarium instead of behind it');
 assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).intersectsBox(new T.Box3().setFromObject(byName('Server rack / CCDC'))),'Aquarium stays clear of the rack');
 assert.ok(!new T.Box3().setFromObject(byName('Panoramic city window')).intersectsBox(new T.Box3().setFromObject(byName('Resume and certifications'))),'Window and credential frame stay physically separate');
 assert.ok(byName('Living planted aquarium').rotation.y<-.9,'Aquarium faces inward from the right wall');
@@ -22,6 +23,7 @@ assert.ok(Math.abs(byName('Forensic examination bench').rotation.y-Math.PI/2)<.0
 assert.ok(Math.abs(byName('Repository console stand').rotation.y-Math.PI/2)<.01,'Repository console faces inward from the left wall');
 assert.ok(byName('DFIR neon sign').scale.x<.8,'DFIR neon sign stays subordinate to the credential wall');
 let aquariumFish=0;model.traverse(object=>{if(object.userData.ambient==='aquarium-fish')aquariumFish++;});assert.equal(aquariumFish,3,'Aquarium contains three animated fish');
+let catLegs=0;model.traverse(object=>{if(object.userData.ambient==='lab-cat-leg')catLegs++;});assert.equal(catLegs,4,'Lab cat has four independently animated legs');
 let aquariumLeds=0;byName('Living planted aquarium').traverse(object=>{if(object.name.includes('RGB accent strip / aquarium'))aquariumLeds++;});assert.equal(aquariumLeds,5,'Aquarium has a complete five-part LED treatment');
 let meshes=0;const targets=new Set();
 model.traverse(object=>{

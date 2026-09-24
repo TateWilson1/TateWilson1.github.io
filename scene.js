@@ -9,7 +9,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     education:{index:'05',label:'FIELD NOTEBOOK',title:'Learning how systems leave evidence.',summary:'The notebook connects formal study with the habits behind Tate’s technical work.',target:[-4.7,.96,3.58],position:[-2.1,2.35,5.75],body:`<div class="fact"><span>DEGREE</span><strong>B.S. Digital Forensics &amp; Cybersecurity</strong></div><div class="fact"><span>SCHOOL</span><strong>Eastern Kentucky University</strong></div><div class="fact"><span>MINOR</span><strong>Cybersecurity &amp; Intelligence</strong></div><div class="fact"><span>EXPECTED</span><strong>December 2026</strong></div><div class="fact"><span>GPA</span><strong>3.60</strong></div><h3>Credentials</h3><p>CompTIA Security+ · ISC2 Certified in Cybersecurity</p>`},
     resume:{index:'06',label:'SECURITY+ CREDENTIAL',title:'Security+ and résumé.',summary:'The framed Security+ certificate anchors Tate’s credential wall and opens the fastest professional overview.',target:[-2.35,3.92,-3.02],position:[-.25,4.35,2.75],body:`<h3>Credential file</h3><div class="fact"><span>CERTIFICATION</span><strong>CompTIA Security+</strong></div><div class="fact"><span>FOCUS</span><strong>Digital forensics · cybersecurity</strong></div><div class="fact"><span>EDUCATION</span><strong>Eastern Kentucky University</strong></div><div class="fact"><span>EXPERIENCE</span><strong>Pelycon Technologies · CCDC leadership</strong></div><a class="panel-link" href="assets/Tate_Wilson_Resume.pdf"><span>Open résumé PDF</span><span>Open ↗</span></a><a class="panel-link" href="assets/Tate_Wilson_Resume.docx"><span>Download Word résumé</span><span>Download ↗</span></a>`},
     github:{index:'07',label:'REPOSITORY TERMINAL',title:'Public work and working notes.',summary:'The secondary terminal links to Tate’s repositories, tools, and source history.',target:[-6.5,1.72,-1.82],position:[-3.7,2.65,.45],body:`<h3>Repositories</h3><a class="panel-link" href="https://github.com/TateWilson1/TabletopForge"><span>TabletopForge</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/Security-Toolkit"><span>Security Toolkit</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/testing_password_strength_with_GUI"><span>Password Strength GUI</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>Complete GitHub profile</span><span>Visit ↗</span></a>`},
-    contact:{index:'08',label:'SECURE CONTACT',title:'Start a conversation.',summary:'The phone keeps contact simple: direct destinations, no simulated messaging interface.',target:[5.85,1.45,1.45],position:[3.15,2.65,4.95],body:`<h3>Contact</h3><a class="panel-link" href="mailto:tate.wilson2022@gmail.com"><span>Email Tate</span><span>Send ↗</span></a><a class="panel-link" href="https://www.linkedin.com/in/tate-wilson-649004320/"><span>LinkedIn</span><span>Visit ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>GitHub</span><span>Visit ↗</span></a><p>For a conventional overview with every destination in document order, use the classic portfolio.</p><a class="panel-link" href="classic.html"><span>Classic portfolio</span><span>Open →</span></a>`},
+    contact:{index:'08',label:'SECURE CONTACT',title:'Start a conversation.',summary:'The phone keeps contact simple: direct destinations, no simulated messaging interface.',target:[4.1,1.45,1.45],position:[2.25,2.65,4.8],body:`<h3>Contact</h3><a class="panel-link" href="mailto:tate.wilson2022@gmail.com"><span>Email Tate</span><span>Send ↗</span></a><a class="panel-link" href="https://www.linkedin.com/in/tate-wilson-649004320/"><span>LinkedIn</span><span>Visit ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>GitHub</span><span>Visit ↗</span></a><p>For a conventional overview with every destination in document order, use the classic portfolio.</p><a class="panel-link" href="classic.html"><span>Classic portfolio</span><span>Open →</span></a>`},
   };
 
   const loading = document.querySelector('[data-loading]');
@@ -24,7 +24,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
   },4000);
   let renderer;
   try {
-    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.2')]);
+    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.3')]);
     const forcedQuality=new URLSearchParams(location.search).get('quality');
     const lowPower=forcedQuality==='low'||forcedQuality!=='high'&&((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4));
     document.body.dataset.renderProfile=lowPower?'reduced':'full';
@@ -55,7 +55,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     const loungeLight=new T.PointLight(0xffa052,10.2,5.1,2.15);loungeLight.position.set(-6.45,1.55,3.55);scene.add(loungeLight);
     const rackLight=new T.SpotLight(0x94d8ed,14.8,5.8,.56,.76,1.7);rackLight.position.set(5.6,4.1,.3);rackLight.target.position.set(5.0,.9,-1.35);scene.add(rackLight,rackLight.target);
     const credentialLight=new T.SpotLight(0xffc779,10.5,5.2,.38,.86,1.9);credentialLight.position.set(-2.2,4.6,1.0);credentialLight.target.position.set(-2.9,3.5,-3);scene.add(credentialLight,credentialLight.target);
-    const contactLight=new T.PointLight(0x51d5ff,4.2,3.1,2.2);contactLight.position.set(5.4,1.7,.65);scene.add(contactLight);
+    const contactLight=new T.PointLight(0x51d5ff,4.2,3.1,2.2);contactLight.position.set(4.1,1.7,.72);scene.add(contactLight);
     const leftWallFill=new T.PointLight(0x5b7690,.24,4.8,2.25);leftWallFill.position.set(-5.9,2.6,3.9);scene.add(leftWallFill);
     const rightWallFill=new T.PointLight(0x587188,.22,4.8,2.25);rightWallFill.position.set(5.9,2.7,3.7);scene.add(rightWallFill);
     const rgbLeft=new T.PointLight(0x22baff,1.5,3.25,2.25);rgbLeft.position.set(-2.05,1.3,.58);scene.add(rgbLeft);
@@ -85,7 +85,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       renderer.setRenderTarget(null);renderer.clear();renderer.render(scene,camera);renderer.autoClear=false;postQuad.material=compositeMaterial;renderer.render(postScene,postCamera);renderer.autoClear=true;
     };
 
-    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
+    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
     const targetForObject=object=>{let current=object;while(current){if(current.userData.target)return current;current=current.parent;}return null;};
     const interactionForObject=object=>{let current=object;while(current){if(current.userData.action||current.userData.target)return current;current=current.parent;}return null;};
     const hasAncestor=(object,name)=>{let current=object;while(current){if(current.name===name)return true;current=current.parent;}return false;};
@@ -95,6 +95,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(object.userData.ambient==='roomba')roomba=object;
       if(object.userData.ambient==='lab-cat')labCat=object;
       if(object.userData.ambient==='lab-cat-tail')catTail=object;
+      if(object.userData.ambient==='lab-cat-leg')catLegs.push(object);
       if(object.userData.ambient==='aquarium-fish')aquariumFish.push(object);
       if(object.userData.ambient==='aquarium-tail')fishTails.push(object);
       if(object.userData.ambient==='aquarium-bubble')aquariumBubbles.push(object);
@@ -120,7 +121,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     markerContext.shadowBlur=9;markerContext.fillStyle='#62ded5';markerContext.beginPath();markerContext.arc(48,48,11,0,Math.PI*2);markerContext.fill();
     markerContext.shadowBlur=0;markerContext.fillStyle='#d7fffb';markerContext.beginPath();markerContext.arc(45,45,3,0,Math.PI*2);markerContext.fill();
     const markerTexture=new T.CanvasTexture(markerCanvas);markerTexture.colorSpace=T.SRGBColorSpace;
-    const markerPositions={projects:[-.43,3.72,-.62],forensics:[-5.16,1.82,.18],ccdc:[4.0,1.92,-.42],internship:[1.66,2.82,-.61],education:[-4.7,1.55,3.58],resume:[-2.95,4.72,-2.88],github:[-6.28,2.2,-1.82],contact:[5.85,1.92,1.52]};
+    const markerPositions={projects:[-.43,3.72,-.62],forensics:[-5.16,1.82,.18],ccdc:[4.0,1.92,-.42],internship:[1.66,2.82,-.61],education:[-4.7,1.55,3.58],resume:[-2.95,4.72,-2.88],github:[-6.28,2.2,-1.82],contact:[4.1,1.92,1.52]};
     const markerVectors=new Map(Object.entries(markerPositions).map(([key,position])=>[key,new T.Vector3(...position)]));
     const navButtons=new Map([...document.querySelectorAll('[data-focus]')].map(button=>[button.dataset.focus,button]));
     for(const [key,position] of Object.entries(markerPositions)){
@@ -253,7 +254,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
         markers.forEach((marker,index)=>{const pulse=1+Math.sin(time*.003+index*.7)*.09;marker.scale.setScalar(.32*pulse);marker.material.opacity=(workspace.hovered===`target:${marker.userData.target}` ? .95 : .72)+Math.sin(time*.003+index)*.08;});
         rgbMeshes.forEach(strip=>{const shelf=hasAncestor(strip,'Technical library'),aquarium=hasAncestor(strip,'Living planted aquarium');strip.material.emissiveIntensity=(shelf&&!actionState['shelf-lights'])||(aquarium&&!actionState['aquarium-lights'])?0:(aquarium?4.7:2.0)+(Math.sin(time*.0015)+1)*(aquarium ? .36 : .28);});
         if(roomba){const phase=time*.00018;roomba.position.x=Math.sin(phase)*2.15;roomba.position.z=3.55+Math.sin(phase*.67)*.55;roomba.rotation.y=Math.atan2(Math.cos(phase)*2.15,Math.cos(phase*.67)*.37);}
-        if(labCat){const phase=time*.000105,x=Math.sin(phase)*4.6;labCat.position.x=x;labCat.position.y=.02+Math.abs(Math.sin(phase*8))*.018;labCat.position.z=5.25+Math.sin(phase*.72)*.16;labCat.rotation.y=Math.cos(phase)>=0?-Math.PI/2:Math.PI/2;if(catTail)catTail.rotation.z=Math.sin(phase*5)*.18;}
+        if(labCat){const phase=time*.000105,gait=phase*8,x=Math.sin(phase)*3.9;labCat.position.x=x;labCat.position.y=.02+Math.abs(Math.sin(gait))*.018;labCat.position.z=5.25+Math.sin(phase*.72)*.16;labCat.rotation.y=Math.cos(phase)>=0?-Math.PI/2:Math.PI/2;catLegs.forEach(leg=>{leg.rotation.x=Math.sin(gait+leg.userData.gaitPhase)*.42;});if(catTail)catTail.rotation.z=Math.sin(phase*5)*.18;}
         aquariumFish.forEach((fish,index)=>{const phase=time*.00042*fish.userData.speed+fish.userData.phase,x=Math.sin(phase)*fish.userData.radius,z=Math.cos(phase*.83+index)*.24;fish.position.set(x,fish.userData.swimY+Math.sin(phase*1.7)*.075,z);fish.rotation.y=Math.cos(phase)>=0?0:Math.PI;fish.rotation.z=Math.sin(phase*1.35)*.035;});
         fishTails.forEach((tail,index)=>{tail.rotation.y=Math.PI/2+Math.sin(time*.008+index*1.8)*.42;});
         aquariumBubbles.forEach(bubble=>{bubble.position.y=((time*.00016+bubble.userData.phase)%1)*1.22;bubble.position.x=Math.sin(time*.0012+bubble.userData.phase)*.035;});

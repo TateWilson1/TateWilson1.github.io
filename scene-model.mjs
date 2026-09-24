@@ -11,7 +11,7 @@ export function buildWorkstation(T) {
     rgbRed:0xf05296, rgbGreen:0x4ee2a1, rgbBlue:0x44c8f5, rgbViolet:0xa46ee5,
     neonCyan:0x72f5ff, neonPink:0xff5aa8, fishGold:0xf3a449, fishBlue:0x3ebfe8, fishRed:0xef5968,
     aquariumGlass:0x72bad0, water:0x21667b, gravel:0x675b4d, driftwood:0x65412d,
-    fabric:0x64777a, rubber:0x172024, aluminum:0xa8b4b5, veneer:0xf3e7db, laminate:0xc6b69c,
+    fabric:0x64777a, catFur:0xa99688, rubber:0x172024, aluminum:0xa8b4b5, veneer:0xf3e7db, laminate:0xc6b69c,
     steel:0x506067, port:0x0d1519, label:0xe4e0d5, glass:0x14242c,
   };
   const materialFinish = {
@@ -22,7 +22,7 @@ export function buildWorkstation(T) {
     rgbRed:[.34,.04],rgbGreen:[.34,.04],rgbBlue:[.34,.04],rgbViolet:[.34,.04],
     neonCyan:[.18,.02],neonPink:[.18,.02],fishGold:[.36,.04],fishBlue:[.3,.04],fishRed:[.34,.03],
     aquariumGlass:[.08,.12],water:[.18,.02],gravel:[.9,.01],driftwood:[.84,.02],
-    fabric:[.94,0],rubber:[.88,0],aluminum:[.32,.78],veneer:[.62,0],laminate:[.54,.03],
+    fabric:[.94,0],catFur:[.96,0],rubber:[.88,0],aluminum:[.32,.78],veneer:[.62,0],laminate:[.54,.03],
     steel:[.48,.68],port:[.7,.1],label:[.91,0],glass:[.19,.08],
   };
   const materials = Object.fromEntries(Object.entries(palette).map(([name,color])=>{
@@ -32,6 +32,7 @@ export function buildWorkstation(T) {
   // The shell begins nearly black. Practical fixtures, not self-lit walls, reveal the room.
   materials.room.emissive.setHex(0x091015);materials.room.emissiveIntensity=.035;
   materials.screen.emissive.setHex(0x386079); materials.screen.emissiveIntensity=.9;
+  materials.catFur.emissive.setHex(0x3d2f28);materials.catFur.emissiveIntensity=.18;
   for(const [name,color] of [['rgbRed',0xff3d92],['rgbGreen',0x35dda0],['rgbBlue',0x28bfe8],['rgbViolet',0x9d52e6]]){
     materials[name].emissive.setHex(color);materials[name].emissiveIntensity=2.15;
   }
@@ -426,7 +427,7 @@ export function buildWorkstation(T) {
   round(.72,.55,.05,.025,0,0,0,'rubber',terminalScreen,'Repository display housing');
   round(.64,.47,.008,.012,0,0,.03,'glass',terminalScreen,'Repository glass');
   screen(.6,.43,0,0,.039,terminalScreen,'PUBLIC WORK',['TabletopForge','Security Toolkit','More on GitHub'],'GitHub activity display');
-  const phone=group('Contact phone',world,'contact');phone.position.set(5.85,1.42,1.45);phone.rotation.set(0,-.22,-.04);
+  const phone=group('Contact phone',world,'contact');phone.position.set(4.1,1.42,1.45);phone.rotation.set(0,-.22,-.04);
   round(.34,.055,.68,.055,0,0,0,'black',phone,'Phone');box(.27,.012,.55,0,.035,0,'screen',phone,'Contact screen');
   ball(.025,0,.045,.22,'blue',phone);for(let i=0;i<3;i++)box(.16-i*.025,.014,.01,0,.045,.08-i*.07,'cream',phone);
   for(const [x,z] of [[-2.95,-1.78],[-2.7,-1.92],[-2.45,-1.78]]){cylinder(.065,.065,.22,x,1.98,z,'cream',world);ball(.052,x,2.105,z,'blue',world);}
@@ -478,7 +479,7 @@ export function buildWorkstation(T) {
   for(let row=0;row<4;row++)for(let i=0;i<9;i++){const h=.31+(i%3)*.055;box(.13,h,.36,-.83+i*.2,.25+row*.56+h/2,.11,bookColors[(i+row*2)%bookColors.length],library,'Forensics and security book');}
   for(const [y,mat] of [[.68,'rgbBlue'],[1.8,'blue'],[2.36,'amber']])box(1.95,.018,.028,0,y,.31,mat,library,'RGB accent strip / library shelf');
   const shelfSwitch=round(.18,.12,.05,.018,.82,.48,.31,'metal',library,'Library light switch');shelfSwitch.userData.action='shelf-lights';
-  const commsShelf=group('Right wall contact shelf');commsShelf.position.set(5.85,.08,1.45);
+  const commsShelf=group('Right wall contact shelf');commsShelf.position.set(4.1,.08,1.45);
   round(1.4,.08,.82,.025,0,1.18,0,'desk',commsShelf,'Contact shelf');
   box(1.28,.022,.028,0,1.13,.4,'rgbBlue',commsShelf,'RGB accent strip / contact shelf');
   for(const x of [-.58,.58])rod([x,.08,-.28],[x,1.14,-.28],.025,'steel',commsShelf);
@@ -521,15 +522,18 @@ export function buildWorkstation(T) {
   const bumper=mesh(new T.TorusGeometry(.34,.025,8,32),'dark',0,.12,0,roomba,'Roomba bumper');bumper.rotation.x=Math.PI/2;
   cylinder(.065,.075,.06,.12,.22,-.08,'dark',roomba,20);ball(.025,-.14,.205,-.24,'rgbBlue',roomba);
   const cat=group('Lab cat');cat.position.set(0,.02,5.25);cat.userData.ambient='lab-cat';
-  const catBody=ball(.36,0,.37,0,'fabric',cat);catBody.scale.set(1.35,.8,.72);catBody.name='Cat body';
-  const catChest=ball(.24,0,.43,-.36,'fabric',cat);catChest.scale.set(.82,1.05,.9);catChest.name='Cat chest';
-  const catHead=ball(.24,0,.62,-.52,'fabric',cat);catHead.scale.set(1,.92,.9);catHead.name='Cat head';
+  const catBody=ball(.36,0,.37,0,'catFur',cat);catBody.scale.set(1.35,.8,.72);catBody.name='Cat body';
+  const catChest=ball(.24,0,.43,-.36,'catFur',cat);catChest.scale.set(.82,1.05,.9);catChest.name='Cat chest';
+  const catHead=ball(.24,0,.62,-.52,'catFur',cat);catHead.scale.set(1,.92,.9);catHead.name='Cat head';
   for(const x of [-.13,.13]){
-    const ear=mesh(cachedGeometry('cat-ear',()=>new T.ConeGeometry(.09,.19,4)),'fabric',x,.84,-.53,cat,'Cat ear');ear.rotation.y=Math.PI/4;
+    const ear=mesh(cachedGeometry('cat-ear',()=>new T.ConeGeometry(.09,.19,4)),'catFur',x,.84,-.53,cat,'Cat ear');ear.rotation.y=Math.PI/4;
   }
-  for(const x of [-.2,.2])for(const z of [-.18,.17])rod([x,.28,z],[x,.08,z+(z<0?-.08:.06)],.035,'fabric',cat);
+  for(const x of [-.2,.2])for(const z of [-.18,.17]){
+    const leg=group(`Cat ${z<0?'front':'rear'} ${x<0?'left':'right'} leg`,cat);leg.position.set(x,.3,z);leg.userData.ambient='lab-cat-leg';leg.userData.gaitPhase=(x<0)===(z<0)?0:Math.PI;
+    rod([0,0,0],[0,-.21,z<0?-.035:.025],.035,'catFur',leg);const paw=ball(.05,0,-.23,z<0?-.055:.04,'catFur',leg);paw.scale.set(.78,.52,1.2);
+  }
   ball(.025,-.08,.64,-.72,'amber',cat);ball(.025,.08,.64,-.72,'amber',cat);
   const catTail=group('Cat tail',cat);catTail.position.set(0,.42,.31);catTail.userData.ambient='lab-cat-tail';
-  cable([[0,0,0],[.16,.1,.18],[.32,.25,.23],[.25,.43,.12]],.04,'fabric',catTail,'Curved cat tail');
+  cable([[0,0,0],[.16,.1,.18],[.32,.25,.23],[.25,.43,.12]],.04,'catFur',catTail,'Curved cat tail');
   return world;
 }
