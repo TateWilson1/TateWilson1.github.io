@@ -283,7 +283,7 @@ export function buildWorkstation(T) {
   round(.27,.125,.4,.055,.77,1.93,.03,'rubber',keyboard,'Contoured mouse');
   box(.012,.007,.11,.77,2.0,-.04,'aluminum',keyboard,'Mouse scroll wheel');
   rod([.76,1.93,-.17],[.78,1.87,-.64],.012,'rubber',keyboard);
-  const drive=group('Forensic evidence drive',world,'forensics');drive.position.set(-5.16,1.38,.18);drive.rotation.y=Math.PI/2+.12;
+  const drive=group('Forensic evidence drive',world,'forensics');drive.position.set(-6.245,1.38,.02);drive.rotation.y=Math.PI/2+.04;
   round(1.02,.035,.72,.022,0,-.035,0,'rubber',drive,'Evidence handling mat');
   round(.81,.12,.53,.038,0,.04,0,'aluminum',drive,'2.5 inch drive body');
   round(.38,.012,.18,.012,.14,.108,-.07,'label',drive,'Evidence drive label');
@@ -296,6 +296,7 @@ export function buildWorkstation(T) {
   box(.09,.026,.035,.32,.027,-.275,'port',drive,'Power connector');
   cable([[.4,.025,-.18],[.56,.035,-.24],[.64,.03,-.4],[.58,.03,-.58]],.015,'rubber',drive,'Drive data lead');
   round(.24,.035,.08,.012,.36,.06,.34,'steel',drive,'USB bridge adapter');
+  const evidenceScan=box(.045,.018,.78,-.38,.145,0,'neonCyan',drive,'Evidence scanner sweep');evidenceScan.userData.ambient='evidence-scan';evidenceScan.userData.baseX=-.38;evidenceScan.userData.range=.76;
   const laptop=group('Internship laptop',world,'internship');laptop.position.set(1.65,1.93,-.68);laptop.rotation.y=-.08;
   round(1.18,.055,.77,.024,0,0,0,'aluminum',laptop,'Machined laptop base');
   round(1.05,.011,.44,.012,0,.034,-.06,'rubber',laptop,'Laptop keyboard well');
@@ -416,41 +417,36 @@ export function buildWorkstation(T) {
   box(1.9,1.5,.065,0,0,0,'metal',resume,'Security+ certificate frame');
   certificate(1.65,1.28,0,0,.04,resume);
   for(const [w,h,x,y] of [[1.76,.045,0,.68],[1.76,.045,0,-.68],[.045,1.36,-.88,0],[.045,1.36,.88,0]])box(w,h,.035,x,y,.065,'brass',resume,'Certificate inner trim');
-  const repositoryConsole=group('Repository console stand');repositoryConsole.position.set(-6.5,.06,-1.82);repositoryConsole.rotation.y=Math.PI/2;
-  round(1.15,.08,.72,.025,0,1.28,0,'metal',repositoryConsole,'Repository console shelf');
-  for(const x of [-.47,.47])rod([x,.05,-.25],[x,1.24,-.25],.026,'steel',repositoryConsole);
-  box(1.02,.42,.045,0,.82,-.28,'trim',repositoryConsole,'Repository cable panel');
-  const terminal=group('GitHub terminal',world,'github');terminal.position.set(-6.5,1.42,-1.82);terminal.rotation.y=Math.PI/2;
-  round(.72,.055,.53,.025,0,0,0,'steel',terminal,'Secondary terminal base');
-  for(let row=0;row<3;row++)for(let col=0;col<8;col++)box(.051,.008,.036,-.25+col*.073,.036,-.15+row*.06,'port',terminal,'Terminal key');
-  const terminalScreen=group('Repository screen',terminal);terminalScreen.position.set(0,.34,-.23);terminalScreen.rotation.x=-.16;
-  round(.72,.55,.05,.025,0,0,0,'rubber',terminalScreen,'Repository display housing');
-  round(.64,.47,.008,.012,0,0,.03,'glass',terminalScreen,'Repository glass');
-  screen(.6,.43,0,0,.039,terminalScreen,'PUBLIC WORK',['TabletopForge','Security Toolkit','More on GitHub'],'GitHub activity display');
-  const phone=group('Contact phone',world,'contact');phone.position.set(4.1,1.42,1.45);phone.rotation.set(0,-.22,-.04);
-  round(.34,.055,.68,.055,0,0,0,'black',phone,'Phone');box(.27,.012,.55,0,.035,0,'screen',phone,'Contact screen');
-  ball(.025,0,.045,.22,'blue',phone);for(let i=0;i<3;i++)box(.16-i*.025,.014,.01,0,.045,.08-i*.07,'cream',phone);
+  const terminal=group('Wall-mounted repository console',world,'github');terminal.position.set(-6.9,2.02,-1.38);terminal.rotation.y=Math.PI/2;
+  round(1.22,.96,.09,.045,0,0,0,'metal',terminal,'Repository wall enclosure');
+  round(1.08,.8,.025,.03,0,.05,.058,'rubber',terminal,'Repository display housing');
+  round(.98,.7,.012,.02,0,.05,.076,'glass',terminal,'Repository glass');
+  screen(.94,.66,0,.05,.084,terminal,'PUBLIC WORK',['TabletopForge','Security Toolkit','More on GitHub'],'GitHub activity display');
+  for(let i=0;i<4;i++)box(.58-i*.08,.014,.008,-.12+i*.03,.2-i*.12,.094,'blue',terminal,`Repository ${i+1} log line`);
+  round(1.02,.08,.38,.025,0,-.53,.2,'steel',terminal,'Fold-down terminal shelf');
+  for(let col=0;col<9;col++)box(.065,.012,.045,-.32+col*.08,-.475,.24,'port',terminal,'Terminal key');
+  for(const y of [-.34,.34])cylinder(.035,.035,.08,-.54,y,-.04,'aluminum',terminal,12);
+  const phone=group('Wall contact intercom',world,'contact');phone.position.set(6.88,2.08,.92);phone.rotation.y=-Math.PI/2;
+  round(.62,1.02,.11,.055,0,0,0,'metal',phone,'Contact wall cradle');
+  round(.46,.82,.08,.05,0,.01,.075,'black',phone,'Contact handset');
+  round(.31,.43,.018,.025,0,.05,.125,'screen',phone,'Contact screen');
+  for(let i=0;i<3;i++)box(.2-i*.025,.015,.008,0,.11-i*.09,.139,'cream',phone,'Contact destination line');
+  for(const y of [-.29,.36])for(const x of [-.1,0,.1])ball(.018,x,y,.139,'port',phone);
+  const contactPulse=mesh(new T.TorusGeometry(.245,.018,8,32),'neonCyan',0,.02,.145,phone,'Contact notification ring');contactPulse.userData.ambient='contact-pulse';
   for(const [x,z] of [[-2.95,-1.78],[-2.7,-1.92],[-2.45,-1.78]]){cylinder(.065,.065,.22,x,1.98,z,'cream',world);ball(.052,x,2.105,z,'blue',world);}
-  const forensicBench=group('Forensic examination bench');forensicBench.position.set(-5.75,.06,.18);forensicBench.rotation.y=Math.PI/2;
+  const forensicBench=group('Forensic examination bench');forensicBench.position.set(-6.34,.06,.02);forensicBench.rotation.y=Math.PI/2;
   round(2.45,.12,1.12,.035,0,1.18,0,'laminate',forensicBench,'Forensic side bench');
   box(2.28,.022,.03,0,1.105,.55,'rgbBlue',forensicBench,'RGB accent strip / forensic bench');
   for(const x of [-1.05,1.05])for(const z of [-.42,.42])rod([x,.05,z],[x,1.13,z],.035,'steel',forensicBench);
   box(2.2,.06,.12,0,.62,-.45,'steel',forensicBench,'Forensic bench brace');
-  const cart=group('Forensic hardware cart');cart.position.set(-4.38,.08,.25);cart.rotation.y=-.42;
-  for(const y of [.28,.72,1.16])round(1.02,.08,.62,.025,0,y,0,'metal',cart,'Equipment cart shelf');
-  for(const x of [-.43,.43])for(const z of [-.23,.23]){rod([x,.18,z],[x,1.25,z],.025,'metal',cart);ball(.07,x,.08,z,'dark',cart);}
-  for(let i=0;i<3;i++){
-    const x=-.32+i*.32;
-    round(.27,.16,.4,.025,x,.4,0,'steel',cart,'Evidence storage device');
-    round(.18,.008,.22,.008,x,.487,0,'label',cart,'Device ID label');
-    for(let j=0;j<3;j++)box(.12-j*.025,.005,.008,x,.493,-.07+j*.05,'port',cart,'Label detail');
-    ball(.013,x+.08,.43,.205,i===1?'amber':'blue',cart);
-  }
-  round(.72,.18,.42,.022,0,.84,0,'aluminum',cart,'Forensic write blocker');
-  for(let i=0;i<5;i++){
-    round(.068,.054,.012,.004,-.22+i*.11,.84,.216,'steel',cart,'Write blocker port rim');
-    box(.05,.036,.014,-.22+i*.11,.84,.225,'port',cart,'Write blocker port');
-  }
+  const evidenceLocker=group('Integrated evidence locker',forensicBench);evidenceLocker.position.set(.72,.08,-.36);
+  round(.74,.92,.42,.035,0,.48,0,'metal',evidenceLocker,'Evidence locker cabinet');
+  for(const y of [.24,.5,.76]){round(.64,.22,.035,.015,0,y,.225,'steel',evidenceLocker,'Evidence locker drawer');round(.18,.018,.025,.008,0,y,.25,'aluminum',evidenceLocker,'Evidence drawer pull');}
+  const evidenceRail=group('Wall evidence tool rail');evidenceRail.position.set(-6.94,2.52,.18);evidenceRail.rotation.y=Math.PI/2;
+  round(1.88,.82,.06,.025,0,0,0,'trim',evidenceRail,'Evidence rail backing');
+  for(let col=0;col<9;col++)for(let row=0;row<4;row++)ball(.011,-.78+col*.195,-.28+row*.18,.042,'aluminum',evidenceRail);
+  for(const x of [-.55,0,.55]){round(.34,.42,.035,.02,x,.02,.075,'label',evidenceRail,'Sealed evidence pouch');box(.22,.012,.008,x,.08,.099,'port',evidenceRail,'Evidence pouch label');}
+  rod([-.72,-.42,.09],[.72,-.42,.09],.025,'steel',evidenceRail);
   const deskFan=group('Desk fan');deskFan.position.set(2.8,1.98,-.82);
   cylinder(.18,.22,.04,0,0,0,'metal',deskFan);rod([0,.02,0],[0,.42,0],.025,'metal',deskFan);
   const fanHead=group('Desk fan rotor',deskFan);fanHead.position.set(0,.55,0);fanHead.userData.ambient='fan';
@@ -479,12 +475,6 @@ export function buildWorkstation(T) {
   for(let row=0;row<4;row++)for(let i=0;i<9;i++){const h=.31+(i%3)*.055;box(.13,h,.36,-.83+i*.2,.25+row*.56+h/2,.11,bookColors[(i+row*2)%bookColors.length],library,'Forensics and security book');}
   for(const [y,mat] of [[.68,'rgbBlue'],[1.8,'blue'],[2.36,'amber']])box(1.95,.018,.028,0,y,.31,mat,library,'RGB accent strip / library shelf');
   const shelfSwitch=round(.18,.12,.05,.018,.82,.48,.31,'metal',library,'Library light switch');shelfSwitch.userData.action='shelf-lights';
-  const commsShelf=group('Right wall contact shelf');commsShelf.position.set(4.1,.08,1.45);
-  round(1.4,.08,.82,.025,0,1.18,0,'desk',commsShelf,'Contact shelf');
-  box(1.28,.022,.028,0,1.13,.4,'rgbBlue',commsShelf,'RGB accent strip / contact shelf');
-  for(const x of [-.58,.58])rod([x,.08,-.28],[x,1.14,-.28],.025,'steel',commsShelf);
-  box(1.2,.52,.05,0,.77,-.35,'metal',commsShelf,'Wall communications panel');
-  for(let i=0;i<4;i++)ball(.018,-.42+i*.22,.82,-.31,i===0?'amber':'blue',commsShelf);
   const aquarium=group('Living planted aquarium');aquarium.position.set(5.85,.04,3.35);aquarium.rotation.y=-1.22;aquarium.userData.action='aquarium-lights';
   round(2.45,.9,1.02,.045,0,.47,0,'dark',aquarium,'Aquarium cabinet');
   for(const x of [-.58,.58])round(.98,.7,.045,.022,x,.48,.505,'veneer',aquarium,'Aquarium cabinet door');

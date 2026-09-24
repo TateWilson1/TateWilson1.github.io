@@ -5,7 +5,7 @@ import { buildWorkstation } from './scene-model.mjs';
 const model=buildWorkstation(T);
 model.updateMatrixWorld(true);
 const byName=name=>model.getObjectByName(name);
-for(const [a,b] of [['Server rack / CCDC','Technical library'],['Server rack / CCDC','Right wall contact shelf'],['Forensic examination bench','Forensic hardware cart'],['Forensic examination bench','Education notebook pedestal'],['Forensic examination bench','Repository console stand'],['Student lounge corner','Lounge side table']]){
+for(const [a,b] of [['Server rack / CCDC','Technical library'],['Server rack / CCDC','Wall contact intercom'],['Forensic examination bench','Education notebook pedestal'],['Forensic examination bench','Wall-mounted repository console'],['Student lounge corner','Lounge side table']]){
   assert.ok(!new T.Box3().setFromObject(byName(a)).intersectsBox(new T.Box3().setFromObject(byName(b))),`${a} and ${b} must not overlap`);
 }
 assert.ok(byName('Lab cat'),'The room includes a separate roaming ambient detail');
@@ -13,15 +13,24 @@ assert.ok(byName('DFIR neon sign')&&byName('Verified shield neon sign'),'The wal
 assert.ok(byName('Panoramic city window'),'The monitor wall includes the panoramic exterior view');
 assert.ok(byName('Living planted aquarium'),'The room includes the planted aquarium');
 assert.ok(!byName('Ethernet cable'),'The loose floor cable was removed');
-assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).intersectsBox(new T.Box3().setFromObject(byName('Right wall contact shelf'))),'Aquarium stays clear of the contact shelf');
-assert.ok(new T.Box3().setFromObject(byName('Right wall contact shelf')).max.x<new T.Box3().setFromObject(byName('Living planted aquarium')).min.x,'Contact station stays visibly beside the aquarium instead of behind it');
+assert.ok(!byName('Forensic hardware cart'),'The rolling forensic cart was removed');
+assert.ok(!byName('Repository console stand'),'The repository terminal no longer uses a floor stand');
+assert.ok(!byName('Right wall contact shelf'),'The contact phone no longer occupies a table in front of the rack');
+assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).intersectsBox(new T.Box3().setFromObject(byName('Wall contact intercom'))),'Aquarium stays clear of the wall intercom');
 assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).intersectsBox(new T.Box3().setFromObject(byName('Server rack / CCDC'))),'Aquarium stays clear of the rack');
 assert.ok(!new T.Box3().setFromObject(byName('Panoramic city window')).intersectsBox(new T.Box3().setFromObject(byName('Resume and certifications'))),'Window and credential frame stay physically separate');
 assert.ok(byName('Living planted aquarium').rotation.y<-.9,'Aquarium faces inward from the right wall');
 assert.ok(Math.abs(byName('Student lounge corner').rotation.y-Math.PI/2)<.01,'Sofa faces inward from the left wall');
 assert.ok(Math.abs(byName('Forensic examination bench').rotation.y-Math.PI/2)<.01,'Forensic bench faces inward from the left wall');
-assert.ok(Math.abs(byName('Repository console stand').rotation.y-Math.PI/2)<.01,'Repository console faces inward from the left wall');
+assert.ok(new T.Box3().setFromObject(byName('Forensic examination bench')).min.x< -6.88,'Forensic bench sits flush to the left wall');
+assert.ok(Math.abs(byName('Wall-mounted repository console').rotation.y-Math.PI/2)<.01,'Repository console faces inward from the left wall');
+assert.ok(new T.Box3().setFromObject(byName('Wall-mounted repository console')).min.x< -6.9,'Repository console is mounted to the left wall');
+assert.ok(Math.abs(byName('Wall contact intercom').rotation.y+Math.PI/2)<.01,'Contact intercom faces inward from the right wall');
+assert.ok(new T.Box3().setFromObject(byName('Wall contact intercom')).max.x>6.9,'Contact intercom is mounted to the right wall');
+const benchBox=new T.Box3().setFromObject(byName('Forensic examination bench')),driveBox=new T.Box3().setFromObject(byName('Forensic evidence drive'));
+assert.ok(driveBox.min.x>benchBox.min.x&&driveBox.max.x<benchBox.max.x&&driveBox.min.z>benchBox.min.z&&driveBox.max.z<benchBox.max.z,'Evidence drive stays safely inside the bench edges');
 assert.ok(byName('DFIR neon sign').scale.x<.8,'DFIR neon sign stays subordinate to the credential wall');
+for(const ambient of ['evidence-scan','contact-pulse']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
 let aquariumFish=0;model.traverse(object=>{if(object.userData.ambient==='aquarium-fish')aquariumFish++;});assert.equal(aquariumFish,3,'Aquarium contains three animated fish');
 let catLegs=0;model.traverse(object=>{if(object.userData.ambient==='lab-cat-leg')catLegs++;});assert.equal(catLegs,4,'Lab cat has four independently animated legs');
 let aquariumLeds=0;byName('Living planted aquarium').traverse(object=>{if(object.name.includes('RGB accent strip / aquarium'))aquariumLeds++;});assert.equal(aquariumLeds,5,'Aquarium has a complete five-part LED treatment');
