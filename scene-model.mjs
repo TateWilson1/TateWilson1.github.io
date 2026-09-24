@@ -258,10 +258,13 @@ export function buildWorkstation(T) {
   round(2.28,1.34,.016,.028,-.43,2.905,-.799,'glass',monitor,'Inset display glass');
   const mainDisplay=screen(2.19,1.24,-.43,2.91,-.787,monitor,'TATE / SELECTED WORK',['TabletopForge','NIST CFReDS Hacking Case','GRC Risk Assessment'],'Display');
   if(typeof document!=='undefined') {
+    mainDisplay.userData.wallpaper={lastFrame:0};
     new T.TextureLoader().load('assets/tabletopforge-home.png',texture=>{
-      texture.colorSpace=T.SRGBColorSpace;texture.anisotropy=4;texture.wrapS=texture.wrapT=T.ClampToEdgeWrapping;
-      texture.repeat.set(1,.906);texture.offset.set(0,.047);
-      mainDisplay.material.map=texture;mainDisplay.material.emissiveMap=texture;mainDisplay.material.emissive.setHex(0x527681);mainDisplay.material.emissiveIntensity=.38;mainDisplay.material.needsUpdate=true;
+      const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=640;const context=canvas.getContext('2d');
+      const wallpaperTexture=new T.CanvasTexture(canvas);wallpaperTexture.colorSpace=T.SRGBColorSpace;wallpaperTexture.anisotropy=4;
+      context.drawImage(texture.image,0,0,canvas.width,canvas.height);
+      mainDisplay.material.map=wallpaperTexture;mainDisplay.material.emissiveMap=wallpaperTexture;mainDisplay.material.emissive.setHex(0x527681);mainDisplay.material.emissiveIntensity=.38;mainDisplay.material.needsUpdate=true;
+      Object.assign(mainDisplay.userData.wallpaper,{canvas,context,texture:wallpaperTexture,image:texture.image});
     });
   }
   round(2.18,.03,.025,.012,-.43,2.24,-.78,'steel',monitor,'Lower aluminum bezel');
@@ -392,18 +395,21 @@ export function buildWorkstation(T) {
   const lampSwitch=ball(.045,-2.08,1.94,-.94,'amber',lamp);lampSwitch.name='Task lamp switch';lampSwitch.userData.action='task-lamp';
   const mug=group('Coffee mug');cylinder(.11,.1,.25,.78,2.00,-.65,'cream',mug);cylinder(.09,.09,.01,.78,2.132,-.65,'dark',mug);
   mesh(new T.TorusGeometry(.09,.028,8,16),'cream',.89,2.02,-.65,mug);
-  const plant=group('Desk-side plant');cylinder(.29,.22,.47,3.58,.26,1.42,'copper',plant);cylinder(.26,.26,.018,3.58,.505,1.42,'dark',plant);
-  for(let i=0;i<8;i++) {
-    const a=i*2.4;const x=3.58+Math.sin(a)*.35,z=1.42+Math.cos(a)*.32,y=.9+(i%3)*.21;
-    rod([3.58,.49,1.42],[x,y,z],.016,'green',plant);
-    const leaf=mesh(new T.SphereGeometry(.2,8,6),'leaf',x,y,z,plant);leaf.scale.set(.52,1.5,.7);leaf.rotation.z=Math.sin(a)*.7;leaf.userData.ambient='plant-leaf';leaf.userData.baseRotation=leaf.rotation.z;leaf.userData.phase=i*.83;
-  }
+  const towerFan=group('Oscillating RGB tower fan');towerFan.position.set(3.58,.04,1.42);towerFan.userData.action='tower-fan';
+  cylinder(.34,.42,.09,0,.08,0,'dark',towerFan,28);cylinder(.27,.3,.05,0,.15,0,'steel',towerFan,28);
+  const towerBody=group('Tower fan oscillating body',towerFan);towerBody.position.y=.2;towerBody.userData.ambient='tower-fan';
+  round(.46,1.55,.38,.12,0,.82,0,'metal',towerBody,'Tower fan housing');
+  round(.31,1.21,.025,.035,0,.83,.205,'black',towerBody,'Tower fan vent');
+  for(let i=0;i<15;i++)box(.25,.018,.012,0,.28+i*.073,.224,'steel',towerBody,'Tower fan grille slat');
+  for(const [x,mat] of [[-.205,'rgbBlue'],[.205,'rgbViolet']]){const strip=box(.022,1.28,.025,x,.83,.205,mat,towerBody,'RGB accent strip / tower fan');strip.userData.ambient='tower-rgb';}
+  const fanStatus=ball(.035,0,1.5,.205,'rgbGreen',towerBody);fanStatus.name='Tower fan status light';fanStatus.userData.ambient='tower-rgb';
   const chargingDock=group('Roomba charging dock');chargingDock.position.set(-2.77,.04,1.48);chargingDock.rotation.y=.12;
   round(.86,.1,.74,.035,0,.08,0,'dark',chargingDock,'Charging dock floor plate');
   round(.72,.72,.16,.045,0,.43,-.27,'metal',chargingDock,'Charging dock tower');
   round(.46,.24,.025,.025,0,.47,-.17,'black',chargingDock,'Charging status inset');
   for(let i=0;i<3;i++){const status=box(.09,.035,.012,-.13+i*.13,.48,-.151,i===2?'amber':'blue',chargingDock,'Charging level light');status.material=status.material.clone();status.userData.ambient='dock-light';status.userData.phase=i*.72;}
   for(const x of [-.18,.18])round(.18,.018,.12,.008,x,.145,.18,'brass',chargingDock,'Charging contact');
+  const dockBeacon=ball(.045,0,.73,-.16,'rgbBlue',chargingDock);dockBeacon.name='Roomba dock beacon';dockBeacon.material=dockBeacon.material.clone();dockBeacon.userData.ambient='dock-beacon';
   const shelf=group('Books');box(1.36,.085,.35,-2.45,1.28,-2.48,'desk',shelf);
   for(let i=0;i<6;i++)box(.11,.36+(i%3)*.06,.24,-2.98+i*.18,1.5,-2.43,['cream','amber','blue'][i%3],shelf);
   const network=group('Network equipment',architecture);
@@ -479,10 +485,11 @@ export function buildWorkstation(T) {
     round(.1,.13,.1,.02,x,.17,-.3,'steel',lounge,'Sofa foot');
     round(.1,.13,.1,.02,x,.17,.3,'steel',lounge,'Sofa foot');
   }
-  const sideTable=group('Lounge side table');sideTable.position.set(-6.22,.08,4.78);
+  const sideTable=group('Lounge side table');sideTable.position.set(-6.22,.08,4.78);sideTable.userData.action='lava-lamp';
   round(.74,.08,.65,.03,0,.56,0,'desk',sideTable);for(const x of [-.28,.28])for(const z of [-.23,.23])rod([x,.08,z],[x,.54,z],.025,'metal',sideTable);
-  cylinder(.14,.18,.03,0,.63,0,'metal',sideTable);const lava=cylinder(.09,.14,.4,0,.85,0,'amber',sideTable,18);lava.material=lava.material.clone();lava.material.transparent=true;lava.material.opacity=.52;lava.material.depthWrite=false;lava.material.emissive.setHex(0x8a3f28);lava.material.emissiveIntensity=.5;ball(.055,0,1.08,0,'brass',sideTable);
-  for(let i=0;i<4;i++){const bubble=ball(.026+(i%2)*.012,0,.68+i*.08,0,'cream',sideTable);bubble.name='Lava lamp bubble';bubble.userData.ambient='lava-bubble';bubble.userData.phase=i*.86;}
+  cylinder(.17,.21,.035,0,.63,0,'metal',sideTable);const lava=cylinder(.12,.18,.52,0,.91,0,'amber',sideTable,18);lava.material=lava.material.clone();lava.material.transparent=true;lava.material.opacity=.52;lava.material.depthWrite=false;lava.material.emissive.setHex(0xff6a24);lava.material.emissiveIntensity=2.3;lava.userData.ambient='lava-glass';ball(.065,0,1.2,0,'brass',sideTable);
+  const lavaLed=mesh(new T.TorusGeometry(.18,.032,8,28),'neonPink',0,.65,0,sideTable,'Lava lamp LED ring');lavaLed.rotation.x=Math.PI/2;lavaLed.material=lavaLed.material.clone();lavaLed.material.emissiveIntensity=6.4;lavaLed.userData.ambient='lava-led';
+  for(let i=0;i<4;i++){const bubble=ball(.026+(i%2)*.012,0,.68+i*.08,0,i%2?'amber':'cream',sideTable);bubble.name='Lava lamp bubble';bubble.material=bubble.material.clone();bubble.material.emissive.setHex(i%2?0xff6a24:0xffc36b);bubble.material.emissiveIntensity=1.8;bubble.userData.ambient='lava-bubble';bubble.userData.phase=i*.86;}
   const library=group('Technical library');library.position.set(5.85,.08,-2.55);library.rotation.y=-.16;library.userData.action='shelf-lights';
   box(2.05,2.75,.25,0,1.38,0,'dark',library,'Library back');
   for(const y of [.16,.72,1.28,1.84,2.4,2.72])box(2.18,.09,.52,0,y,.05,'desk',library,'Library shelf');
@@ -490,7 +497,7 @@ export function buildWorkstation(T) {
   for(let row=0;row<4;row++)for(let i=0;i<9;i++){const h=.31+(i%3)*.055;box(.13,h,.36,-.83+i*.2,.25+row*.56+h/2,.11,bookColors[(i+row*2)%bookColors.length],library,'Forensics and security book');}
   for(const [y,mat] of [[.68,'rgbBlue'],[1.8,'blue'],[2.36,'amber']])box(1.95,.018,.028,0,y,.31,mat,library,'RGB accent strip / library shelf');
   const shelfSwitch=round(.18,.12,.05,.018,.82,.48,.31,'metal',library,'Library light switch');shelfSwitch.userData.action='shelf-lights';
-  const aquarium=group('Living planted aquarium');aquarium.position.set(6.48,.04,3.62);aquarium.rotation.y=-Math.PI/2;aquarium.userData.action='aquarium-lights';
+  const aquarium=group('Living planted aquarium');aquarium.position.set(6.48,.04,2.2);aquarium.rotation.y=-Math.PI/2;aquarium.userData.action='aquarium-lights';
   round(2.45,.9,1.02,.045,0,.47,0,'dark',aquarium,'Aquarium cabinet');
   for(const x of [-.58,.58])round(.98,.7,.045,.022,x,.48,.505,'veneer',aquarium,'Aquarium cabinet door');
   for(const x of [-.78,0,.78])round(.24,.035,.035,.012,x,.48,.535,'brass',aquarium,'Cabinet handle');
@@ -522,11 +529,6 @@ export function buildWorkstation(T) {
   for(const x of [-1.18,1.18])for(const y of [1.04,2.42])for(const z of [-.44,.44])ball(.035,x,y,z,'steel',aquarium);
   const ceiling=group('Ceiling task lights');
   for(const [x,z] of [[-5.75,.35],[3.9,.2]]){rod([x,4.55,z],[x,3.8,z],.025,'black',ceiling);const shade=cylinder(.12,.34,.32,x,3.68,z,'cream',ceiling,24);shade.material.emissive.setHex(0x806849);shade.material.emissiveIntensity=.12;}
-  const ceilingFan=group('Ceiling fan');ceilingFan.position.set(.2,4.55,2.35);ceilingFan.userData.action='ceiling-fan';
-  rod([0,.08,0],[0,-.34,0],.045,'steel',ceilingFan);cylinder(.18,.24,.16,0,-.39,0,'metal',ceilingFan,24);
-  const ceilingRotor=group('Ceiling fan rotor',ceilingFan);ceilingRotor.position.y=-.42;ceilingRotor.userData.ambient='ceiling-fan';
-  for(let i=0;i<4;i++){const arm=group('Ceiling fan blade arm',ceilingRotor);arm.rotation.y=i*Math.PI/2;round(1.58,.045,.25,.035,.84,0,0,'steel',arm,'Ceiling fan blade');}
-  const fanLamp=cylinder(.16,.24,.13,0,-.53,0,'cream',ceilingFan,24);fanLamp.material=fanLamp.material.clone();fanLamp.material.emissive.setHex(0xbda16f);fanLamp.material.emissiveIntensity=.38;
   const roomba=group('Roomba floor patrol');roomba.position.set(0,.1,3.55);roomba.userData.ambient='roomba';
   cylinder(.34,.36,.15,0,.08,0,'black',roomba,32);cylinder(.31,.31,.035,0,.17,0,'metal',roomba,32);
   const bumper=mesh(new T.TorusGeometry(.34,.025,8,32),'dark',0,.12,0,roomba,'Roomba bumper');bumper.rotation.x=Math.PI/2;

@@ -22,6 +22,7 @@ assert.ok(!new T.Box3().setFromObject(byName('Living planted aquarium')).interse
 assert.ok(!new T.Box3().setFromObject(byName('Panoramic city window')).intersectsBox(new T.Box3().setFromObject(byName('Resume and certifications'))),'Window and credential frame stay physically separate');
 assert.ok(Math.abs(byName('Living planted aquarium').rotation.y+Math.PI/2)<.01,'Aquarium sits square to the right wall');
 assert.ok(new T.Box3().setFromObject(byName('Living planted aquarium')).max.x>7,'Aquarium is flush against the right wall');
+assert.ok(new T.Box3().setFromObject(byName('Living planted aquarium')).min.z-new T.Box3().setFromObject(byName('Technical library')).max.z<3.1,'Aquarium sits closer to the technical library');
 assert.ok(Math.abs(byName('Student lounge corner').rotation.y-Math.PI/2)<.01,'Sofa faces inward from the left wall');
 assert.ok(Math.abs(byName('Forensic examination bench').rotation.y-Math.PI/2)<.01,'Forensic bench faces inward from the left wall');
 assert.ok(new T.Box3().setFromObject(byName('Forensic examination bench')).min.x< -6.88,'Forensic bench sits flush to the left wall');
@@ -32,10 +33,12 @@ assert.ok(new T.Box3().setFromObject(byName('Wall contact intercom')).min.z< -3,
 const benchBox=new T.Box3().setFromObject(byName('Forensic examination bench')),driveBox=new T.Box3().setFromObject(byName('Forensic evidence drive'));
 assert.ok(driveBox.min.x>benchBox.min.x&&driveBox.max.x<benchBox.max.x&&driveBox.min.z>benchBox.min.z&&driveBox.max.z<benchBox.max.z,'Evidence drive stays safely inside the bench edges');
 assert.ok(byName('DFIR neon sign').scale.x<.8,'DFIR neon sign stays subordinate to the credential wall');
-assert.ok(new T.Box3().setFromObject(byName('Desk-side plant')).min.x>2.9,'Plant moved to the right side of the desk');
+assert.ok(!byName('Desk-side plant'),'The previous desk plant was removed');
+assert.ok(!byName('Ceiling fan'),'The ceiling fan was removed');
+assert.ok(byName('Oscillating RGB tower fan')?.userData.action==='tower-fan','The plant was replaced by a controllable RGB tower fan');
 assert.ok(byName('Roomba charging dock'),'The former plant location now has a purposeful charging dock');
-assert.ok(byName('Ceiling fan')?.userData.action==='ceiling-fan','The room includes a controllable ceiling fan');
-for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','plant-leaf','lava-bubble','aquarium-water','dock-light','ceiling-fan']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
+assert.ok(byName('Lounge side table')?.userData.action==='lava-lamp','The lava lamp has a working scene control');
+for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','tower-fan','tower-rgb','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
 let aquariumFish=0;model.traverse(object=>{if(object.userData.ambient==='aquarium-fish')aquariumFish++;});assert.equal(aquariumFish,3,'Aquarium contains three animated fish');
 let catLegs=0;model.traverse(object=>{if(object.userData.ambient==='lab-cat-leg')catLegs++;});assert.equal(catLegs,4,'Lab cat has four independently animated legs');
 let aquariumLeds=0;byName('Living planted aquarium').traverse(object=>{if(object.name.includes('RGB accent strip / aquarium'))aquariumLeds++;});assert.equal(aquariumLeds,5,'Aquarium has a complete five-part LED treatment');
@@ -66,4 +69,5 @@ const runtime=await readFile(new URL('./scene.js',import.meta.url),'utf8');
 assert.ok(runtime.includes("if (canvas &&"),'Scene runtime guards pages without a canvas');
 assert.ok(runtime.includes("data.workspaceState")||runtime.includes("dataset.workspaceState"),'Runtime exposes a named workspace state');
 assert.ok(runtime.includes("history.pushState")&&runtime.includes("addEventListener('popstate'"),'Spatial states are addressable and browser-history aware');
+assert.ok(runtime.includes('monitorWallpapers.forEach'),'The main monitor updates its animated wallpaper texture');
 console.log(`PASS: ${meshes} valid meshes, eight real destinations, GLB structure/buffers, non-home guard`);
