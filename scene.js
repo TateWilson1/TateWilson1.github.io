@@ -24,7 +24,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
   },4000);
   let renderer;
   try {
-    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.6')]);
+    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.7')]);
     const forcedQuality=new URLSearchParams(location.search).get('quality');
     const lowPower=forcedQuality==='low'||forcedQuality!=='high'&&((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4));
     document.body.dataset.renderProfile=lowPower?'reduced':'full';
@@ -87,7 +87,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       renderer.setRenderTarget(null);renderer.clear();renderer.render(scene,camera);renderer.autoClear=false;postQuad.material=compositeMaterial;renderer.render(postScene,postCamera);renderer.autoClear=true;
     };
 
-    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],towerFans=[],archiveReels=[],archiveNeedles=[],lavaBubbles=[],lavaMeshes=[],aquariumWaters=[],dockLights=[],dockBeacons=[],monitorWallpapers=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],towerRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
+    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],pedestalFans=[],archiveReels=[],archiveNeedles=[],lavaBubbles=[],lavaMeshes=[],aquariumWaters=[],dockLights=[],dockBeacons=[],monitorWallpapers=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],fanRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
     const targetForObject=object=>{let current=object;while(current){if(current.userData.target)return current;current=current.parent;}return null;};
     const interactionForObject=object=>{let current=object;while(current){if(current.userData.action||current.userData.target)return current;current=current.parent;}return null;};
     const hasAncestor=(object,name)=>{let current=object;while(current){if(current.name===name)return true;current=current.parent;}return false;};
@@ -103,7 +103,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(object.userData.ambient==='aquarium-bubble')aquariumBubbles.push(object);
       if(object.userData.ambient==='evidence-scan')evidenceScanners.push(object);
       if(object.userData.ambient==='contact-pulse')contactPulses.push(object);
-      if(object.userData.ambient==='tower-fan')towerFans.push(object);
+      if(object.userData.ambient==='pedestal-fan')pedestalFans.push(object);
       if(object.userData.ambient==='archive-reel')archiveReels.push(object);
       if(object.userData.ambient==='archive-needle')archiveNeedles.push(object);
       if(object.userData.ambient==='lava-bubble')lavaBubbles.push(object);
@@ -114,7 +114,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(object.userData.wallpaper)monitorWallpapers.push(object);
       if(!object.isMesh)return;
       const targetRoot=targetForObject(object);
-      const isAmbient=['Contact screen','blue','amber'].includes(object.name),isRgbStrip=object.name.includes('RGB accent strip')||object.name==='Blue desk light strip'||object.userData.ambient==='tower-rgb';
+      const isAmbient=['Contact screen','blue','amber'].includes(object.name),isRgbStrip=object.name.includes('RGB accent strip')||object.name==='Blue desk light strip'||object.userData.ambient==='fan-rgb';
       if(targetRoot||isAmbient||isRgbStrip){
         const cloneKey=isRgbStrip?`rgb:${object.id}`:isAmbient?`ambient:${object.id}`:`target:${targetRoot.userData.target}:${object.material.uuid}`;
         if(!materialCopies.has(cloneKey))materialCopies.set(cloneKey,object.material.clone());
@@ -123,7 +123,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       object.userData.baseEmissive=object.material.emissive?.getHex?.()||0;
       object.userData.baseIntensity=object.material.emissiveIntensity||0;
       if(isAmbient)ambientMeshes.push(object);
-      if(isRgbStrip){rgbMeshes.push(object);if(hasAncestor(object,'Technical library'))shelfRgbMeshes.push(object);if(hasAncestor(object,'Living planted aquarium'))aquariumRgbMeshes.push(object);if(hasAncestor(object,'Oscillating RGB tower fan'))towerRgbMeshes.push(object);}
+      if(isRgbStrip){rgbMeshes.push(object);if(hasAncestor(object,'Technical library'))shelfRgbMeshes.push(object);if(hasAncestor(object,'Living planted aquarium'))aquariumRgbMeshes.push(object);if(hasAncestor(object,'Oscillating RGB pedestal fan'))fanRgbMeshes.push(object);}
       if(targetRoot?.userData.target==='projects'&&object.name==='Display')monitorMeshes.push(object);
       if(object.name==='Task lamp bulb')lampBulbs.push(object);
       if(object.name.endsWith('log line'))activityLines.push(object);
@@ -143,7 +143,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     }
     const raycaster=new T.Raycaster(),pointer=new T.Vector2(),projectedPin=new T.Vector3();
     const workspace={name:'ENTRY',entered:false,selected:null,hovered:null};
-    const actionState={'task-lamp':true,'shelf-lights':true,'aquarium-lights':true,'screen-mode':true,'tower-fan':true,'lava-lamp':true};
+    const actionState={'task-lamp':true,'shelf-lights':true,'aquarium-lights':true,'screen-mode':true,'pedestal-fan':true,'lava-lamp':true};
     const routeToken=performance.timeOrigin;
     let drag=null,visible=true,lastFrame=0,panelTimer=0;
     const setWorkspaceState=(name,selected=null)=>{
@@ -161,7 +161,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObject(model,true)[0];return hit?groupForMesh(hit.object):null;
     };
     const illuminate=(key,level)=>{const group=targets.get(key);group?.traverse(object=>{if(!object.isMesh||!object.material.emissive)return;object.material.emissive.setHex(level?0x4e7785:object.userData.baseEmissive);object.material.emissiveIntensity=level?level:object.userData.baseIntensity;});};
-    const actionLabels={'task-lamp':'TASK LAMP · CLICK TO TOGGLE','shelf-lights':'LIBRARY LIGHTS · CLICK TO TOGGLE','aquarium-lights':'AQUARIUM LEDS · CLICK TO TOGGLE','screen-mode':'MONITOR GLOW · CLICK TO TOGGLE','tower-fan':'TOWER FAN · CLICK TO TOGGLE','lava-lamp':'LAVA LAMP · CLICK TO TOGGLE'};
+    const actionLabels={'task-lamp':'TASK LAMP · CLICK TO TOGGLE','shelf-lights':'LIBRARY LIGHTS · CLICK TO TOGGLE','aquarium-lights':'AQUARIUM LEDS · CLICK TO TOGGLE','screen-mode':'MONITOR GLOW · CLICK TO TOGGLE','pedestal-fan':'PEDESTAL FAN · CLICK TO TOGGLE','lava-lamp':'LAVA LAMP · CLICK TO TOGGLE'};
     const setHover=(hit,event)=>{
       const targetKey=hit?.userData.target||null,actionKey=hit?.userData.action||null,key=targetKey?`target:${targetKey}`:actionKey?`action:${actionKey}`:null;
       if(workspace.hovered!==key){const prior=workspace.hovered?.startsWith('target:')?workspace.hovered.slice(7):null;if(prior&&prior!==workspace.selected)illuminate(prior,0);workspace.hovered=key;if(targetKey&&targetKey!==workspace.selected)illuminate(targetKey,.18);}
@@ -177,7 +177,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(action==='shelf-lights'){shelfRgbMeshes.forEach(mesh=>mesh.material.emissiveIntensity=actionState[action]?2.15:0);}
       if(action==='aquarium-lights'){aquariumRgbMeshes.forEach(mesh=>mesh.material.emissiveIntensity=actionState[action]?5.2:0);aquariumLight.intensity=actionState[action]?10.5:0;}
       if(action==='screen-mode'){monitorMeshes.forEach(mesh=>mesh.material.emissiveIntensity=actionState[action]?.9:.025);}
-      if(action==='tower-fan'){towerRgbMeshes.forEach(mesh=>mesh.material.emissiveIntensity=actionState[action]?2.15:0);}
+      if(action==='pedestal-fan'){fanRgbMeshes.forEach(mesh=>mesh.material.emissiveIntensity=actionState[action]?2.15:0);}
       if(action==='lava-lamp'){lavaMeshes.forEach(mesh=>{if(mesh.material?.emissive)mesh.material.emissiveIntensity=actionState[action]?mesh.userData.baseIntensity:0;});lavaLight.intensity=actionState[action]?6.5:0;}
     };
     const updateNavPins=()=>{
@@ -267,17 +267,29 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
         activityLines.forEach((line,index)=>{line.scale.x=.68+(Math.sin(time*(.0013+index*.00002)+index)+1)*.16;});
         evidenceScanners.forEach((scanner,index)=>{scanner.position.x=scanner.userData.baseX+(Math.sin(time*.00125+index)*.5+.5)*scanner.userData.range;scanner.material.emissiveIntensity=3.5+Math.sin(time*.003+index)*.7;});
         contactPulses.forEach((pulse,index)=>{const signal=.84+(Math.sin(time*.0024+index)+1)*.1;pulse.scale.setScalar(signal);pulse.material.emissiveIntensity=3.6+(Math.sin(time*.0024+index)+1)*1.1;});
-        fans.forEach((fan,index)=>{fan.rotation.z=time*(.0012+index*.00008);});
-        if(actionState['tower-fan'])towerFans.forEach((fan,index)=>{fan.rotation.y=Math.sin(time*(.00062+index*.00002))*.42;});
+        fans.forEach((fan,index)=>{if(hasAncestor(fan,'Oscillating RGB pedestal fan')&&!actionState['pedestal-fan'])return;fan.rotation.z=time*(.0012+index*.00008);});
+        if(actionState['pedestal-fan'])pedestalFans.forEach((fan,index)=>{fan.rotation.y=fan.userData.baseYaw+Math.sin(time*(.00062+index*.00002))*fan.userData.arc;});
         archiveReels.forEach((reel,index)=>{reel.rotation.z=time*.00072*(index%2?-1:1)+reel.userData.phase;});
         archiveNeedles.forEach((needle,index)=>{needle.rotation.z=-.45+(Math.sin(time*.0021+needle.userData.phase)+1)*.45;});
         if(actionState['lava-lamp'])lavaBubbles.forEach(bubble=>{bubble.position.y=.68+((time*.00011+bubble.userData.phase)%1)*.34;bubble.position.x=Math.sin(time*.0012+bubble.userData.phase)*.035;});
         aquariumWaters.forEach(surface=>{surface.position.y=surface.userData.baseY+Math.sin(time*.0012)*.006;surface.rotation.z=Math.sin(time*.0008)*.004;});
         dockLights.forEach(light=>{light.material.emissiveIntensity=.25+(Math.sin(time*.0025+light.userData.phase)+1)*.7;});
         dockBeacons.forEach(beacon=>{beacon.material.emissiveIntensity=1.2+(Math.sin(time*.0022)+1)*1.1;});dockBeaconLight.intensity=1.15+(Math.sin(time*.0022)+1)*.35;
-        monitorWallpapers.forEach(display=>{const wallpaper=display.userData.wallpaper;if(!wallpaper.image||time-wallpaper.lastFrame<80)return;wallpaper.lastFrame=time;const {canvas,context,image,texture}=wallpaper;context.clearRect(0,0,canvas.width,canvas.height);context.drawImage(image,0,0,canvas.width,canvas.height);context.save();context.globalCompositeOperation='screen';const x=(time*.085)%(canvas.width+180)-90,glow=context.createLinearGradient(x-90,0,x+90,0);glow.addColorStop(0,'rgba(40,201,235,0)');glow.addColorStop(.5,'rgba(90,226,246,.14)');glow.addColorStop(1,'rgba(40,201,235,0)');context.fillStyle=glow;context.fillRect(x-90,0,180,canvas.height);for(let i=0;i<11;i++){const px=(i*157+time*.022)%canvas.width,py=95+Math.sin(time*.001+i*1.7)*210+i*29;context.fillStyle=i%3?'rgba(105,225,240,.28)':'rgba(244,179,139,.3)';context.beginPath();context.arc(px,py,2.5+(i%2),0,Math.PI*2);context.fill();}context.restore();texture.needsUpdate=true;});
+        monitorWallpapers.forEach(display=>{
+          const wallpaper=display.userData.wallpaper;if(time-wallpaper.lastFrame<80||wallpaper.kind!=='aurora'&&!wallpaper.image)return;wallpaper.lastFrame=time;
+          const {canvas,context,texture}=wallpaper;context.clearRect(0,0,canvas.width,canvas.height);
+          if(wallpaper.kind==='aurora'){
+            context.fillStyle='#06111d';context.fillRect(0,0,canvas.width,canvas.height);context.save();context.globalCompositeOperation='screen';
+            const colors=['rgba(255,55,143,.9)','rgba(67,220,255,.9)','rgba(123,78,255,.86)','rgba(255,161,58,.78)','rgba(52,235,164,.76)'];
+            colors.forEach((color,index)=>{const x=canvas.width*(.5+.42*Math.sin(time*(.00017+index*.000018)+index*1.4)),y=canvas.height*(.5+.38*Math.cos(time*(.00014+index*.000021)+index*.9)),radius=canvas.width*(.28+index*.025),gradient=context.createRadialGradient(x,y,0,x,y,radius);gradient.addColorStop(0,color);gradient.addColorStop(1,'rgba(0,0,0,0)');context.fillStyle=gradient;context.fillRect(0,0,canvas.width,canvas.height);});
+            context.restore();
+          }else{
+            context.drawImage(wallpaper.image,0,0,canvas.width,canvas.height);context.save();context.globalCompositeOperation='screen';const x=(time*.085)%(canvas.width+180)-90,glow=context.createLinearGradient(x-90,0,x+90,0);glow.addColorStop(0,'rgba(40,201,235,0)');glow.addColorStop(.5,'rgba(90,226,246,.14)');glow.addColorStop(1,'rgba(40,201,235,0)');context.fillStyle=glow;context.fillRect(x-90,0,180,canvas.height);for(let i=0;i<11;i++){const px=(i*157+time*.022)%canvas.width,py=95+Math.sin(time*.001+i*1.7)*210+i*29;context.fillStyle=i%3?'rgba(105,225,240,.28)':'rgba(244,179,139,.3)';context.beginPath();context.arc(px,py,2.5+(i%2),0,Math.PI*2);context.fill();}context.restore();
+          }
+          texture.needsUpdate=true;
+        });
         markers.forEach((marker,index)=>{const pulse=1+Math.sin(time*.003+index*.7)*.09;marker.scale.setScalar(.32*pulse);marker.material.opacity=(workspace.hovered===`target:${marker.userData.target}` ? .95 : .72)+Math.sin(time*.003+index)*.08;});
-        rgbMeshes.forEach(strip=>{const shelf=hasAncestor(strip,'Technical library'),aquarium=hasAncestor(strip,'Living planted aquarium'),tower=hasAncestor(strip,'Oscillating RGB tower fan');strip.material.emissiveIntensity=(shelf&&!actionState['shelf-lights'])||(aquarium&&!actionState['aquarium-lights'])||(tower&&!actionState['tower-fan'])?0:(aquarium?4.7:2.0)+(Math.sin(time*.0015)+1)*(aquarium ? .36 : .28);});
+        rgbMeshes.forEach(strip=>{const shelf=hasAncestor(strip,'Technical library'),aquarium=hasAncestor(strip,'Living planted aquarium'),fan=hasAncestor(strip,'Oscillating RGB pedestal fan');strip.material.emissiveIntensity=(shelf&&!actionState['shelf-lights'])||(aquarium&&!actionState['aquarium-lights'])||(fan&&!actionState['pedestal-fan'])?0:(aquarium?4.7:2.0)+(Math.sin(time*.0015)+1)*(aquarium ? .36 : .28);});
         if(roomba){const phase=time*.00018;roomba.position.x=Math.sin(phase)*2.15;roomba.position.z=3.55+Math.sin(phase*.67)*.55;roomba.rotation.y=Math.atan2(Math.cos(phase)*2.15,Math.cos(phase*.67)*.37);}
         if(labCat){const phase=time*.000105,gait=phase*8,x=Math.sin(phase)*3.9;labCat.position.x=x;labCat.position.y=.02+Math.abs(Math.sin(gait))*.018;labCat.position.z=5.25+Math.sin(phase*.72)*.16;labCat.rotation.y=Math.cos(phase)>=0?-Math.PI/2:Math.PI/2;catLegs.forEach(leg=>{leg.rotation.x=Math.sin(gait+leg.userData.gaitPhase)*.42;});if(catTail)catTail.rotation.z=Math.sin(phase*5)*.18;}
         aquariumFish.forEach((fish,index)=>{const phase=time*.00042*fish.userData.speed+fish.userData.phase,x=Math.sin(phase)*fish.userData.radius,z=Math.cos(phase*.83+index)*.24;fish.position.set(x,fish.userData.swimY+Math.sin(phase*1.7)*.075,z);fish.rotation.y=Math.cos(phase)>=0?0:Math.PI;fish.rotation.z=Math.sin(phase*1.35)*.035;});

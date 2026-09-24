@@ -35,10 +35,13 @@ assert.ok(driveBox.min.x>benchBox.min.x&&driveBox.max.x<benchBox.max.x&&driveBox
 assert.ok(byName('DFIR neon sign').scale.x<.8,'DFIR neon sign stays subordinate to the credential wall');
 assert.ok(!byName('Desk-side plant'),'The previous desk plant was removed');
 assert.ok(!byName('Ceiling fan'),'The ceiling fan was removed');
-assert.ok(byName('Oscillating RGB tower fan')?.userData.action==='tower-fan','The plant was replaced by a controllable RGB tower fan');
+const pedestalFan=byName('Oscillating RGB pedestal fan'),pedestalBox=new T.Box3().setFromObject(pedestalFan),rackBox=new T.Box3().setFromObject(byName('Server rack / CCDC')),libraryBox=new T.Box3().setFromObject(byName('Technical library')),aquariumBox=new T.Box3().setFromObject(byName('Living planted aquarium'));
+assert.ok(pedestalFan?.userData.action==='pedestal-fan','The room includes a controllable RGB pedestal fan');
+assert.ok(!pedestalBox.intersectsBox(rackBox)&&!pedestalBox.intersectsBox(libraryBox)&&!pedestalBox.intersectsBox(aquariumBox),'Pedestal fan occupies the clear gap between rack, library, and aquarium');
+const fanHead=byName('Pedestal fan oscillating head');assert.ok(Math.abs(fanHead.userData.arc-Math.PI/4)<.001,'Pedestal fan sweeps through a 90 degree arc');
 assert.ok(byName('Roomba charging dock'),'The former plant location now has a purposeful charging dock');
 assert.ok(byName('Lounge side table')?.userData.action==='lava-lamp','The lava lamp has a working scene control');
-for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','tower-fan','tower-rgb','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
+for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','pedestal-fan','fan-rgb','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
 let aquariumFish=0;model.traverse(object=>{if(object.userData.ambient==='aquarium-fish')aquariumFish++;});assert.equal(aquariumFish,3,'Aquarium contains three animated fish');
 let catLegs=0;model.traverse(object=>{if(object.userData.ambient==='lab-cat-leg')catLegs++;});assert.equal(catLegs,4,'Lab cat has four independently animated legs');
 let aquariumLeds=0;byName('Living planted aquarium').traverse(object=>{if(object.name.includes('RGB accent strip / aquarium'))aquariumLeds++;});assert.equal(aquariumLeds,5,'Aquarium has a complete five-part LED treatment');
@@ -70,4 +73,5 @@ assert.ok(runtime.includes("if (canvas &&"),'Scene runtime guards pages without 
 assert.ok(runtime.includes("data.workspaceState")||runtime.includes("dataset.workspaceState"),'Runtime exposes a named workspace state');
 assert.ok(runtime.includes("history.pushState")&&runtime.includes("addEventListener('popstate'"),'Spatial states are addressable and browser-history aware');
 assert.ok(runtime.includes('monitorWallpapers.forEach'),'The main monitor updates its animated wallpaper texture');
+assert.ok(runtime.includes("wallpaper.kind==='aurora'"),'The internship laptop has a distinct animated aurora wallpaper');
 console.log(`PASS: ${meshes} valid meshes, eight real destinations, GLB structure/buffers, non-home guard`);

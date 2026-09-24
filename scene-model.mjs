@@ -308,7 +308,14 @@ export function buildWorkstation(T) {
   const laptopScreen=group('Identity review screen',laptop);laptopScreen.rotation.x=-.18;laptopScreen.position.set(0,.43,-.365);
   round(1.18,.75,.055,.022,0,0,0,'rubber',laptopScreen,'Laptop display housing');
   round(1.09,.66,.008,.015,0,0,.037,'glass',laptopScreen,'Laptop glass');
-  screen(1.05,.62,0,0,.045,laptopScreen,'IDENTITY / REVIEW',['Access review','Enterprise apps','Remediation notes'],'Internship display');
+  const laptopDisplay=screen(1.05,.62,0,0,.045,laptopScreen,'IDENTITY / REVIEW',['Access review','Enterprise apps','Remediation notes'],'Internship display');
+  if(typeof document!=='undefined'){
+    const canvas=document.createElement('canvas');canvas.width=768;canvas.height=480;const context=canvas.getContext('2d');
+    const base=context.createLinearGradient(0,0,canvas.width,canvas.height);base.addColorStop(0,'#071827');base.addColorStop(.5,'#201042');base.addColorStop(1,'#082e35');context.fillStyle=base;context.fillRect(0,0,canvas.width,canvas.height);
+    const wallpaperTexture=new T.CanvasTexture(canvas);wallpaperTexture.colorSpace=T.SRGBColorSpace;wallpaperTexture.anisotropy=4;
+    laptopDisplay.material=new T.MeshStandardMaterial({map:wallpaperTexture,emissiveMap:wallpaperTexture,emissive:0x8170b8,emissiveIntensity:1.18,roughness:.72,metalness:0});
+    laptopDisplay.userData.wallpaper={kind:'aurora',canvas,context,texture:wallpaperTexture,lastFrame:0};
+  }
   ball(.012,0,.348,.044,'port',laptopScreen);
   const studyPedestal=group('Education notebook pedestal');studyPedestal.position.set(-4.7,.06,3.58);studyPedestal.rotation.y=-.52;
   round(1.08,.09,.82,.03,0,.78,0,'desk',studyPedestal,'Notebook pedestal top');
@@ -395,14 +402,21 @@ export function buildWorkstation(T) {
   const lampSwitch=ball(.045,-2.08,1.94,-.94,'amber',lamp);lampSwitch.name='Task lamp switch';lampSwitch.userData.action='task-lamp';
   const mug=group('Coffee mug');cylinder(.11,.1,.25,.78,2.00,-.65,'cream',mug);cylinder(.09,.09,.01,.78,2.132,-.65,'dark',mug);
   mesh(new T.TorusGeometry(.09,.028,8,16),'cream',.89,2.02,-.65,mug);
-  const towerFan=group('Oscillating RGB tower fan');towerFan.position.set(3.58,.04,1.42);towerFan.userData.action='tower-fan';
-  cylinder(.34,.42,.09,0,.08,0,'dark',towerFan,28);cylinder(.27,.3,.05,0,.15,0,'steel',towerFan,28);
-  const towerBody=group('Tower fan oscillating body',towerFan);towerBody.position.y=.2;towerBody.userData.ambient='tower-fan';
-  round(.46,1.55,.38,.12,0,.82,0,'metal',towerBody,'Tower fan housing');
-  round(.31,1.21,.025,.035,0,.83,.205,'black',towerBody,'Tower fan vent');
-  for(let i=0;i<15;i++)box(.25,.018,.012,0,.28+i*.073,.224,'steel',towerBody,'Tower fan grille slat');
-  for(const [x,mat] of [[-.205,'rgbBlue'],[.205,'rgbViolet']]){const strip=box(.022,1.28,.025,x,.83,.205,mat,towerBody,'RGB accent strip / tower fan');strip.userData.ambient='tower-rgb';}
-  const fanStatus=ball(.035,0,1.5,.205,'rgbGreen',towerBody);fanStatus.name='Tower fan status light';fanStatus.userData.ambient='tower-rgb';
+  const pedestalFan=group('Oscillating RGB pedestal fan');pedestalFan.position.set(5.25,.04,-.55);pedestalFan.userData.action='pedestal-fan';
+  round(.92,.1,.58,.12,0,.08,0,'dark',pedestalFan,'Pedestal fan oval base');round(.64,.035,.34,.1,-.04,.145,.01,'steel',pedestalFan,'Pedestal fan base inset');
+  cylinder(.055,.065,1.28,0,.79,0,'steel',pedestalFan,18);cylinder(.1,.12,.18,0,.73,0,'metal',pedestalFan,18);
+  const pedestalHead=group('Pedestal fan oscillating head',pedestalFan);pedestalHead.position.set(0,1.5,0);pedestalHead.rotation.y=-Math.PI*.75;pedestalHead.userData.ambient='pedestal-fan';pedestalHead.userData.baseYaw=-Math.PI*.75;pedestalHead.userData.arc=Math.PI/4;
+  cylinder(.1,.12,.22,0,-.48,0,'metal',pedestalHead,18);
+  const rearRing=mesh(new T.TorusGeometry(.43,.028,10,48),'steel',0,0,-.07,pedestalHead,'Pedestal fan rear cage');rearRing.material=rearRing.material.clone();rearRing.material.side=T.DoubleSide;
+  const rgbCage=mesh(new T.TorusGeometry(.46,.035,10,48),'neonCyan',0,0,.07,pedestalHead,'RGB accent strip / pedestal fan cage');rgbCage.material=rgbCage.material.clone();rgbCage.userData.ambient='fan-rgb';
+  mesh(new T.TorusGeometry(.31,.014,8,40),'aluminum',0,0,.085,pedestalHead,'Pedestal fan inner guard');
+  for(let i=0;i<20;i++){const a=i*Math.PI/10;rod([Math.cos(a)*.1,Math.sin(a)*.1,.08],[Math.cos(a)*.43,Math.sin(a)*.43,.08],.008,'aluminum',pedestalHead);}
+  const rotor=group('Pedestal fan rotor',pedestalHead);rotor.position.z=.045;rotor.userData.ambient='fan';
+  const bladeShape=new T.Shape();bladeShape.moveTo(.045,.015);bladeShape.bezierCurveTo(.14,.08,.34,.24,.37,.08);bladeShape.bezierCurveTo(.38,-.03,.2,-.13,.055,-.055);bladeShape.closePath();
+  for(let i=0;i<3;i++){const blade=mesh(new T.ShapeGeometry(bladeShape,12),'black',0,0,0,rotor,'Curved pedestal fan blade');blade.material=blade.material.clone();blade.material.side=T.DoubleSide;blade.rotation.z=i*Math.PI*2/3;}
+  cylinder(.115,.115,.08,0,0,.09,'metal',pedestalHead,24).rotation.x=Math.PI/2;ball(.065,0,0,.14,'rgbViolet',pedestalHead);
+  const fanControl=round(.24,.1,.08,.035,.2,.17,-.02,'metal',pedestalFan,'Pedestal fan controls');fanControl.userData.action='pedestal-fan';
+  const controlGlow=ball(.022,.2,.18,.025,'rgbGreen',pedestalFan);controlGlow.name='Pedestal fan status light';controlGlow.userData.ambient='fan-rgb';
   const chargingDock=group('Roomba charging dock');chargingDock.position.set(-2.77,.04,1.48);chargingDock.rotation.y=.12;
   round(.86,.1,.74,.035,0,.08,0,'dark',chargingDock,'Charging dock floor plate');
   round(.72,.72,.16,.045,0,.43,-.27,'metal',chargingDock,'Charging dock tower');
