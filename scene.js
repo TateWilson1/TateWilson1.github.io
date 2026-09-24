@@ -8,8 +8,8 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     internship:{index:'04',label:'PELYCON // INTERNSHIP',title:'From findings to practical guidance.',summary:'The laptop opens Tate’s cybersecurity internship work inside a managed service provider environment.',target:[1.66,2.35,-.68],position:[4.0,3.05,4.25],body:`<div class="fact"><span>COMPANY</span><strong>Pelycon Technologies</strong></div><div class="fact"><span>ROLE</span><strong>Cybersecurity intern</strong></div><div class="fact"><span>DATES</span><strong>May–August 2026</strong></div><h3>Selected work</h3><ul><li>Reviewed Microsoft 365 access, enterprise apps, and tenant configuration for identity risks.</li><li>Supported endpoint security, client tickets, RMM workflows, and daily security operations.</li><li>Turned security gaps into scored cyber-maturity findings and remediation guidance.</li></ul><a class="panel-link" href="writeup-m365-entra-review.html"><span>M365 / Entra review notes</span><span>Read ↗</span></a>`},
     education:{index:'05',label:'FIELD NOTEBOOK',title:'Learning how systems leave evidence.',summary:'The notebook connects formal study with the habits behind Tate’s technical work.',target:[-4.7,.96,3.58],position:[-2.1,2.35,5.75],body:`<div class="fact"><span>DEGREE</span><strong>B.S. Digital Forensics &amp; Cybersecurity</strong></div><div class="fact"><span>SCHOOL</span><strong>Eastern Kentucky University</strong></div><div class="fact"><span>MINOR</span><strong>Cybersecurity &amp; Intelligence</strong></div><div class="fact"><span>EXPECTED</span><strong>December 2026</strong></div><div class="fact"><span>GPA</span><strong>3.60</strong></div><h3>Credentials</h3><p>CompTIA Security+ · ISC2 Certified in Cybersecurity</p>`},
     resume:{index:'06',label:'SECURITY+ CREDENTIAL',title:'Security+ and résumé.',summary:'The framed Security+ certificate anchors Tate’s credential wall and opens the fastest professional overview.',target:[-2.35,3.92,-3.02],position:[-.25,4.35,2.75],body:`<h3>Credential file</h3><div class="fact"><span>CERTIFICATION</span><strong>CompTIA Security+</strong></div><div class="fact"><span>FOCUS</span><strong>Digital forensics · cybersecurity</strong></div><div class="fact"><span>EDUCATION</span><strong>Eastern Kentucky University</strong></div><div class="fact"><span>EXPERIENCE</span><strong>Pelycon Technologies · CCDC leadership</strong></div><a class="panel-link" href="assets/Tate_Wilson_Resume.pdf"><span>Open résumé PDF</span><span>Open ↗</span></a><a class="panel-link" href="assets/Tate_Wilson_Resume.docx"><span>Download Word résumé</span><span>Download ↗</span></a>`},
-    github:{index:'07',label:'REPOSITORY TERMINAL',title:'Public work and working notes.',summary:'The wall-mounted terminal links to Tate’s repositories, tools, and source history.',target:[-6.76,2.05,-1.38],position:[-3.75,2.75,.35],body:`<h3>Repositories</h3><a class="panel-link" href="https://github.com/TateWilson1/TabletopForge"><span>TabletopForge</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/Security-Toolkit"><span>Security Toolkit</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/testing_password_strength_with_GUI"><span>Password Strength GUI</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>Complete GitHub profile</span><span>Visit ↗</span></a>`},
-    contact:{index:'08',label:'SECURE CONTACT',title:'Start a conversation.',summary:'The wall intercom keeps contact simple: direct destinations, no simulated messaging interface.',target:[6.72,2.08,.92],position:[3.6,2.75,.38],body:`<h3>Contact</h3><a class="panel-link" href="mailto:tate.wilson2022@gmail.com"><span>Email Tate</span><span>Send ↗</span></a><a class="panel-link" href="https://www.linkedin.com/in/tate-wilson-649004320/"><span>LinkedIn</span><span>Visit ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>GitHub</span><span>Visit ↗</span></a><p>For a conventional overview with every destination in document order, use the classic portfolio.</p><a class="panel-link" href="classic.html"><span>Classic portfolio</span><span>Open →</span></a>`},
+    github:{index:'07',label:'SOURCE ARCHIVE',title:'Public work and working notes.',summary:'The reel-to-reel archive beneath the DFIR sign opens Tate’s repositories, tools, and source history.',target:[-5.36,1.86,-2.88],position:[-3.45,2.65,.1],body:`<h3>Repositories</h3><a class="panel-link" href="https://github.com/TateWilson1/TabletopForge"><span>TabletopForge</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/Security-Toolkit"><span>Security Toolkit</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1/testing_password_strength_with_GUI"><span>Password Strength GUI</span><span>GitHub ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>Complete GitHub profile</span><span>Visit ↗</span></a>`},
+    contact:{index:'08',label:'SECURE CONTACT',title:'Start a conversation.',summary:'The wall intercom keeps contact simple: direct destinations, no simulated messaging interface.',target:[6.22,3.48,-2.88],position:[6.12,3.55,.35],body:`<h3>Contact</h3><a class="panel-link" href="mailto:tate.wilson2022@gmail.com"><span>Email Tate</span><span>Send ↗</span></a><a class="panel-link" href="https://www.linkedin.com/in/tate-wilson-649004320/"><span>LinkedIn</span><span>Visit ↗</span></a><a class="panel-link" href="https://github.com/TateWilson1"><span>GitHub</span><span>Visit ↗</span></a><p>For a conventional overview with every destination in document order, use the classic portfolio.</p><a class="panel-link" href="classic.html"><span>Classic portfolio</span><span>Open →</span></a>`},
   };
 
   const loading = document.querySelector('[data-loading]');
@@ -24,7 +24,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
   },4000);
   let renderer;
   try {
-    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.4')]);
+    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.5')]);
     const forcedQuality=new URLSearchParams(location.search).get('quality');
     const lowPower=forcedQuality==='low'||forcedQuality!=='high'&&((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4));
     document.body.dataset.renderProfile=lowPower?'reduced':'full';
@@ -55,7 +55,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     const loungeLight=new T.PointLight(0xffa052,10.2,5.1,2.15);loungeLight.position.set(-6.45,1.55,3.55);scene.add(loungeLight);
     const rackLight=new T.SpotLight(0x94d8ed,14.8,5.8,.56,.76,1.7);rackLight.position.set(5.6,4.1,.3);rackLight.target.position.set(5.0,.9,-1.35);scene.add(rackLight,rackLight.target);
     const credentialLight=new T.SpotLight(0xffc779,10.5,5.2,.38,.86,1.9);credentialLight.position.set(-2.2,4.6,1.0);credentialLight.target.position.set(-2.9,3.5,-3);scene.add(credentialLight,credentialLight.target);
-    const contactLight=new T.PointLight(0x51d5ff,4.2,3.1,2.2);contactLight.position.set(6.35,2.15,.92);scene.add(contactLight);
+    const contactLight=new T.PointLight(0x51d5ff,4.2,3.1,2.2);contactLight.position.set(6.22,3.48,-2.35);scene.add(contactLight);
     const leftWallFill=new T.PointLight(0x5b7690,.24,4.8,2.25);leftWallFill.position.set(-5.9,2.6,3.9);scene.add(leftWallFill);
     const rightWallFill=new T.PointLight(0x587188,.22,4.8,2.25);rightWallFill.position.set(5.9,2.7,3.7);scene.add(rightWallFill);
     const rgbLeft=new T.PointLight(0x22baff,1.5,3.25,2.25);rgbLeft.position.set(-2.05,1.3,.58);scene.add(rgbLeft);
@@ -63,7 +63,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     const shelfLights=[.68,1.8,2.36].map((y,index)=>{const light=new T.PointLight([0x35cfff,0x4daed4,0xedb38b][index],1.8,2.3,2.2);light.position.set(5.55,y+.35,-2.1);scene.add(light);return light;});
     const dfirNeonLight=new T.PointLight(0x55eaff,7.2,4.6,2.05);dfirNeonLight.position.set(-5.35,3.55,-2.18);scene.add(dfirNeonLight);
     const shieldNeonLight=new T.PointLight(0xff4f9d,8.2,5,2.05);shieldNeonLight.position.set(4.42,3.48,-2.05);scene.add(shieldNeonLight);
-    const aquariumLight=new T.PointLight(0x65d9ee,9.6,4.4,2.0);aquariumLight.position.set(5.1,2.5,3.55);scene.add(aquariumLight);
+    const aquariumLight=new T.PointLight(0x65d9ee,9.6,4.4,2.0);aquariumLight.position.set(6.02,2.5,3.62);scene.add(aquariumLight);
     let workLights=false;
 
     // A small, local bloom chain keeps emissive practicals luminous without washing the
@@ -85,7 +85,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       renderer.setRenderTarget(null);renderer.clear();renderer.render(scene,camera);renderer.autoClear=false;postQuad.material=compositeMaterial;renderer.render(postScene,postCamera);renderer.autoClear=true;
     };
 
-    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
+    const targets=new Map(),ambientMeshes=[],activityLines=[],fans=[],ceilingFans=[],archiveReels=[],archiveNeedles=[],plantLeaves=[],lavaBubbles=[],aquariumWaters=[],dockLights=[],rgbMeshes=[],shelfRgbMeshes=[],aquariumRgbMeshes=[],monitorMeshes=[],lampBulbs=[],aquariumFish=[],fishTails=[],aquariumBubbles=[],catLegs=[],evidenceScanners=[],contactPulses=[],markers=[],materialCopies=new Map();let roomba=null,labCat=null,catTail=null;
     const targetForObject=object=>{let current=object;while(current){if(current.userData.target)return current;current=current.parent;}return null;};
     const interactionForObject=object=>{let current=object;while(current){if(current.userData.action||current.userData.target)return current;current=current.parent;}return null;};
     const hasAncestor=(object,name)=>{let current=object;while(current){if(current.name===name)return true;current=current.parent;}return false;};
@@ -101,6 +101,13 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       if(object.userData.ambient==='aquarium-bubble')aquariumBubbles.push(object);
       if(object.userData.ambient==='evidence-scan')evidenceScanners.push(object);
       if(object.userData.ambient==='contact-pulse')contactPulses.push(object);
+      if(object.userData.ambient==='ceiling-fan')ceilingFans.push(object);
+      if(object.userData.ambient==='archive-reel')archiveReels.push(object);
+      if(object.userData.ambient==='archive-needle')archiveNeedles.push(object);
+      if(object.userData.ambient==='plant-leaf')plantLeaves.push(object);
+      if(object.userData.ambient==='lava-bubble')lavaBubbles.push(object);
+      if(object.userData.ambient==='aquarium-water')aquariumWaters.push(object);
+      if(object.userData.ambient==='dock-light')dockLights.push(object);
       if(!object.isMesh)return;
       const targetRoot=targetForObject(object);
       const isAmbient=['Contact screen','blue','amber'].includes(object.name),isRgbStrip=object.name.includes('RGB accent strip')||object.name==='Blue desk light strip';
@@ -123,7 +130,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     markerContext.shadowBlur=9;markerContext.fillStyle='#62ded5';markerContext.beginPath();markerContext.arc(48,48,11,0,Math.PI*2);markerContext.fill();
     markerContext.shadowBlur=0;markerContext.fillStyle='#d7fffb';markerContext.beginPath();markerContext.arc(45,45,3,0,Math.PI*2);markerContext.fill();
     const markerTexture=new T.CanvasTexture(markerCanvas);markerTexture.colorSpace=T.SRGBColorSpace;
-    const markerPositions={projects:[-.43,3.72,-.62],forensics:[-6.0,1.9,.02],ccdc:[4.0,1.92,-.42],internship:[1.66,2.82,-.61],education:[-4.7,1.55,3.58],resume:[-2.95,4.72,-2.88],github:[-6.56,2.76,-1.38],contact:[6.55,2.82,.92]};
+    const markerPositions={projects:[-.43,3.72,-.62],forensics:[-6.0,1.9,.02],ccdc:[4.0,1.92,-.42],internship:[1.66,2.82,-.61],education:[-4.7,1.55,3.58],resume:[-2.95,4.72,-2.88],github:[-5.36,2.72,-2.75],contact:[6.22,4.16,-2.74]};
     const markerVectors=new Map(Object.entries(markerPositions).map(([key,position])=>[key,new T.Vector3(...position)]));
     const navButtons=new Map([...document.querySelectorAll('[data-focus]')].map(button=>[button.dataset.focus,button]));
     for(const [key,position] of Object.entries(markerPositions)){
@@ -132,7 +139,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     }
     const raycaster=new T.Raycaster(),pointer=new T.Vector2(),projectedPin=new T.Vector3();
     const workspace={name:'ENTRY',entered:false,selected:null,hovered:null};
-    const actionState={'task-lamp':true,'shelf-lights':true,'aquarium-lights':true,'screen-mode':true};
+    const actionState={'task-lamp':true,'shelf-lights':true,'aquarium-lights':true,'screen-mode':true,'ceiling-fan':true};
     const routeToken=performance.timeOrigin;
     let drag=null,visible=true,lastFrame=0,panelTimer=0;
     const setWorkspaceState=(name,selected=null)=>{
@@ -150,7 +157,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
       raycaster.setFromCamera(pointer,camera);const hit=raycaster.intersectObject(model,true)[0];return hit?groupForMesh(hit.object):null;
     };
     const illuminate=(key,level)=>{const group=targets.get(key);group?.traverse(object=>{if(!object.isMesh||!object.material.emissive)return;object.material.emissive.setHex(level?0x4e7785:object.userData.baseEmissive);object.material.emissiveIntensity=level?level:object.userData.baseIntensity;});};
-    const actionLabels={'task-lamp':'TASK LAMP · CLICK TO TOGGLE','shelf-lights':'LIBRARY LIGHTS · CLICK TO TOGGLE','aquarium-lights':'AQUARIUM LEDS · CLICK TO TOGGLE','screen-mode':'MONITOR GLOW · CLICK TO TOGGLE'};
+    const actionLabels={'task-lamp':'TASK LAMP · CLICK TO TOGGLE','shelf-lights':'LIBRARY LIGHTS · CLICK TO TOGGLE','aquarium-lights':'AQUARIUM LEDS · CLICK TO TOGGLE','screen-mode':'MONITOR GLOW · CLICK TO TOGGLE','ceiling-fan':'CEILING FAN · CLICK TO TOGGLE'};
     const setHover=(hit,event)=>{
       const targetKey=hit?.userData.target||null,actionKey=hit?.userData.action||null,key=targetKey?`target:${targetKey}`:actionKey?`action:${actionKey}`:null;
       if(workspace.hovered!==key){const prior=workspace.hovered?.startsWith('target:')?workspace.hovered.slice(7):null;if(prior&&prior!==workspace.selected)illuminate(prior,0);workspace.hovered=key;if(targetKey&&targetKey!==workspace.selected)illuminate(targetKey,.18);}
@@ -255,6 +262,13 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
         evidenceScanners.forEach((scanner,index)=>{scanner.position.x=scanner.userData.baseX+(Math.sin(time*.00125+index)*.5+.5)*scanner.userData.range;scanner.material.emissiveIntensity=3.5+Math.sin(time*.003+index)*.7;});
         contactPulses.forEach((pulse,index)=>{const signal=.84+(Math.sin(time*.0024+index)+1)*.1;pulse.scale.setScalar(signal);pulse.material.emissiveIntensity=3.6+(Math.sin(time*.0024+index)+1)*1.1;});
         fans.forEach((fan,index)=>{fan.rotation.z=time*(.0012+index*.00008);});
+        if(actionState['ceiling-fan'])ceilingFans.forEach((fan,index)=>{fan.rotation.y=time*(.00105+index*.00005);});
+        archiveReels.forEach((reel,index)=>{reel.rotation.z=time*.00072*(index%2?-1:1)+reel.userData.phase;});
+        archiveNeedles.forEach((needle,index)=>{needle.rotation.z=-.45+(Math.sin(time*.0021+needle.userData.phase)+1)*.45;});
+        plantLeaves.forEach(leaf=>{leaf.rotation.z=leaf.userData.baseRotation+Math.sin(time*.00075+leaf.userData.phase)*.055;});
+        lavaBubbles.forEach(bubble=>{bubble.position.y=.68+((time*.00011+bubble.userData.phase)%1)*.34;bubble.position.x=Math.sin(time*.0012+bubble.userData.phase)*.035;});
+        aquariumWaters.forEach(surface=>{surface.position.y=surface.userData.baseY+Math.sin(time*.0012)*.006;surface.rotation.z=Math.sin(time*.0008)*.004;});
+        dockLights.forEach(light=>{light.material.emissiveIntensity=.25+(Math.sin(time*.0025+light.userData.phase)+1)*.7;});
         markers.forEach((marker,index)=>{const pulse=1+Math.sin(time*.003+index*.7)*.09;marker.scale.setScalar(.32*pulse);marker.material.opacity=(workspace.hovered===`target:${marker.userData.target}` ? .95 : .72)+Math.sin(time*.003+index)*.08;});
         rgbMeshes.forEach(strip=>{const shelf=hasAncestor(strip,'Technical library'),aquarium=hasAncestor(strip,'Living planted aquarium');strip.material.emissiveIntensity=(shelf&&!actionState['shelf-lights'])||(aquarium&&!actionState['aquarium-lights'])?0:(aquarium?4.7:2.0)+(Math.sin(time*.0015)+1)*(aquarium ? .36 : .28);});
         if(roomba){const phase=time*.00018;roomba.position.x=Math.sin(phase)*2.15;roomba.position.z=3.55+Math.sin(phase*.67)*.55;roomba.rotation.y=Math.atan2(Math.cos(phase)*2.15,Math.cos(phase*.67)*.37);}

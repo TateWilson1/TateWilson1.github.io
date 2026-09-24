@@ -392,12 +392,18 @@ export function buildWorkstation(T) {
   const lampSwitch=ball(.045,-2.08,1.94,-.94,'amber',lamp);lampSwitch.name='Task lamp switch';lampSwitch.userData.action='task-lamp';
   const mug=group('Coffee mug');cylinder(.11,.1,.25,.78,2.00,-.65,'cream',mug);cylinder(.09,.09,.01,.78,2.132,-.65,'dark',mug);
   mesh(new T.TorusGeometry(.09,.028,8,16),'cream',.89,2.02,-.65,mug);
-  const plant=group('Plant');cylinder(.29,.22,.47,-2.77,.26,1.48,'copper',plant);cylinder(.26,.26,.018,-2.77,.505,1.48,'dark',plant);
+  const plant=group('Desk-side plant');cylinder(.29,.22,.47,3.58,.26,1.42,'copper',plant);cylinder(.26,.26,.018,3.58,.505,1.42,'dark',plant);
   for(let i=0;i<8;i++) {
-    const a=i*2.4;const x=-2.77+Math.sin(a)*.35,z=1.48+Math.cos(a)*.32,y=.9+(i%3)*.21;
-    rod([-2.77,.49,1.48],[x,y,z],.016,'green',plant);
-    const leaf=mesh(new T.SphereGeometry(.2,8,6),'leaf',x,y,z,plant);leaf.scale.set(.52,1.5,.7);leaf.rotation.z=Math.sin(a)*.7;
+    const a=i*2.4;const x=3.58+Math.sin(a)*.35,z=1.42+Math.cos(a)*.32,y=.9+(i%3)*.21;
+    rod([3.58,.49,1.42],[x,y,z],.016,'green',plant);
+    const leaf=mesh(new T.SphereGeometry(.2,8,6),'leaf',x,y,z,plant);leaf.scale.set(.52,1.5,.7);leaf.rotation.z=Math.sin(a)*.7;leaf.userData.ambient='plant-leaf';leaf.userData.baseRotation=leaf.rotation.z;leaf.userData.phase=i*.83;
   }
+  const chargingDock=group('Roomba charging dock');chargingDock.position.set(-2.77,.04,1.48);chargingDock.rotation.y=.12;
+  round(.86,.1,.74,.035,0,.08,0,'dark',chargingDock,'Charging dock floor plate');
+  round(.72,.72,.16,.045,0,.43,-.27,'metal',chargingDock,'Charging dock tower');
+  round(.46,.24,.025,.025,0,.47,-.17,'black',chargingDock,'Charging status inset');
+  for(let i=0;i<3;i++){const status=box(.09,.035,.012,-.13+i*.13,.48,-.151,i===2?'amber':'blue',chargingDock,'Charging level light');status.material=status.material.clone();status.userData.ambient='dock-light';status.userData.phase=i*.72;}
+  for(const x of [-.18,.18])round(.18,.018,.12,.008,x,.145,.18,'brass',chargingDock,'Charging contact');
   const shelf=group('Books');box(1.36,.085,.35,-2.45,1.28,-2.48,'desk',shelf);
   for(let i=0;i<6;i++)box(.11,.36+(i%3)*.06,.24,-2.98+i*.18,1.5,-2.43,['cream','amber','blue'][i%3],shelf);
   const network=group('Network equipment',architecture);
@@ -417,16 +423,24 @@ export function buildWorkstation(T) {
   box(1.9,1.5,.065,0,0,0,'metal',resume,'Security+ certificate frame');
   certificate(1.65,1.28,0,0,.04,resume);
   for(const [w,h,x,y] of [[1.76,.045,0,.68],[1.76,.045,0,-.68],[.045,1.36,-.88,0],[.045,1.36,.88,0]])box(w,h,.035,x,y,.065,'brass',resume,'Certificate inner trim');
-  const terminal=group('Wall-mounted repository console',world,'github');terminal.position.set(-6.9,2.02,-1.38);terminal.rotation.y=Math.PI/2;
-  round(1.22,.96,.09,.045,0,0,0,'metal',terminal,'Repository wall enclosure');
-  round(1.08,.8,.025,.03,0,.05,.058,'rubber',terminal,'Repository display housing');
-  round(.98,.7,.012,.02,0,.05,.076,'glass',terminal,'Repository glass');
-  screen(.94,.66,0,.05,.084,terminal,'PUBLIC WORK',['TabletopForge','Security Toolkit','More on GitHub'],'GitHub activity display');
-  for(let i=0;i<4;i++)box(.58-i*.08,.014,.008,-.12+i*.03,.2-i*.12,.094,'blue',terminal,`Repository ${i+1} log line`);
-  round(1.02,.08,.38,.025,0,-.53,.2,'steel',terminal,'Fold-down terminal shelf');
-  for(let col=0;col<9;col++)box(.065,.012,.045,-.32+col*.08,-.475,.24,'port',terminal,'Terminal key');
-  for(const y of [-.34,.34])cylinder(.035,.035,.08,-.54,y,-.04,'aluminum',terminal,12);
-  const phone=group('Wall contact intercom',world,'contact');phone.position.set(6.88,2.08,.92);phone.rotation.y=-Math.PI/2;
+  const archive=group('Reel-to-reel source archive',world,'github');archive.position.set(-5.36,1.86,-3.0);
+  round(2.05,1.34,.16,.055,0,0,0,'metal',archive,'Source archive wall enclosure');
+  round(1.88,1.17,.04,.035,0,.02,.105,'black',archive,'Archive recessed face');
+  for(const [x,phase] of [[-.49,0],[.49,Math.PI]]){
+    const reel=group('Archive tape reel',archive);reel.position.set(x,.23,.145);reel.userData.ambient='archive-reel';reel.userData.phase=phase;
+    mesh(new T.TorusGeometry(.31,.035,10,36),'aluminum',0,0,0,reel,'Archive reel rim');
+    cylinder(.075,.075,.035,0,0,.005,'steel',reel,20).rotation.x=Math.PI/2;
+    for(let spoke=0;spoke<6;spoke++){const a=spoke*Math.PI/3;rod([0,0,.005],[Math.cos(a)*.25,Math.sin(a)*.25,.005],.018,'steel',reel);}
+  }
+  cable([[-.49,-.06,.15],[-.28,-.16,.17],[0,-.19,.18],[.28,-.16,.17],[.49,-.06,.15]],.012,'amber',archive,'Visible archive tape path');
+  round(1.08,.3,.035,.025,0,-.4,.14,'steel',archive,'Archive meter bank');
+  for(const x of [-.34,0,.34]){
+    round(.24,.18,.012,.012,x,-.4,.165,'label',archive,'Archive meter face');
+    const needle=group('Archive meter needle',archive);needle.position.set(x,-.46,.18);needle.userData.ambient='archive-needle';needle.userData.phase=(x+.34)*3;
+    rod([0,0,0],[0,.1,0],.01,'amber',needle);
+  }
+  for(let i=0;i<3;i++)round(.42,.09,.025,.012,-.55+i*.55,-.62,.14,i===0?'amber':'aluminum',archive,'Project archive cartridge');
+  const phone=group('Wall contact intercom',world,'contact');phone.position.set(6.22,3.48,-3.0);
   round(.62,1.02,.11,.055,0,0,0,'metal',phone,'Contact wall cradle');
   round(.46,.82,.08,.05,0,.01,.075,'black',phone,'Contact handset');
   round(.31,.43,.018,.025,0,.05,.125,'screen',phone,'Contact screen');
@@ -467,7 +481,8 @@ export function buildWorkstation(T) {
   }
   const sideTable=group('Lounge side table');sideTable.position.set(-6.22,.08,4.78);
   round(.74,.08,.65,.03,0,.56,0,'desk',sideTable);for(const x of [-.28,.28])for(const z of [-.23,.23])rod([x,.08,z],[x,.54,z],.025,'metal',sideTable);
-  cylinder(.14,.18,.03,0,.63,0,'metal',sideTable);const lava=cylinder(.09,.14,.4,0,.85,0,'amber',sideTable,18);lava.material.emissive.setHex(0x8a3f28);lava.material.emissiveIntensity=.3;ball(.055,0,1.08,0,'brass',sideTable);
+  cylinder(.14,.18,.03,0,.63,0,'metal',sideTable);const lava=cylinder(.09,.14,.4,0,.85,0,'amber',sideTable,18);lava.material=lava.material.clone();lava.material.transparent=true;lava.material.opacity=.52;lava.material.depthWrite=false;lava.material.emissive.setHex(0x8a3f28);lava.material.emissiveIntensity=.5;ball(.055,0,1.08,0,'brass',sideTable);
+  for(let i=0;i<4;i++){const bubble=ball(.026+(i%2)*.012,0,.68+i*.08,0,'cream',sideTable);bubble.name='Lava lamp bubble';bubble.userData.ambient='lava-bubble';bubble.userData.phase=i*.86;}
   const library=group('Technical library');library.position.set(5.85,.08,-2.55);library.rotation.y=-.16;library.userData.action='shelf-lights';
   box(2.05,2.75,.25,0,1.38,0,'dark',library,'Library back');
   for(const y of [.16,.72,1.28,1.84,2.4,2.72])box(2.18,.09,.52,0,y,.05,'desk',library,'Library shelf');
@@ -475,7 +490,7 @@ export function buildWorkstation(T) {
   for(let row=0;row<4;row++)for(let i=0;i<9;i++){const h=.31+(i%3)*.055;box(.13,h,.36,-.83+i*.2,.25+row*.56+h/2,.11,bookColors[(i+row*2)%bookColors.length],library,'Forensics and security book');}
   for(const [y,mat] of [[.68,'rgbBlue'],[1.8,'blue'],[2.36,'amber']])box(1.95,.018,.028,0,y,.31,mat,library,'RGB accent strip / library shelf');
   const shelfSwitch=round(.18,.12,.05,.018,.82,.48,.31,'metal',library,'Library light switch');shelfSwitch.userData.action='shelf-lights';
-  const aquarium=group('Living planted aquarium');aquarium.position.set(5.85,.04,3.35);aquarium.rotation.y=-1.22;aquarium.userData.action='aquarium-lights';
+  const aquarium=group('Living planted aquarium');aquarium.position.set(6.48,.04,3.62);aquarium.rotation.y=-Math.PI/2;aquarium.userData.action='aquarium-lights';
   round(2.45,.9,1.02,.045,0,.47,0,'dark',aquarium,'Aquarium cabinet');
   for(const x of [-.58,.58])round(.98,.7,.045,.022,x,.48,.505,'veneer',aquarium,'Aquarium cabinet door');
   for(const x of [-.78,0,.78])round(.24,.035,.035,.012,x,.48,.535,'brass',aquarium,'Cabinet handle');
@@ -497,7 +512,7 @@ export function buildWorkstation(T) {
   const fishThree=aquariumFish({name:'Red rasbora',color:0xef5968,length:.48,height:.2,phase:4.3,speed:1.18,radius:.72,y:1.48,parent:fishSchool});fishThree.position.set(.12,1.46,.2);fishThree.scale.set(.82,.82,.82);
   const bubbles=group('Aquarium bubble column',aquarium);bubbles.position.set(.92,1.12,-.18);
   for(let i=0;i<10;i++){const bubble=ball(.018+(i%3)*.006,(i%2)*.035, i*.13,Math.sin(i)*.025,'aquariumGlass',bubbles);bubble.name='Aquarium bubble';bubble.userData.ambient='aquarium-bubble';bubble.userData.phase=i*.73;}
-  const waterSurface=box(tankW-.12,.018,tankD-.12,0,2.38,0,'water',aquarium,'Rippling water surface');waterSurface.material=waterSurface.material.clone();waterSurface.material.opacity=.28;
+  const waterSurface=box(tankW-.12,.018,tankD-.12,0,2.38,0,'water',aquarium,'Rippling water surface');waterSurface.material=waterSurface.material.clone();waterSurface.material.opacity=.28;waterSurface.userData.ambient='aquarium-water';waterSurface.userData.baseY=waterSurface.position.y;
   box(tankW-.18,.025,.045,0,2.4,-.38,'neonCyan',aquarium,'RGB accent strip / aquarium hood');
   box(tankW-.18,.025,.045,0,1.04,.47,'neonCyan',aquarium,'RGB accent strip / aquarium lower frame');
   for(const x of [-1.14,1.14])box(.025,tankH-.15,.045,x,tankMid,.47,'neonCyan',aquarium,'RGB accent strip / aquarium vertical edge');
@@ -507,6 +522,11 @@ export function buildWorkstation(T) {
   for(const x of [-1.18,1.18])for(const y of [1.04,2.42])for(const z of [-.44,.44])ball(.035,x,y,z,'steel',aquarium);
   const ceiling=group('Ceiling task lights');
   for(const [x,z] of [[-5.75,.35],[3.9,.2]]){rod([x,4.55,z],[x,3.8,z],.025,'black',ceiling);const shade=cylinder(.12,.34,.32,x,3.68,z,'cream',ceiling,24);shade.material.emissive.setHex(0x806849);shade.material.emissiveIntensity=.12;}
+  const ceilingFan=group('Ceiling fan');ceilingFan.position.set(.2,4.55,2.35);ceilingFan.userData.action='ceiling-fan';
+  rod([0,.08,0],[0,-.34,0],.045,'steel',ceilingFan);cylinder(.18,.24,.16,0,-.39,0,'metal',ceilingFan,24);
+  const ceilingRotor=group('Ceiling fan rotor',ceilingFan);ceilingRotor.position.y=-.42;ceilingRotor.userData.ambient='ceiling-fan';
+  for(let i=0;i<4;i++){const arm=group('Ceiling fan blade arm',ceilingRotor);arm.rotation.y=i*Math.PI/2;round(1.58,.045,.25,.035,.84,0,0,'steel',arm,'Ceiling fan blade');}
+  const fanLamp=cylinder(.16,.24,.13,0,-.53,0,'cream',ceilingFan,24);fanLamp.material=fanLamp.material.clone();fanLamp.material.emissive.setHex(0xbda16f);fanLamp.material.emissiveIntensity=.38;
   const roomba=group('Roomba floor patrol');roomba.position.set(0,.1,3.55);roomba.userData.ambient='roomba';
   cylinder(.34,.36,.15,0,.08,0,'black',roomba,32);cylinder(.31,.31,.035,0,.17,0,'metal',roomba,32);
   const bumper=mesh(new T.TorusGeometry(.34,.025,8,32),'dark',0,.12,0,roomba,'Roomba bumper');bumper.rotation.x=Math.PI/2;
