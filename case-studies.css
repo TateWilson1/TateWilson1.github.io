@@ -273,6 +273,9 @@
 .case-file .scope-boundary { display: grid; grid-template-columns: 120px 1fr; gap: 1.5rem; margin-top: 1rem; padding: 1.25rem; border: 1px solid var(--case-orange); border-radius: 5px; }
 .case-file .scope-boundary strong { color: var(--case-orange); font: 500 .875rem "IBM Plex Mono", Consolas, monospace; }
 .case-file .scope-boundary p { color: var(--case-bone); }
+.case-file .evidence-note { margin-top: 1.5rem; padding: 1.25rem 0; border-block: 1px solid var(--case-line); }
+.case-file .evidence-note strong { display: block; margin-bottom: .5rem; color: var(--case-blue-readable); font: 500 .8125rem "IBM Plex Mono", Consolas, monospace; text-transform: uppercase; letter-spacing: .06em; }
+.case-file .evidence-note p { color: var(--case-muted); font-size: 1rem; line-height: 1.6; }
 
 /* CASE 003 — qualitative risk and control relationships */
 .case-file .assessment-flow ol { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 0; list-style: none; }

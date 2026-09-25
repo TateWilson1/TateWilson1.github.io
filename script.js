@@ -44,7 +44,7 @@ if (menuToggle && primaryNav) {
 }
 
 const commandDefinitions = [
-  { command: "projects", detail: "TabletopForge and the NIST CFReDS investigation", href: "index.html#projects", keywords: "work cases portfolio forensics disk image" },
+  { command: "projects", detail: "Selected cases and supporting work", href: "index.html#projects", keywords: "work cases portfolio forensics scanner grc disk image" },
   { command: "experience", detail: "Cybersecurity internship at Pelycon Technologies", href: "index.html#internship", keywords: "internship m365 entra" },
   { command: "education", detail: "Digital Forensics & Cybersecurity at EKU", href: "index.html#education", keywords: "degree university resume courses" },
   { command: "ccdc", detail: "Competition defense and team leadership", href: "index.html#ccdc", keywords: "linux windows proxmox captain" },

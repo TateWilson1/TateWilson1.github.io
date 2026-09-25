@@ -571,6 +571,10 @@ export function buildWorkstation(T) {
   const roomba=group('Roomba floor patrol');roomba.position.set(0,.1,3.55);roomba.userData.ambient='roomba';
   cylinder(.34,.36,.15,0,.08,0,'black',roomba,32);cylinder(.31,.31,.035,0,.17,0,'metal',roomba,32);
   const bumper=mesh(new T.TorusGeometry(.34,.025,8,32),'dark',0,.12,0,roomba,'Roomba bumper');bumper.rotation.x=Math.PI/2;
+  for(const [index,material] of ['rgbBlue','rgbRed','rgbGreen'].entries()){
+    const segment=mesh(new T.TorusGeometry(.25,.012,6,18,Math.PI*2/3-.12),material,0,.195,0,roomba,'RGB accent strip / Roomba top ring');
+    segment.rotation.x=Math.PI/2;segment.rotation.y=index*Math.PI*2/3;segment.userData.ambient='roomba-rgb';
+  }
   cylinder(.065,.075,.06,.12,.22,-.08,'dark',roomba,20);ball(.025,-.14,.205,-.24,'rgbBlue',roomba);
   const cat=group('Lab cat');cat.position.set(0,.02,5.25);cat.userData.ambient='lab-cat';
   const catBody=ball(.36,0,.37,0,'catFur',cat);catBody.scale.set(1.35,.8,.72);catBody.name='Cat body';
