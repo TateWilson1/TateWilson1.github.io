@@ -1,60 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101416">
-  <meta name="description" content="CCDC cybersecurity lessons write-up by Tate Wilson.">
-  <title>CCDC Lessons | Tate Wilson</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/fonts.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="case-studies.css">
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101416">
+  <meta name="description" content="Tate Wilson's Collegiate Cyber Defense Competition leadership experience report.">
+  <title>CCDC Experience Report | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="case-studies.css"><script src="script.js" defer></script>
 </head>
 <body class="case-file field-note-file">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Field notes</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button><nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav><button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button></div></header>
-
+  <header class="site-header"><div class="header-inner"><a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Experience reports</span></a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button><nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav><button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button></div></header>
   <main id="main" class="case-shell page-width" tabindex="-1">
     <header class="case-header note-header">
-      <div class="case-ident"><a class="case-back text-link" href="index.html#writeups">← Field notes</a><p class="case-number">NOTE./001</p><p>Competition defense</p></div>
-      <div class="case-title"><h1>CCDC Lessons</h1><p class="case-summary">What defensive cybersecurity practice teaches about ownership, triage, persistence, and communication.</p></div>
-      <dl class="case-meta"><div><dt>Context</dt><dd>Competition practice</dd></div><div><dt>Focus</dt><dd>Service defense</dd></div><div><dt>Operating model</dt><dd>Shared ownership + escalation</dd></div><div><dt>Core lesson</dt><dd>Organization under pressure</dd></div></dl>
+      <div class="case-ident"><a class="case-back text-link" href="index.html#ccdc">← CCDC profile</a><p class="case-number">REPORT./001</p><p>Competition defense</p></div>
+      <div class="case-title"><h1>CCDC Leadership &amp; Defense</h1><p class="case-summary">How I organized weekly defensive practice, built shared infrastructure, and led a 15+ member team to first place in Kentucky.</p></div>
+      <dl class="case-meta"><div><dt>Role</dt><dd>President + team captain</dd></div><div><dt>Cadence</dt><dd>Weekly practice</dd></div><div><dt>Environment</dt><dd>Windows, Linux, AD, Proxmox</dd></div><div><dt>Result</dt><dd>1st place in Kentucky</dd></div></dl>
     </header>
-
     <div class="case-layout">
-      <aside class="case-index"><p class="case-index-label">Note contents</p><nav aria-label="Field note sections"><a href="#service-ownership-matters"><span>01</span> Ownership</a><a href="#baseline-before-you-change"><span>02</span> Baseline</a><a href="#persistence-detection-is-a-habit"><span>03</span> Persistence</a><a href="#communication-wins-time"><span>04</span> Communication</a><a href="#takeaway"><span>05</span> Takeaway</a></nav></aside>
-      <article class="case-content" aria-label="CCDC lessons field note">
-        <section class="case-section" id="service-ownership-matters" tabindex="-1">
-          <div class="section-copy compact-copy"><p class="section-label">01 / Service ownership</p><h2>Every service needs a named defender.</h2><p>If nobody owns a service, nobody is accountable for its working state or its suspicious changes.</p></div>
-          <figure class="case-visual service-map" aria-labelledby="service-caption">
-            <div class="service-core"><span>Service</span><strong>Named owner</strong></div>
-            <div class="service-duties"><span>Logs<strong>Watch</strong></span><span>Uptime<strong>Validate</strong></span><span>Configuration<strong>Track drift</strong></span><span>Behavior<strong>Investigate</strong></span></div>
-            <figcaption id="service-caption">Ownership turns four separate checks into one coherent defense responsibility.</figcaption>
-          </figure>
-        </section>
-
-        <section class="case-section case-split" id="baseline-before-you-change" tabindex="-1">
-          <div class="section-copy"><p class="section-label">02 / Baseline</p><h2>Know normal before hardening.</h2><p>One of the easiest ways to break a system is to harden blindly.</p></div>
-          <div class="baseline-record" role="list" aria-label="Items to baseline before changing a system"><div role="listitem"><span>01</span><strong>Running services</strong></div><div role="listitem"><span>02</span><strong>Existing users</strong></div><div role="listitem"><span>03</span><strong>Exposed ports</strong></div><div role="listitem"><span>04</span><strong>Normal behavior</strong></div></div>
-        </section>
-
-        <section class="case-section" id="persistence-detection-is-a-habit" tabindex="-1">
-          <div class="section-copy compact-copy"><p class="section-label">03 / Persistence review</p><h2>Look beyond obvious malware.</h2></div>
-          <div class="persistence-path" role="list" aria-label="Persistence locations defenders should review"><div role="listitem">Scheduled tasks</div><div role="listitem">Services</div><div role="listitem">Startup locations</div><div role="listitem">Unauthorized users</div><div role="listitem">SSH keys</div><div role="listitem">Web shells</div><div role="listitem">Odd cron jobs</div></div>
-          <p class="visual-note">Persistence detection becomes useful when it is a repeatable habit, not a one-time reaction to an obvious artifact.</p>
-        </section>
-
-        <section class="case-section" id="communication-wins-time" tabindex="-1">
-          <div class="section-copy compact-copy"><p class="section-label">04 / Communication loop</p><h2>Shared context prevents duplicated work.</h2></div>
-          <figure class="case-visual comms-loop" aria-labelledby="comms-caption"><ol><li><span>Capture</span><strong>Shared notes</strong></li><li><span>Route</span><strong>Clear escalation</strong></li><li><span>Update</span><strong>Quick status</strong></li><li><span>Coordinate</span><strong>Avoid duplication</strong></li></ol><figcaption id="comms-caption">Under pressure, communication is an operational control: it keeps evidence, ownership, and next actions aligned.</figcaption></figure>
-        </section>
-
-        <section class="case-section case-reflection" id="takeaway" tabindex="-1"><p class="section-label">05 / Takeaway</p><blockquote>The best defenders are not just fast with commands; they are organized under stress.</blockquote><p>CCDC practice connected system administration, incident response, documentation, and teamwork.</p></section>
+      <aside class="case-index"><p class="case-index-label">Report contents</p><nav aria-label="Experience report sections"><a href="#context"><span>01</span> Context</a><a href="#responsibilities"><span>02</span> Responsibilities</a><a href="#process"><span>03</span> Defensive process</a><a href="#result"><span>04</span> Result</a><a href="#skills"><span>05</span> Skills</a></nav></aside>
+      <article class="case-content" aria-label="CCDC experience report">
+        <section class="case-section case-split" id="context" tabindex="-1"><div class="section-copy"><p class="section-label">01 / Context</p><h2>Practice defense as an operating system.</h2></div><div class="finding finding-large"><span class="finding-key">Team brief</span><p>CCDC combines service availability, system hardening, incident response, and business communication under time pressure. My job was to turn those demands into repeatable weekly practice for more than 15 members.</p></div></section>
+        <section class="case-section" id="responsibilities" tabindex="-1"><div class="section-copy compact-copy"><p class="section-label">02 / Responsibilities</p><h2>Connect people, platforms, and priorities.</h2></div><div class="finding-path" role="list"><div role="listitem"><span>Lead</span><strong>Set practice objectives and assign system ownership.</strong></div><div role="listitem"><span>Build</span><strong>Maintain Windows Server, Active Directory, Linux, and Proxmox labs.</strong></div><div role="listitem"><span>Coach</span><strong>Teach hardening, persistence review, firewalling, and incident response.</strong></div><div role="listitem"><span>Coordinate</span><strong>Keep evidence, escalation, and status updates moving across the team.</strong></div></div></section>
+        <section class="case-section" id="process" tabindex="-1"><div class="section-copy compact-copy"><p class="section-label">03 / Defensive process</p><h2>Give every service a named defender.</h2></div><figure class="case-visual service-map" aria-labelledby="service-caption"><div class="service-core"><span>Service</span><strong>Named owner</strong></div><div class="service-duties"><span>Baseline<strong>Know normal</strong></span><span>Harden<strong>Reduce exposure</strong></span><span>Monitor<strong>Detect drift</strong></span><span>Escalate<strong>Share context</strong></span></div><figcaption id="service-caption">A clear owner ties service health, configuration changes, suspicious activity, and communication together.</figcaption></figure></section>
+        <section class="case-section case-split" id="result" tabindex="-1"><div class="section-copy"><p class="section-label">04 / Result</p><h2>First place in Kentucky.</h2><p>The placement mattered, but the lasting result was a stronger practice culture built around documentation, accountability, and calm response.</p></div><div class="baseline-record" role="list"><div role="listitem"><span>01</span><strong>Weekly repetition</strong></div><div role="listitem"><span>02</span><strong>Shared infrastructure</strong></div><div role="listitem"><span>03</span><strong>Clear ownership</strong></div><div role="listitem"><span>04</span><strong>Coordinated response</strong></div></div></section>
+        <section class="case-section case-reflection" id="skills" tabindex="-1"><p class="section-label">05 / Skills demonstrated</p><blockquote>The strongest defenders pair technical depth with organization under pressure.</blockquote><p>Team leadership, Windows and Linux administration, Active Directory, virtualization, hardening, persistence detection, incident response, and operational communication.</p></section>
       </article>
     </div>
-    <nav class="case-navigation" aria-label="Field note navigation"><a href="case-grc-risk-assessment.html"><span>Previous file / Case 003</span><strong>← GRC Risk Assessment</strong></a><a href="writeup-m365-entra-review.html"><span>Next note / 002</span><strong>M365 / Entra Review →</strong></a></nav>
+    <nav class="case-navigation" aria-label="Experience report navigation"><a href="case-hacking-case.html"><span>Previous case / 002</span><strong>← Hacking Case</strong></a><a href="writeup-m365-entra-review.html"><span>Next report / 002</span><strong>Cybersecurity Internship →</strong></a></nav>
   </main>
   <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
 </body>

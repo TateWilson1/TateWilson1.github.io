@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101416">
+  <meta name="description" content="NIST CFReDS Hacking Case digital forensics case study by Tate Wilson.">
+  <title>NIST CFReDS Hacking Case | Tate Wilson</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-studies.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="case-file">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html#top" aria-label="Tate Wilson home"><span class="brand-mark" aria-hidden="true">tw./</span><span class="brand-context">Case files</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">+</span></button>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation"><a href="index.html#projects">Work</a><a href="index.html#internship">Internship</a><a href="index.html#education">Education</a><a href="index.html#contact">Contact</a><a class="nav-resume" href="assets/Tate_Wilson_Resume.pdf">Resume <span aria-hidden="true">↗</span></a></nav>
+      <button class="command-trigger" type="button" hidden data-command-trigger aria-label="Open command palette">Find <kbd>/</kbd></button>
+    </div>
+  </header>
+
+  <main id="main" class="case-shell page-width" tabindex="-1">
+    <header class="case-header">
+      <div class="case-ident"><a class="case-back text-link" href="index.html#projects">← Case index</a><p class="case-number">CASE./002</p><p>Digital forensics</p></div>
+      <div class="case-title"><h1>NIST CFReDS Hacking Case</h1><p class="case-summary">A structured examination of a forensic disk image, connecting host, registry, and network artifacts into a defensible investigation record.</p></div>
+      <dl class="case-meta">
+        <div><dt>Type</dt><dd>Simulated forensic case</dd></div>
+        <div><dt>Scope</dt><dd>Disk image + host and network artifacts</dd></div>
+        <div><dt>Tools</dt><dd>FTK Imager, Autopsy, Registry Explorer, Wireshark</dd></div>
+        <div><dt>Output</dt><dd>Documented findings and evidence trail</dd></div>
+      </dl>
+    </header>
+
+    <div class="case-layout">
+      <aside class="case-index"><p class="case-index-label">File contents</p><nav aria-label="Case sections"><a href="#objective"><span>01</span> Objective</a><a href="#method"><span>02</span> Method</a><a href="#tools"><span>03</span> Tool map</a><a href="#evidence"><span>04</span> Evidence record</a><a href="#skills"><span>05</span> Skills</a></nav></aside>
+      <article class="case-content" aria-label="NIST CFReDS Hacking Case file">
+        <section class="case-section case-split" id="objective" tabindex="-1">
+          <div class="section-copy"><p class="section-label">01 / Objective</p><h2>Answer the case without losing the evidence trail.</h2></div>
+          <div class="finding finding-large"><span class="finding-key">Investigation brief</span><p>I examined a NIST CFReDS forensic image to identify relevant system activity, establish a timeline, and support each conclusion with recoverable artifacts rather than assumption.</p></div>
+        </section>
+
+        <section class="case-section" id="method" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">02 / Method</p><h2>A repeatable path from image to finding.</h2></div>
+          <div class="finding-path" role="list" aria-label="Forensic investigation method">
+            <div role="listitem"><span>Preserve</span><strong>Verify the image and work from a copy.</strong></div>
+            <div role="listitem"><span>Survey</span><strong>Review the file system and build a timeline.</strong></div>
+            <div role="listitem"><span>Examine</span><strong>Inspect registry, host, and network artifacts.</strong></div>
+            <div role="listitem"><span>Correlate</span><strong>Connect timestamps and activity across sources.</strong></div>
+            <div role="listitem"><span>Report</span><strong>Map every conclusion back to evidence.</strong></div>
+          </div>
+        </section>
+
+        <section class="case-section" id="tools" tabindex="-1">
+          <div class="section-copy compact-copy"><p class="section-label">03 / Tool-to-question map</p><h2>Each tool had a specific investigative job.</h2></div>
+          <dl class="tool-map" aria-label="Forensic tools and their investigative roles">
+            <div><dt>FTK Imager</dt><dd>Acquire, verify, and inspect the evidence image.</dd></div>
+            <div><dt>Autopsy</dt><dd>Search files, metadata, deleted content, and timeline events.</dd></div>
+            <div><dt>Registry Explorer</dt><dd>Review user, system, and execution artifacts in registry hives.</dd></div>
+            <div><dt>Wireshark</dt><dd>Examine packet evidence and relate network activity to host events.</dd></div>
+          </dl>
+        </section>
+
+        <section class="case-section case-split" id="evidence" tabindex="-1">
+          <div class="section-copy"><p class="section-label">04 / Evidence record</p><h2>Make the reasoning reproducible.</h2><p>The value of the exercise was not only finding artifacts; it was preserving enough context for another analyst to follow the same path.</p></div>
+          <div class="delivery-ledger">
+            <section><h3><span aria-hidden="true">●</span> Evidence discipline</h3><ul><li>Image integrity and working-copy separation</li><li>Artifact source and timestamp notes</li><li>Cross-tool validation</li></ul></section>
+            <section><h3><span aria-hidden="true">●</span> Reporting discipline</h3><ul><li>Observation separated from interpretation</li><li>Conclusions tied to artifacts</li><li>Clear limits where evidence was incomplete</li></ul></section>
+          </div>
+        </section>
+
+        <section class="case-section case-reflection" id="skills" tabindex="-1"><p class="section-label">05 / Skills demonstrated</p><blockquote>Good forensic work is a chain of documented decisions, not a list of tool outputs.</blockquote><p>This case developed evidence handling, timeline analysis, Windows artifact review, packet analysis, cross-source correlation, and concise technical reporting.</p></section>
+      </article>
+    </div>
+
+    <nav class="case-navigation" aria-label="Case file navigation"><a href="case-tabletopforge.html"><span>Previous case / 001</span><strong>← TabletopForge</strong></a><a href="writeup-ccdc-lessons.html"><span>Next report / 001</span><strong>CCDC Experience →</strong></a></nav>
+  </main>
+  <footer class="site-footer page-width"><a class="brand footer-brand" href="index.html#top"><span class="brand-mark" aria-hidden="true">tw./</span><span>Tate Wilson</span></a><p>Learning, building, documenting.</p><span class="copyright">© <span id="year">2026</span></span><a class="back-top" href="#main">Back to top ↑</a></footer>
+</body>
+</html>

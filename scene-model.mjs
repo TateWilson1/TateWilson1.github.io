@@ -256,7 +256,7 @@ export function buildWorkstation(T) {
   const monitor=group('Monitor / selected projects',world,'projects');
   round(2.38,1.49,.16,.055,-.43,2.87,-.89,'rubber',monitor,'Monitor polymer housing');
   round(2.28,1.34,.016,.028,-.43,2.905,-.799,'glass',monitor,'Inset display glass');
-  const mainDisplay=screen(2.19,1.24,-.43,2.91,-.787,monitor,'TATE / SELECTED WORK',['TabletopForge','NIST CFReDS Hacking Case','GRC Risk Assessment'],'Display');
+  const mainDisplay=screen(2.19,1.24,-.43,2.91,-.787,monitor,'TATE / SELECTED WORK',['TabletopForge','NIST CFReDS Hacking Case'],'Display');
   if(typeof document!=='undefined') {
     mainDisplay.userData.wallpaper={lastFrame:0};
     new T.TextureLoader().load('assets/tabletopforge-home.png',texture=>{
@@ -430,7 +430,7 @@ export function buildWorkstation(T) {
   const pedestalFan=group('Oscillating RGB pedestal fan');pedestalFan.position.set(5.25,.04,-.55);pedestalFan.userData.action='pedestal-fan';
   round(.92,.1,.58,.12,0,.08,0,'dark',pedestalFan,'Pedestal fan oval base');round(.64,.035,.34,.1,-.04,.145,.01,'steel',pedestalFan,'Pedestal fan base inset');
   cylinder(.055,.065,1.28,0,.79,0,'steel',pedestalFan,18);cylinder(.1,.12,.18,0,.73,0,'metal',pedestalFan,18);
-  const pedestalHead=group('Pedestal fan oscillating head',pedestalFan);pedestalHead.position.set(0,1.5,0);pedestalHead.rotation.y=-Math.PI*.75;pedestalHead.userData.ambient='pedestal-fan';pedestalHead.userData.baseYaw=-Math.PI*.75;pedestalHead.userData.arc=Math.PI/4;
+  const pedestalHead=group('Pedestal fan oscillating head',pedestalFan);pedestalHead.position.set(0,1.5,0);pedestalHead.rotation.y=0;pedestalHead.userData.ambient='pedestal-fan';pedestalHead.userData.baseYaw=0;pedestalHead.userData.arc=Math.PI/4;
   cylinder(.1,.12,.22,0,-.48,0,'metal',pedestalHead,18);
   const rearRing=mesh(new T.TorusGeometry(.43,.028,10,48),'steel',0,0,-.07,pedestalHead,'Pedestal fan rear cage');rearRing.material=rearRing.material.clone();rearRing.material.side=T.DoubleSide;
   const rgbCage=mesh(new T.TorusGeometry(.46,.035,10,48),'neonCyan',0,0,.07,pedestalHead,'RGB accent strip / pedestal fan cage');rgbCage.material=rgbCage.material.clone();rgbCage.userData.ambient='fan-rgb';

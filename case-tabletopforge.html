@@ -43,8 +43,10 @@
       <dl class="case-meta">
         <div><dt>Format</dt><dd>Browser-based tool</dd></div>
         <div><dt>Audience</dt><dd>Small businesses, MSPs, IT teams, students</dd></div>
-        <div><dt>Stack</dt><dd>Next.js 15, TypeScript, Tailwind CSS</dd></div>
-        <div><dt>Storage</dt><dd>LocalStorage</dd></div>
+        <div><dt>Stack</dt><dd>Next.js 15, React 19, TypeScript</dd></div>
+        <div><dt>Backend</dt><dd>Express API + PostgreSQL</dd></div>
+        <div><dt>Generation</dt><dd>OpenAI-backed with deterministic fallback</dd></div>
+        <div><dt>Output</dt><dd>Browser session + downloadable Markdown</dd></div>
       </dl>
     </header>
 
@@ -109,24 +111,26 @@
         <section class="case-section case-split" id="tools" tabindex="-1">
           <div class="section-copy">
             <p class="section-label">03 / Delivery record</p>
-            <h2>Built now, planned next.</h2>
-            <p>The boundary matters: the first column describes delivered behavior; the second records future direction already stated in the portfolio.</p>
+            <h2>Trace the build from input to deliverable.</h2>
+            <p>The current codebase separates the guided interface, exercise-generation service, and stored application data so each part can evolve without obscuring the workflow.</p>
           </div>
           <div class="delivery-ledger">
             <section>
-              <h3><span aria-hidden="true">●</span> Delivered</h3>
+              <h3><span aria-hidden="true">●</span> Exercise workflow</h3>
               <ul>
-                <li>Browser-based saved exercises</li>
+                <li>Guided incident and organization inputs</li>
                 <li>Copyable and downloadable Markdown</li>
                 <li>Generated summaries, prompts, notes, and templates</li>
-                <li>shadcn-style UI</li>
+                <li>Deterministic fallback when AI generation is unavailable</li>
               </ul>
             </section>
             <section>
-              <h3><span aria-hidden="true">○</span> Planned</h3>
+              <h3><span aria-hidden="true">●</span> Application structure</h3>
               <ul>
-                <li>Stronger reporting</li>
-                <li>Future PDF export</li>
+                <li>Next.js and React frontend</li>
+                <li>Express API with PostgreSQL persistence</li>
+                <li>Authentication and account routes</li>
+                <li>Billing-ready integration points</li>
               </ul>
             </section>
           </div>
@@ -156,7 +160,7 @@
 
     <nav class="case-navigation" aria-label="Case file navigation">
       <a href="index.html#projects"><span>Return</span><strong>Selected work</strong></a>
-      <a href="case-grc-risk-assessment.html"><span>Next case / 003</span><strong>GRC Risk Assessment →</strong></a>
+      <a href="case-hacking-case.html"><span>Next case / 002</span><strong>NIST CFReDS Hacking Case →</strong></a>
     </nav>
   </main>
 

@@ -38,7 +38,7 @@ assert.ok(!byName('Ceiling fan'),'The ceiling fan was removed');
 const pedestalFan=byName('Oscillating RGB pedestal fan'),pedestalBox=new T.Box3().setFromObject(pedestalFan),rackBox=new T.Box3().setFromObject(byName('Server rack / CCDC')),libraryBox=new T.Box3().setFromObject(byName('Technical library')),aquariumBox=new T.Box3().setFromObject(byName('Living planted aquarium'));
 assert.ok(pedestalFan?.userData.action==='pedestal-fan','The room includes a controllable RGB pedestal fan');
 assert.ok(!pedestalBox.intersectsBox(rackBox)&&!pedestalBox.intersectsBox(libraryBox)&&!pedestalBox.intersectsBox(aquariumBox),'Pedestal fan occupies the clear gap between rack, library, and aquarium');
-const fanHead=byName('Pedestal fan oscillating head');assert.ok(Math.abs(fanHead.userData.arc-Math.PI/4)<.001,'Pedestal fan sweeps through a 90 degree arc');
+const fanHead=byName('Pedestal fan oscillating head');assert.ok(Math.abs(fanHead.userData.arc-Math.PI/4)<.001&&Math.abs(fanHead.userData.baseYaw)<.001,'Pedestal fan sweeps through a 90 degree arc centered toward the overview camera');
 const desktopPc=byName('Glass-sided RGB desktop computer'),pcBox=new T.Box3().setFromObject(desktopPc),desktopBox=new T.Box3().setFromObject(byName('Ash veneer desktop'));
 assert.ok(pcBox.max.y<desktopBox.min.y&&pcBox.max.x<rackBox.min.x&&!pcBox.intersectsBox(rackBox),'Desktop computer fits beneath the desk with clearance before the server rack');
 assert.ok(byName('Roomba charging dock'),'The former plant location now has a purposeful charging dock');
