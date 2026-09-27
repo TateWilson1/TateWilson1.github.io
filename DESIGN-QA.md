@@ -1,5 +1,13 @@
 # Portfolio redesign verification
 
+## Résumé information hierarchy — 2026-09-27
+
+All eight interactive workspace dossiers now give their largest text to a concrete résumé fact instead of a generic introduction. The education panel leads with “B.S. in Digital Forensics & Cybersecurity”; the other panels lead with selected work, forensic method, the Kentucky CCDC result, the Pelycon internship role, credentials, source destinations, or the direct email route. Supporting context is shorter and follows beneath the headline.
+
+The attempted pale case-file header and repeated “Tate at a glance” block were removed after rendered review showed that they fought the room palette and recreated the full résumé inside every destination. The raised header now stays within the graphite system, and information is deliberately divided across the eight existing destinations. Projects shows only the two selected cases and one supporting-work route; Education shows only the degree record; Credentials shows only earned credentials, SC-300 study status, and the résumé link. The duplicate project screenshot was also removed from the dossier because the selected workstation already displays it.
+
+Each stable hash route was opened in a clean desktop browser session. All eight panels opened, every headline stayed within the panel boundary, the removed global snapshot was absent, none produced horizontal overflow, and the browser console reported no warnings or errors. JavaScript syntax, scene contract, and portfolio checks passed.
+
 ## Roomba motion correction — 2026-09-27
 
 The floor-patrol Roomba carries a thin three-segment cyan, pink, and green status ring on its top shell. Each segment's angular offset is now baked into its geometry before the shared horizontal rotation is applied, keeping the pink segment coplanar when the Roomba changes heading. The patrol uses a bounded floor plan around the room edges, chair, charging dock, and notebook pedestal: it advances until contact, pauses briefly, spins through a randomized angle, then resumes in its new direction. It continues to freeze with the established reduced-motion behavior.

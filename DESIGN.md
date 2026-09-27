@@ -70,6 +70,8 @@ Content maximum 1320px. Outer gutter clamp(20px, 4.5vw, 72px). Scale: 4, 8, 12, 
 
 Every new substantive HTML page must receive at least one incoming link from the portfolio overview, a dossier, or another clearly labeled index. `python scripts/check-portfolio.py` enforces this rule along with local references and anchors.
 
+Every workspace dossier leads with the most useful résumé fact in its largest text and stays limited to its own destination: projects, forensic method, competition result, internship role, degree, credentials, source destination, or direct contact route. The raised graphite header separates the inspection file from the room without introducing a second palette. No dossier repeats a global résumé summary; supporting explanation and evidence follow in descending scan order.
+
 ## Performance budget
 
 - The identity, poster, overview link, and résumé link must remain usable before WebGL initializes.
