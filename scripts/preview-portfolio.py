@@ -8,7 +8,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = {p.name for p in ROOT.glob('*.html')}
-PUBLIC = PAGES | {'styles.css', 'lab.css', 'case-studies.css', 'script.js', 'scene.js', 'scene-model.mjs', 'robots.txt', 'sitemap.xml'}
+PUBLIC = PAGES | {'styles.css', 'lab.css', 'case-studies.css', 'script.js', 'scene.js', 'scene-model.mjs', 'roomba-motion.mjs', 'robots.txt', 'sitemap.xml'}
 
 class PortfolioHandler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):

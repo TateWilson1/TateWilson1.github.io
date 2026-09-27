@@ -22,7 +22,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
   const loadingFailsafe=setTimeout(()=>showFallback('Interactive mode is taking longer than expected. The complete portfolio overview is ready now.'),4000);
   let renderer;
   try {
-    const [T,{buildWorkstation}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260923.9')]);
+    const [T,{buildWorkstation},{createRoombaMotion,stepRoomba}] = await Promise.all([import('./assets/vendor/three.module.min.js?v=20260923.2'),import('./scene-model.mjs?v=20260925.10'),import('./roomba-motion.mjs?v=20260925.1')]);
     const forcedQuality=new URLSearchParams(location.search).get('quality');
     const lowPower=forcedQuality==='low'||forcedQuality!=='high'&&((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4));
     document.body.dataset.renderProfile=lowPower?'reduced':'full';
@@ -145,6 +145,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
     const raycaster=new T.Raycaster(),pointer=new T.Vector2(),projectedPin=new T.Vector3();
     const workspace={name:'ENTRY',entered:false,selected:null,hovered:null};
     const actionState={'task-lamp':true,'shelf-lights':true,'aquarium-lights':true,'screen-mode':true,'pedestal-fan':true,'lava-lamp':true};
+    const roombaMotion=createRoombaMotion();let roombaLastTime=0;
     const routeToken=performance.timeOrigin;
     let drag=null,visible=true,lastFrame=0,panelTimer=0;
     const setWorkspaceState=(name,selected=null)=>{
@@ -293,7 +294,7 @@ if (canvas && !matchMedia('(max-width:760px), (pointer:coarse) and (max-width:10
         });
         markers.forEach((marker,index)=>{const pulse=1+Math.sin(time*.003+index*.7)*.09;marker.scale.setScalar(.32*pulse);marker.material.opacity=(workspace.hovered===`target:${marker.userData.target}` ? .95 : .72)+Math.sin(time*.003+index)*.08;});
         rgbMeshes.forEach(strip=>{const shelf=hasAncestor(strip,'Technical library'),aquarium=hasAncestor(strip,'Living planted aquarium'),fan=hasAncestor(strip,'Oscillating RGB pedestal fan');strip.material.emissiveIntensity=(shelf&&!actionState['shelf-lights'])||(aquarium&&!actionState['aquarium-lights'])||(fan&&!actionState['pedestal-fan'])?0:(aquarium?4.7:2.0)+(Math.sin(time*.0015)+1)*(aquarium ? .36 : .28);});
-        if(roomba){const phase=time*.00018;roomba.position.x=Math.sin(phase)*2.15;roomba.position.z=3.55+Math.sin(phase*.67)*.55;roomba.rotation.y=Math.atan2(Math.cos(phase)*2.15,Math.cos(phase*.67)*.37);}
+        if(roomba){const delta=roombaLastTime?(time-roombaLastTime)/1000:0;roombaLastTime=time;stepRoomba(roombaMotion,roomba.position,delta);roomba.rotation.y=roombaMotion.heading;}
         if(labCat){const phase=time*.000105,gait=phase*8,x=Math.sin(phase)*3.9;labCat.position.x=x;labCat.position.y=.02+Math.abs(Math.sin(gait))*.018;labCat.position.z=5.25+Math.sin(phase*.72)*.16;labCat.rotation.y=Math.cos(phase)>=0?-Math.PI/2:Math.PI/2;catLegs.forEach(leg=>{leg.rotation.x=Math.sin(gait+leg.userData.gaitPhase)*.42;});if(catTail)catTail.rotation.z=Math.sin(phase*5)*.18;}
         aquariumFish.forEach((fish,index)=>{const phase=time*.00042*fish.userData.speed+fish.userData.phase,x=Math.sin(phase)*fish.userData.radius,z=Math.cos(phase*.83+index)*.24;fish.position.set(x,fish.userData.swimY+Math.sin(phase*1.7)*.075,z);fish.rotation.y=Math.cos(phase)>=0?0:Math.PI;fish.rotation.z=Math.sin(phase*1.35)*.035;});
         fishTails.forEach((tail,index)=>{tail.rotation.y=Math.PI/2+Math.sin(time*.008+index*1.8)*.42;});

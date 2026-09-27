@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import * as T from './assets/vendor/three.module.min.js';
 import { buildWorkstation } from './scene-model.mjs';
+import { createRoombaMotion, stepRoomba } from './roomba-motion.mjs';
 const model=buildWorkstation(T);
 model.updateMatrixWorld(true);
 const byName=name=>model.getObjectByName(name);
@@ -43,6 +44,7 @@ const desktopPc=byName('Glass-sided RGB desktop computer'),pcBox=new T.Box3().se
 assert.ok(pcBox.max.y<desktopBox.min.y&&pcBox.max.x<rackBox.min.x&&!pcBox.intersectsBox(rackBox),'Desktop computer fits beneath the desk with clearance before the server rack');
 assert.ok(byName('Roomba charging dock'),'The former plant location now has a purposeful charging dock');
 let roombaRgb=0;byName('Roomba floor patrol').traverse(object=>{if(object.userData.ambient==='roomba-rgb')roombaRgb++;});assert.equal(roombaRgb,3,'The Roomba has a restrained three-segment RGB ring');
+const motion=createRoombaMotion(()=>0),testPosition={x:0,z:.86};motion.heading=Math.PI;assert.equal(stepRoomba(motion,testPosition,.05),'bump','The Roomba detects the front room boundary');while(motion.pause>0)stepRoomba(motion,testPosition,.05);const headingBeforeTurn=motion.heading;assert.equal(stepRoomba(motion,testPosition,.05),'spin','The Roomba spins after contact');assert.notEqual(motion.heading,headingBeforeTurn,'The Roomba changes direction after contact');
 assert.ok(byName('Lounge side table')?.userData.action==='lava-lamp','The lava lamp has a working scene control');
 for(const ambient of ['evidence-scan','contact-pulse','archive-reel','archive-needle','pedestal-fan','fan-rgb','pc-rgb','roomba-rgb','network-led','lava-bubble','lava-led','aquarium-water','dock-light','dock-beacon']){let found=false;model.traverse(object=>{if(object.userData.ambient===ambient)found=true;});assert.ok(found,`${ambient} motion detail exists`);}
 let networkLeds=0,pcFans=0;model.traverse(object=>{if(object.userData.ambient==='network-led')networkLeds++;if(object.name==='PC intake fan')pcFans++;});assert.equal(networkLeds,16,'Rack exposes activity lights for both network rows');assert.equal(pcFans,3,'Desktop computer includes three recognizable intake fans');

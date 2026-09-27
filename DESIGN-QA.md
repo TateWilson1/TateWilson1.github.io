@@ -1,8 +1,10 @@
 # Portfolio redesign verification
 
-## Roomba RGB accent — 2026-09-25
+## Roomba motion correction — 2026-09-27
 
-The floor-patrol Roomba now carries a thin three-segment cyan, pink, and green status ring on its top shell. It reuses the room's existing emissive materials and RGB animation path, so it remains a small equipment detail and freezes with the established reduced-motion behavior. The regenerated recovery GLB contains 1,102 mesh nodes using 476 shared definitions and remains outside the browser runtime path. Desktop browser inspection confirmed that the ring is legible in the settled overview without competing with the desk, wall fixtures, or destination markers. Browser console warnings/errors: none. Scene contract, JavaScript syntax, portfolio checks, and the final diff check passed.
+The floor-patrol Roomba carries a thin three-segment cyan, pink, and green status ring on its top shell. Each segment's angular offset is now baked into its geometry before the shared horizontal rotation is applied, keeping the pink segment coplanar when the Roomba changes heading. The patrol uses a bounded floor plan around the room edges, chair, charging dock, and notebook pedestal: it advances until contact, pauses briefly, spins through a randomized angle, then resumes in its new direction. It continues to freeze with the established reduced-motion behavior.
+
+The regenerated recovery GLB contains 1,102 mesh nodes using 476 shared definitions and remains outside the browser runtime path. A clean desktop browser run confirmed that the ring remains flat and legible while the Roomba changes position and heading without competing with the desk, wall fixtures, or destination markers. Browser console warnings/errors: none. The deterministic scene contract validates the bump, pause, spin, and heading-change sequence; scene contract, JavaScript syntax, portfolio checks, and the final diff check passed.
 
 ## Portfolio improvement completion pass — 2026-09-25
 
