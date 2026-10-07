@@ -48,7 +48,7 @@ const commandDefinitions = [
   { command: "experience", detail: "Cybersecurity internship at Pelycon Technologies", href: "index.html#internship", keywords: "internship m365 entra" },
   { command: "education", detail: "Digital Forensics & Cybersecurity at EKU", href: "index.html#education", keywords: "degree university resume courses" },
   { command: "ccdc", detail: "Competition defense and team leadership", href: "index.html#ccdc", keywords: "linux windows proxmox captain" },
-  { command: "contact", detail: "Email, LinkedIn, and message form", href: "index.html#contact", keywords: "connect" },
+  { command: "contact", detail: "Email, phone, LinkedIn, and GitHub", href: "index.html#contact", keywords: "connect" },
 ];
 
 function buildCommandPalette() {

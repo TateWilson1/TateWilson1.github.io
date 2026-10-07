@@ -14,7 +14,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 
 ## About Me
 
-I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University, expected to graduate in May 2026. I have a passion for technology and cybersecurity, demonstrated through my involvement in various projects and competitions via CCDC.
+I am a Digital Forensics & Cybersecurity student at Eastern Kentucky University in Richmond, KY, expected to graduate in December 2026, with a minor in Cybersecurity and Intelligence. I lead weekly cybersecurity practice for 25+ CCDC members as president and team captain and contributed to a 1st-place Kentucky finish.
 
 ## Features
 
